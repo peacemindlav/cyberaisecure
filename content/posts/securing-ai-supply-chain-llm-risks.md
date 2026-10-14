@@ -5,7 +5,7 @@ date: "2026-10-14"
 excerpt: "Downloading an LLM can mean executing untrusted code. Learn to secure your AI supply chain against OWASP Top 10 risks, serialization attacks, and trojaned weights."
 category: "Security Insights"
 tags: ["AI Supply Chain Security", "LLM Security", "OWASP Top 10", "AIBOM", "Hugging Face"]
-author: "Lavanya Shrivastav, CyberAiSecure Team"
+author: "Lavanya Shrivastava, CyberAiSecure Team"
 readTime: "7 min read"
 featured: true
 draft: false
@@ -31,9 +31,9 @@ Furthermore, supply chain vulnerabilities often compound other risks. For instan
 
 Traditional software supply chain security relies on deterministic checks, such as hashing binaries and scanning for known Common Vulnerabilities and Exposures (CVEs). LLMs break this paradigm completely. A model file can pass standard static code analysis but still contain hidden, catastrophic vulnerabilities.
 
-- *Arbitrary Code Execution (ACE):* Attackers routinely hide executable payloads—such as reverse shells, network backdoors, or credential scrapers—within the model's serialization format. These payloads trigger the exact moment the model is loaded into memory, giving attackers immediate host access before the AI ever processes a prompt.
-- **Behavioral Poisoning (Trojaned Weights):** Malicious actors subtly alter the model's neural network weights so it behaves normally for standard queries, but outputs malicious code, leaks sensitive data, or degrades safety guardrails when triggered by a specific, hidden prompt. Because the file itself is functionally valid, this bypasses traditional endpoint detection. Data poisoning manipulates pre-training, fine-tuning, or embedding stages to introduce vulnerabilities or biases. This can degrade performance, ethics, and security.
-- **The Perils of Pickle (`.pkl`):** PyTorch and other major frameworks historically relied on Python's Pickle format to serialize model weights. Pickle utilizes a native method called `__reduce__` to dictate object reconstruction in memory. An attacker can manipulate this method to include arbitrary system commands. The second your infrastructure runs `torch.load()`, the payload detonates.
+- Arbitrary Code Execution (ACE): Attackers routinely hide executable payloads—such as reverse shells, network backdoors, or credential scrapers—within the model's serialization format. These payloads trigger the exact moment the model is loaded into memory, giving attackers immediate host access before the AI ever processes a prompt.
+- Behavioral Poisoning (Trojaned Weights): Malicious actors subtly alter the model's neural network weights so it behaves normally for standard queries, but outputs malicious code, leaks sensitive data, or degrades safety guardrails when triggered by a specific, hidden prompt. Because the file itself is functionally valid, this bypasses traditional endpoint detection. Data poisoning manipulates pre-training, fine-tuning, or embedding stages to introduce vulnerabilities or biases. This can degrade performance, ethics, and security.
+- The Perils of Pickle (`.pkl`): PyTorch and other major frameworks historically relied on Python's Pickle format to serialize model weights. Pickle utilizes a native method called `__reduce__` to dictate object reconstruction in memory. An attacker can manipulate this method to include arbitrary system commands. The second your infrastructure runs `torch.load()`, the payload detonates.
 - **The `.safetensors` Shift:** To combat these serialization attacks, the AI community introduced `.safetensors`. This format is purely data-driven, zero-copy, and strictly non-executable. While it neutralizes arbitrary code execution, it cannot prevent behavioral risks like trojaned weights, making supplementary defense layers necessary.
 
 ### Technical Implementation & Programmatic Scanning
