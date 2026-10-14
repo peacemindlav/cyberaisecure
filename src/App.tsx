@@ -4,17 +4,14 @@
  */
 
 import React, { useState, useEffect, useMemo } from 'react';
-import { Navbar } from './components/Navbar';
-import { HeroFeatured } from './components/HeroFeatured';
-import { ArticleCard } from './components/ArticleCard';
-import { Sidebar } from './components/Sidebar';
-import { ArticleModal } from './components/ArticleModal';
-import { Footer } from './components/Footer';
-import { DeployModal } from './components/DeployModal';
-import { CreateArticleModal } from './components/CreateArticleModal';
-import { BUNDLED_ARTICLES, CVE_TRACKER, CATEGORIES_LIST, loadNewsArticles } from './data/news';
-import { NewsArticle, Category } from './types';
-import { Newspaper, Sparkles, Plus, BookOpen, CheckCircle2, ArrowRight } from 'lucide-react';
+import { BlogNavbar } from './components/BlogNavbar';
+import { BlogCard } from './components/BlogCard';
+import { BlogReader } from './components/BlogReader';
+import { TemplateModal } from './components/TemplateModal';
+import { BlogFooter } from './components/BlogFooter';
+import { loadAllMarkdownPosts } from './utils/markdownLoader';
+import { BlogPost } from './types';
+import { FileCode, Sparkles, Plus, BookOpen, Mail, CheckCircle2, ArrowRight } from 'lucide-react';
 
 export default function App() {
   // Theme Management: Light by Default, Persistent with localStorage
@@ -27,14 +24,19 @@ export default function App() {
     }
   });
 
-  const [articles, setArticles] = useState<NewsArticle[]>(BUNDLED_ARTICLES);
-  const [selectedCategory, setSelectedCategory] = useState<Category>('All Stories');
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [selectedArticle, setSelectedArticle] = useState<NewsArticle | null>(null);
-  const [deployModalOpen, setDeployModalOpen] = useState<boolean>(false);
-  const [createModalOpen, setCreateModalOpen] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const feedUrl = './data/news.json';
+  const [templateModalOpen, setTemplateModalOpen] = useState<boolean>(false);
+
+  // Newsletter states
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
+  const [isSubmittingNewsletter, setIsSubmittingNewsletter] = useState(false);
+
+  const GOOGLE_FORM_ACTION_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScirOBi5wCJFF9Qk5G9p6aM5sElrPOAdGiteDt0ng6g6oH9Xw/formResponse';
+  const GOOGLE_FORM_EMAIL_ENTRY_ID = 'entry.349413289';
 
   // Apply dark class to <html> root whenever theme changes and save to localStorage
   useEffect(() => {
@@ -53,244 +55,270 @@ export default function App() {
     setIsDark((prev) => !prev);
   };
 
-  // Load articles from JSON on initial mount
+  // Load all markdown files directly from content/posts/*.md
   useEffect(() => {
-    let isMounted = true;
-    async function loadData() {
-      setIsLoading(true);
-      const data = await loadNewsArticles(feedUrl);
-      if (isMounted) {
-        setArticles(data);
-        setIsLoading(false);
-      }
-    }
-    loadData();
-    return () => { isMounted = false; };
+    const mdPosts = loadAllMarkdownPosts();
+    setPosts(mdPosts);
   }, []);
 
-  const handleRefreshFeed = async () => {
-    setIsLoading(true);
-    const data = await loadNewsArticles(feedUrl);
-    setArticles(data);
-    setIsLoading(false);
+  // Sync with browser URL / history for natural slug navigation
+  useEffect(() => {
+    const handlePopState = () => {
+      const path = window.location.pathname;
+      if (path.startsWith('/posts/')) {
+        const slug = path.replace('/posts/', '');
+        const found = posts.find(p => p.slug === slug);
+        if (found) {
+          setSelectedPost(found);
+        }
+      } else {
+        setSelectedPost(null);
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [posts]);
+
+  const handleSelectPost = (post: BlogPost) => {
+    setSelectedPost(post);
+    try {
+      window.history.pushState({ postSlug: post.slug }, '', `/posts/${post.slug}`);
+    } catch {}
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleAddLocalArticle = (newArticle: NewsArticle) => {
-    setArticles(prev => [newArticle, ...prev]);
+  const handleBackToPosts = () => {
+    setSelectedPost(null);
+    try {
+      window.history.pushState(null, '', '/');
+    } catch {}
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Filtered stories based on category and search
-  const filteredArticles = useMemo(() => {
-    return articles.filter((art) => {
-      const matchCat = 
-        selectedCategory === 'All Stories' || art.category === selectedCategory;
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newsletterEmail || !newsletterEmail.includes('@') || isSubmittingNewsletter) return;
 
+    setIsSubmittingNewsletter(true);
+    try {
+      const formData = new FormData();
+      formData.append(GOOGLE_FORM_EMAIL_ENTRY_ID, newsletterEmail);
+
+      await fetch(GOOGLE_FORM_ACTION_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData,
+      });
+
+      setNewsletterSubmitted(true);
+    } catch {
+      setNewsletterSubmitted(true);
+    } finally {
+      setIsSubmittingNewsletter(false);
+    }
+  };
+
+  // Derive unique categories from posts
+  const categories = useMemo(() => {
+    const set = new Set<string>();
+    posts.forEach(p => {
+      if (p.category) set.add(p.category);
+    });
+    return ['All', ...Array.from(set)];
+  }, [posts]);
+
+  // Filtered posts based on category and search query
+  const filteredPosts = useMemo(() => {
+    return posts.filter(p => {
+      const matchCat = selectedCategory === 'All' || p.category === selectedCategory;
       const q = searchQuery.toLowerCase().trim();
       const matchSearch = 
         !q ||
-        art.title.toLowerCase().includes(q) ||
-        art.summary.toLowerCase().includes(q) ||
-        art.tags.some(t => t.toLowerCase().includes(q)) ||
-        (art.cveId && art.cveId.toLowerCase().includes(q)) ||
-        art.category.toLowerCase().includes(q);
+        p.title.toLowerCase().includes(q) ||
+        p.excerpt.toLowerCase().includes(q) ||
+        p.tags.some(t => t.toLowerCase().includes(q));
 
       return matchCat && matchSearch;
     });
-  }, [articles, selectedCategory, searchQuery]);
-
-  // Featured lead story
-  const featuredArticle = useMemo(() => {
-    if (filteredArticles.length === 0) return null;
-    return filteredArticles.find(a => a.featured) || filteredArticles[0];
-  }, [filteredArticles]);
-
-  const feedArticles = useMemo(() => {
-    if (!featuredArticle) return [];
-    if (selectedCategory === 'All Stories' && !searchQuery) {
-      return filteredArticles.filter(a => a.id !== featuredArticle.id);
-    }
-    return filteredArticles;
-  }, [filteredArticles, featuredArticle, selectedCategory, searchQuery]);
+  }, [posts, selectedCategory, searchQuery]);
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 dark:bg-[#0c1017] dark:text-slate-100 transition-colors duration-150 font-sans selection:bg-[#d92338]/20 selection:text-[#d92338]">
-      {/* Editorial Navigation Header */}
-      <Navbar
-        currentCategory={selectedCategory}
-        onSelectCategory={setSelectedCategory}
+      {/* Blog Navigation Header */}
+      <BlogNavbar
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
         isDark={isDark}
         onToggleTheme={toggleTheme}
-        categories={CATEGORIES_LIST}
-        onOpenDeployGuide={() => setDeployModalOpen(true)}
-        onOpenCreateArticle={() => setCreateModalOpen(true)}
+        onOpenTemplateModal={() => setTemplateModalOpen(true)}
       />
 
-      {/* Main Content Layout */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* Left Column: Primary News Stream (8 cols) */}
-          <div className="lg:col-span-8 space-y-6">
-            {/* Category Header when filtering */}
-            {selectedCategory !== 'All Stories' && (
-              <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#d92338]"></span>
-                  <h2 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white uppercase font-mono">
-                    {selectedCategory}
-                  </h2>
-                </div>
-                <span className="text-xs font-mono text-slate-500">
-                  {filteredArticles.length} Stories Filed
-                </span>
+      {/* Main Content Area */}
+      <main className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        {selectedPost ? (
+          <BlogReader post={selectedPost} onBack={handleBackToPosts} />
+        ) : (
+          <div className="space-y-10">
+            {/* Simple Editorial Hero Header */}
+            <div className="max-w-3xl space-y-3 pb-8 border-b border-slate-200 dark:border-slate-800">
+              <span className="text-xs font-mono font-bold tracking-widest text-[#d92338] uppercase">
+                CYBERAISECURE INSIGHTS
+              </span>
+              <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
+                Architecture, Engineering & Security Insights
+              </h1>
+              <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 font-sans leading-relaxed">
+                Technical articles, system designs, and security engineering practices written for practitioners.
+              </p>
+            </div>
+
+            {/* Category Filter Tabs */}
+            {categories.length > 1 && (
+              <div className="flex items-center gap-2 overflow-x-auto pb-2 text-xs font-mono">
+                {categories.map(cat => (
+                  <button
+                    key={cat}
+                    onClick={() => setSelectedCategory(cat)}
+                    className={`px-3 py-1.5 rounded-md transition-colors cursor-pointer ${
+                      selectedCategory === cat
+                        ? 'bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-950 font-semibold'
+                        : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800'
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
               </div>
             )}
 
-            {/* Featured Lead Story (When articles exist) */}
-            {featuredArticle && selectedCategory === 'All Stories' && !searchQuery && (
-              <HeroFeatured
-                article={featuredArticle}
-                onSelect={(art) => setSelectedArticle(art)}
-              />
-            )}
-
-            {/* Empty State when no articles exist */}
-            {articles.length === 0 ? (
-              <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#121824] p-8 sm:p-10 shadow-sm text-center">
+            {/* Post Feed or Empty State */}
+            {posts.length === 0 ? (
+              <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#121824] p-8 sm:p-12 shadow-sm text-center max-w-3xl mx-auto">
                 <div className="w-12 h-12 rounded-full bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-900/60 text-[#d92338] dark:text-rose-400 flex items-center justify-center mx-auto mb-4">
-                  <Sparkles className="w-6 h-6" />
+                  <FileCode className="w-6 h-6" />
                 </div>
 
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-100 dark:bg-slate-800 text-[11px] font-mono text-slate-600 dark:text-slate-300 mb-3">
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
-                  <span>Publishing Pipeline Active · All Sample Data Cleaned</span>
+                  <span>Direct Markdown Pipeline Ready (`content/posts/*.md`)</span>
                 </div>
 
                 <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-2">
-                  Ready for Your First CyberAiSecure Article
+                  No Blog Posts Published Yet
                 </h2>
 
                 <p className="text-sm text-slate-600 dark:text-slate-300 max-w-lg mx-auto leading-relaxed mb-6 font-sans">
-                  The portal has been cleaned and optimized. You can publish your first article using our interactive SEO builder or by adding entries into <code className="text-xs font-mono bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">public/data/news.json</code>.
+                  To publish a blog, simply add a <code className="font-mono text-xs bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">.md</code> file directly into <code className="font-mono text-xs bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">content/posts/</code> and push to GitHub. It will render automatically!
                 </p>
 
                 <div className="flex flex-wrap items-center justify-center gap-3">
                   <button
-                    onClick={() => setCreateModalOpen(true)}
+                    onClick={() => setTemplateModalOpen(true)}
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#d92338] hover:bg-[#b81d2e] text-white text-xs font-semibold shadow-sm transition-colors cursor-pointer"
                   >
-                    <Plus className="w-4 h-4" />
-                    <span>Create & SEO-Optimize New Article</span>
-                  </button>
-
-                  <button
-                    onClick={() => setDeployModalOpen(true)}
-                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-mono transition-colors cursor-pointer"
-                  >
-                    <BookOpen className="w-4 h-4" />
-                    <span>View GitHub Pages Guide</span>
+                    <FileCode className="w-4 h-4" />
+                    <span>View & Copy Blog Template (.md)</span>
                   </button>
                 </div>
 
-                {/* 3 Quick Publishing Steps */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 pt-8 border-t border-slate-100 dark:border-slate-800/80 text-left">
-                  <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-900/50 border border-slate-200/80 dark:border-slate-800/80">
-                    <span className="text-[10px] font-mono text-[#d92338] font-bold block mb-1">STEP 01</span>
-                    <h3 className="text-xs font-bold text-slate-900 dark:text-white mb-1">Compose Title & Summary</h3>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400">Keep titles between 40–60 chars and summaries between 120–160 chars for Google SERPs.</p>
+                {/* 3 Step Direct Markdown Guide */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 pt-8 border-t border-slate-100 dark:border-slate-800 text-left">
+                  <div className="p-3.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80">
+                    <span className="text-[10px] font-mono text-[#d92338] font-bold block mb-1">01. COPY TEMPLATE</span>
+                    <h3 className="text-xs font-bold text-slate-900 dark:text-white mb-1">Get blog-template.md</h3>
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400">Click the button above to copy the ready-to-use template with SEO frontmatter.</p>
                   </div>
 
-                  <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-900/50 border border-slate-200/80 dark:border-slate-800/80">
-                    <span className="text-[10px] font-mono text-[#d92338] font-bold block mb-1">STEP 02</span>
-                    <h3 className="text-xs font-bold text-slate-900 dark:text-white mb-1">Add to news.json</h3>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400">Paste the generated JSON entry into <code className="font-mono">public/data/news.json</code>.</p>
+                  <div className="p-3.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80">
+                    <span className="text-[10px] font-mono text-[#d92338] font-bold block mb-1">02. SAVE FILE</span>
+                    <h3 className="text-xs font-bold text-slate-900 dark:text-white mb-1">content/posts/your-post.md</h3>
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400">Save your markdown file in <code className="font-mono">content/posts/</code>.</p>
                   </div>
 
-                  <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-900/50 border border-slate-200/80 dark:border-slate-800/80">
-                    <span className="text-[10px] font-mono text-[#d92338] font-bold block mb-1">STEP 03</span>
-                    <h3 className="text-xs font-bold text-slate-900 dark:text-white mb-1">Push to GitHub</h3>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400">GitHub Actions automatically rebuilds and deploys the article live to cyberaisecure.com.</p>
+                  <div className="p-3.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80">
+                    <span className="text-[10px] font-mono text-[#d92338] font-bold block mb-1">03. GIT PUSH</span>
+                    <h3 className="text-xs font-bold text-slate-900 dark:text-white mb-1">Instant Deployment</h3>
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400">Run <code className="font-mono">git push origin main</code>. Your blog is live on cyberaisecure.com!</p>
                   </div>
                 </div>
               </div>
-            ) : feedArticles.length === 0 ? (
-              <div className="p-12 text-center rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#121824] shadow-sm">
-                <Newspaper className="w-8 h-8 text-slate-400 mx-auto mb-3" />
+            ) : filteredPosts.length === 0 ? (
+              <div className="p-12 text-center rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#121824] shadow-sm">
                 <h3 className="text-sm font-semibold text-slate-800 dark:text-slate-200">
-                  No security dispatches found matching &quot;{searchQuery}&quot;
+                  No blog posts found matching &quot;{searchQuery}&quot;
                 </h3>
                 <button
-                  onClick={() => { setSearchQuery(''); setSelectedCategory('All Stories'); }}
+                  onClick={() => { setSearchQuery(''); setSelectedCategory('All'); }}
                   className="mt-3 text-xs font-mono text-[#d92338] hover:underline"
                 >
-                  Reset News Filters
+                  Reset Search Filters
                 </button>
               </div>
             ) : (
-              <div className="space-y-4">
-                <div className="flex items-center justify-between text-xs font-mono text-slate-500 pb-2">
-                  <span>LATEST SECURITY ADVISORIES</span>
-                  <span>{feedArticles.length} ARTICLES</span>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {feedArticles.map((article) => (
-                    <ArticleCard
-                      key={article.id}
-                      article={article}
-                      onSelect={(art) => setSelectedArticle(art)}
-                    />
-                  ))}
-                </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {filteredPosts.map(post => (
+                  <BlogCard key={post.id} post={post} onSelect={handleSelectPost} />
+                ))}
               </div>
             )}
-          </div>
 
-          {/* Right Column: Clean Editorial Sidebar (Zero Ads) (4 cols) */}
-          <div className="lg:col-span-4">
-            <div className="sticky top-24 space-y-6">
-              <Sidebar
-                articles={articles}
-                cveTracker={CVE_TRACKER}
-                onSelectArticle={(art) => setSelectedArticle(art)}
-                onSelectCategory={setSelectedCategory}
-                selectedCategory={selectedCategory}
-                feedUrl={feedUrl}
-                onRefreshFeed={handleRefreshFeed}
-                isLoading={isLoading}
-              />
+            {/* Newsletter Section (Direct to Google Forms) */}
+            <div className="rounded-2xl bg-slate-900 text-white dark:bg-[#121824] border border-slate-800 p-8 sm:p-10 shadow-sm mt-12">
+              <div className="max-w-2xl mx-auto text-center space-y-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-800 text-xs font-mono text-[#d92338]">
+                  <Mail className="w-3.5 h-3.5" />
+                  <span>CYBERAISECURE NEWSLETTER</span>
+                </div>
+
+                <h3 className="text-xl sm:text-2xl font-bold tracking-tight">
+                  Stay Ahead with Technical Deep-Dives
+                </h3>
+
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans max-w-lg mx-auto">
+                  Subscribe to receive our latest engineering blogs, architecture breakdowns, and security insights directly in your inbox.
+                </p>
+
+                {newsletterSubmitted ? (
+                  <div className="p-3 bg-emerald-950/80 border border-emerald-500/40 rounded-lg text-emerald-300 text-xs font-mono flex items-center justify-center gap-2 max-w-md mx-auto">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                    <span>Subscribed! Thank you for following CyberAiSecure.</span>
+                  </div>
+                ) : (
+                  <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-2 max-w-md mx-auto pt-2">
+                    <input
+                      type="email"
+                      required
+                      value={newsletterEmail}
+                      onChange={(e) => setNewsletterEmail(e.target.value)}
+                      placeholder="engineer@enterprise.corp"
+                      className="flex-1 bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-[#d92338] font-mono"
+                    />
+                    <button
+                      type="submit"
+                      disabled={isSubmittingNewsletter}
+                      className="bg-[#d92338] hover:bg-[#b81d2e] disabled:opacity-75 text-white font-semibold px-4 py-2 rounded-lg text-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                    >
+                      {isSubmittingNewsletter ? 'Subscribing...' : 'Subscribe'}
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  </form>
+                )}
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </main>
 
-      {/* Full Article Reader Modal */}
-      <ArticleModal
-        article={selectedArticle}
-        onClose={() => setSelectedArticle(null)}
-        onSelectRelated={(art) => setSelectedArticle(art)}
-        allArticles={articles}
+      {/* Markdown Template Modal */}
+      <TemplateModal
+        isOpen={templateModalOpen}
+        onClose={() => setTemplateModalOpen(false)}
       />
 
-      {/* Interactive SEO Article Creator Modal */}
-      <CreateArticleModal
-        isOpen={createModalOpen}
-        onClose={() => setCreateModalOpen(false)}
-        onAddLocalArticle={handleAddLocalArticle}
-      />
-
-      {/* GitHub Pages Deployment Guide Modal */}
-      <DeployModal
-        isOpen={deployModalOpen}
-        onClose={() => setDeployModalOpen(false)}
-      />
-
-      {/* Editorial Footer */}
-      <Footer
-        onSelectCategory={setSelectedCategory}
-        categories={CATEGORIES_LIST}
-        onOpenDeployGuide={() => setDeployModalOpen(true)}
+      {/* Blog Footer */}
+      <BlogFooter
+        onOpenTemplateModal={() => setTemplateModalOpen(true)}
       />
     </div>
   );
