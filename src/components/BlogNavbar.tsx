@@ -47,6 +47,7 @@ export const BlogNavbar: React.FC<BlogNavbarProps> = ({
             <div className="flex flex-col">
               <span className="font-extrabold text-lg sm:text-xl tracking-tight text-slate-900 dark:text-white leading-none">
                 CyberAi<span className="text-[#d92338] dark:text-rose-400">Secure</span>
+              </span>
             </div>
           </div>
 
