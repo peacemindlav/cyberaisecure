@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CyberAiSecure | Cybersecurity News, Threat Intelligence & Zero-Day Dispatches</title>
+    <meta name="description" content="Independent cybersecurity news and intelligence portal reporting on zero-day vulnerabilities, AI security, cloud SecOps, and malware analysis." />
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://cyberaisecure.com/" />
+    <meta property="og:title" content="CyberAiSecure | Cybersecurity News & Threat Intelligence" />
+    <meta property="og:description" content="Independent cybersecurity news and intelligence portal reporting on zero-day vulnerabilities, AI security, cloud SecOps, and malware analysis." />
+    <meta property="og:site_name" content="CyberAiSecure" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CyberAiSecure | Cybersecurity News & Threat Intelligence" />
+    <meta name="twitter:description" content="Independent cybersecurity news and intelligence portal reporting on zero-day vulnerabilities, AI security, cloud SecOps, and malware analysis." />
+
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Immediate Theme Application (Light by default, Prevents FOUC) -->
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('cas_theme') || localStorage.getItem('thn_theme');
+          if (saved === 'dark') {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- GitHub Pages Single Page App routing restore -->
+    <script>
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&');
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
+  </head>
+  <body class="bg-slate-50 text-slate-900 dark:bg-[#0c1017] dark:text-slate-100 antialiased font-sans transition-colors duration-150">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

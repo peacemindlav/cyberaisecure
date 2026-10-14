@@ -1,0 +1,6 @@
+{
+  "name": "CyberAISecure - AI Cybersecurity & Threat Intelligence Portal",
+  "description": "Production cybersecurity blog and threat intelligence portal with Google AdSense architecture, Schema.org SEO, and GitHub Pages deployment.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

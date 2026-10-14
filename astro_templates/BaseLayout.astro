@@ -1,0 +1,101 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  article?: {
+    publishedTime: string;
+    modifiedTime?: string;
+    author: string;
+    tags: string[];
+  };
+}
+
+const {
+  title = "CyberAISecure - AI Cybersecurity & Threat Intelligence Portal",
+  description = "Production cybersecurity blog and threat intelligence portal with Google AdSense architecture, Schema.org SEO, and GitHub Pages deployment.",
+  ogImage = "https://cyberaisecure.com/assets/og-cyberaisecure.png",
+  article,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Primary SEO -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={article ? "article" : "website"} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    {article && (
+      <>
+        <meta property="article:published_time" content={article.publishedTime} />
+        {article.modifiedTime && <meta property="article:modified_time" content={article.modifiedTime} />}
+        <meta property="article:author" content={article.author} />
+        {article.tags.map((tag) => <meta property="article:tag" content={tag} />)}
+      </>
+    )}
+
+    <!-- Twitter Card -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+    <meta name="twitter:creator" content="@CyberAISecure" />
+
+    <!-- Google AdSense script -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8492049182930192" crossorigin="anonymous"></script>
+
+    <!-- Schema.org Article Structured Data (Conditional) -->
+    {article && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": title,
+        "description": description,
+        "image": ogImage,
+        "datePublished": article.publishedTime,
+        "dateModified": article.modifiedTime || article.publishedTime,
+        "author": {
+          "@type": "Person",
+          "name": article.author,
+          "url": "https://cyberaisecure.com/about"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "CyberAISecure",
+          "url": "https://cyberaisecure.com",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://cyberaisecure.com/assets/logo.png"
+          }
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": canonicalURL.toString()
+        }
+      })} />
+    )}
+  </head>
+  <body class="min-h-screen bg-[#090d16] text-slate-100 antialiased font-sans selection:bg-cyan-500/30 selection:text-cyan-200">
+    <slot name="header" />
+    <main>
+      <slot />
+    </main>
+    <slot name="footer" />
+  </body>
+</html>

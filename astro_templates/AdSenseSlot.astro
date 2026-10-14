@@ -1,0 +1,50 @@
+---
+interface Props {
+  slotId: string;
+  format?: 'auto' | 'rectangle' | 'horizontal' | 'vertical' | 'fluid';
+  layoutKey?: string; // For In-Feed or In-Article native ads
+  responsive?: boolean;
+  className?: string;
+  adLabel?: boolean;
+  minHeight?: string;
+}
+
+const {
+  slotId,
+  format = 'auto',
+  layoutKey,
+  responsive = true,
+  className = '',
+  adLabel = true,
+  minHeight = '90px'
+} = Astro.props;
+
+const clientPubId = "ca-pub-8492049182930192";
+---
+
+<div class={`adsense-wrapper my-6 w-full flex flex-col items-center justify-center ${className}`}>
+  {adLabel && (
+    <span class="text-[10px] uppercase tracking-wider text-slate-500 mb-1 select-none font-mono">
+      Advertisement
+    </span>
+  )}
+  
+  <div 
+    class="w-full bg-slate-900/60 border border-slate-800/80 rounded flex items-center justify-center overflow-hidden"
+    style={`min-height: ${minHeight};`}
+  >
+    <!-- Google AdSense Ad Unit -->
+    <ins
+      class="adsbygoogle"
+      style="display:block; width:100%; text-align:center;"
+      data-ad-client={clientPubId}
+      data-ad-slot={slotId}
+      data-ad-format={format}
+      {...(layoutKey ? { "data-ad-layout-key": layoutKey } : {})}
+      {...(responsive ? { "data-full-width-responsive": "true" } : {})}
+    ></ins>
+    <script is:inline>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+</div>
