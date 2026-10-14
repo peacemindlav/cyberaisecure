@@ -1,11 +1,7 @@
 import React from 'react';
-import { ShieldCheck, ArrowUp, FileCode } from 'lucide-react';
+import { ShieldCheck, ArrowUp } from 'lucide-react';
 
-interface BlogFooterProps {
-  onOpenTemplateModal: () => void;
-}
-
-export const BlogFooter: React.FC<BlogFooterProps> = ({ onOpenTemplateModal }) => {
+export const BlogFooter: React.FC = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -28,15 +24,7 @@ export const BlogFooter: React.FC<BlogFooterProps> = ({ onOpenTemplateModal }) =
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-4 text-xs font-mono">
-            <button
-              onClick={onOpenTemplateModal}
-              className="text-slate-300 hover:text-white transition-colors flex items-center gap-1 cursor-pointer"
-            >
-              <FileCode className="w-3.5 h-3.5 text-[#d92338]" />
-              <span>Markdown Template (.md)</span>
-            </button>
-            <span className="text-slate-600">·</span>
+          <div className="flex items-center gap-4 text-xs font-mono">
             <button
               onClick={scrollToTop}
               className="text-slate-300 hover:text-white transition-colors flex items-center gap-1 cursor-pointer"
@@ -49,7 +37,7 @@ export const BlogFooter: React.FC<BlogFooterProps> = ({ onOpenTemplateModal }) =
 
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500 font-mono">
           <p>© {new Date().getFullYear()} CyberAiSecure. All rights reserved. · cyberaisecure.com</p>
-          <p>Static Blog Architecture on GitHub Pages</p>
+          <p>Markdown-Driven Static Blog on GitHub Pages</p>
         </div>
       </div>
     </footer>

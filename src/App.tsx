@@ -7,11 +7,10 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { BlogNavbar } from './components/BlogNavbar';
 import { BlogCard } from './components/BlogCard';
 import { BlogReader } from './components/BlogReader';
-import { TemplateModal } from './components/TemplateModal';
 import { BlogFooter } from './components/BlogFooter';
 import { loadAllMarkdownPosts } from './utils/markdownLoader';
 import { BlogPost } from './types';
-import { FileCode, Sparkles, Plus, BookOpen, Mail, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Mail, CheckCircle2, ArrowRight } from 'lucide-react';
 
 export default function App() {
   // Theme Management: Light by Default, Persistent with localStorage
@@ -28,7 +27,6 @@ export default function App() {
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [templateModalOpen, setTemplateModalOpen] = useState<boolean>(false);
 
   // Newsletter states
   const [newsletterEmail, setNewsletterEmail] = useState('');
@@ -119,7 +117,7 @@ export default function App() {
     }
   };
 
-  // Derive unique categories from posts
+  // Derive unique categories dynamically from uploaded markdown posts
   const categories = useMemo(() => {
     const set = new Set<string>();
     posts.forEach(p => {
@@ -151,7 +149,11 @@ export default function App() {
         onSearchChange={setSearchQuery}
         isDark={isDark}
         onToggleTheme={toggleTheme}
-        onOpenTemplateModal={() => setTemplateModalOpen(true)}
+        categories={categories}
+        selectedCategory={selectedCategory}
+        onSelectCategory={setSelectedCategory}
+        posts={posts}
+        onSelectPost={handleSelectPost}
       />
 
       {/* Main Content Area */}
@@ -160,10 +162,10 @@ export default function App() {
           <BlogReader post={selectedPost} onBack={handleBackToPosts} />
         ) : (
           <div className="space-y-10">
-            {/* Simple Editorial Hero Header */}
+            {/* Simple Editorial Header */}
             <div className="max-w-3xl space-y-3 pb-8 border-b border-slate-200 dark:border-slate-800">
               <span className="text-xs font-mono font-bold tracking-widest text-[#d92338] uppercase">
-                CYBERAISECURE INSIGHTS
+                CYBERAISECURE
               </span>
               <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
                 Architecture, Engineering & Security Insights
@@ -192,56 +194,15 @@ export default function App() {
               </div>
             )}
 
-            {/* Post Feed or Empty State */}
+            {/* Post Feed or Clean Empty State */}
             {posts.length === 0 ? (
-              <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#121824] p-8 sm:p-12 shadow-sm text-center max-w-3xl mx-auto">
-                <div className="w-12 h-12 rounded-full bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-900/60 text-[#d92338] dark:text-rose-400 flex items-center justify-center mx-auto mb-4">
-                  <FileCode className="w-6 h-6" />
-                </div>
-
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-100 dark:bg-slate-800 text-[11px] font-mono text-slate-600 dark:text-slate-300 mb-3">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
-                  <span>Direct Markdown Pipeline Ready (`content/posts/*.md`)</span>
-                </div>
-
-                <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-2">
+              <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#121824] p-8 sm:p-12 shadow-sm text-center max-w-2xl mx-auto">
+                <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-3">
                   No Blog Posts Published Yet
                 </h2>
-
-                <p className="text-sm text-slate-600 dark:text-slate-300 max-w-lg mx-auto leading-relaxed mb-6 font-sans">
-                  To publish a blog, simply add a <code className="font-mono text-xs bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">.md</code> file directly into <code className="font-mono text-xs bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">content/posts/</code> and push to GitHub. It will render automatically!
+                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-sans">
+                  Upload your <code className="font-mono text-xs bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">.md</code> files directly into the <code className="font-mono text-xs bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">content/posts/</code> folder in GitHub. When you push, they will automatically appear here and in the navigation bar!
                 </p>
-
-                <div className="flex flex-wrap items-center justify-center gap-3">
-                  <button
-                    onClick={() => setTemplateModalOpen(true)}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#d92338] hover:bg-[#b81d2e] text-white text-xs font-semibold shadow-sm transition-colors cursor-pointer"
-                  >
-                    <FileCode className="w-4 h-4" />
-                    <span>View & Copy Blog Template (.md)</span>
-                  </button>
-                </div>
-
-                {/* 3 Step Direct Markdown Guide */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 pt-8 border-t border-slate-100 dark:border-slate-800 text-left">
-                  <div className="p-3.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80">
-                    <span className="text-[10px] font-mono text-[#d92338] font-bold block mb-1">01. COPY TEMPLATE</span>
-                    <h3 className="text-xs font-bold text-slate-900 dark:text-white mb-1">Get blog-template.md</h3>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400">Click the button above to copy the ready-to-use template with SEO frontmatter.</p>
-                  </div>
-
-                  <div className="p-3.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80">
-                    <span className="text-[10px] font-mono text-[#d92338] font-bold block mb-1">02. SAVE FILE</span>
-                    <h3 className="text-xs font-bold text-slate-900 dark:text-white mb-1">content/posts/your-post.md</h3>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400">Save your markdown file in <code className="font-mono">content/posts/</code>.</p>
-                  </div>
-
-                  <div className="p-3.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80">
-                    <span className="text-[10px] font-mono text-[#d92338] font-bold block mb-1">03. GIT PUSH</span>
-                    <h3 className="text-xs font-bold text-slate-900 dark:text-white mb-1">Instant Deployment</h3>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400">Run <code className="font-mono">git push origin main</code>. Your blog is live on cyberaisecure.com!</p>
-                  </div>
-                </div>
               </div>
             ) : filteredPosts.length === 0 ? (
               <div className="p-12 text-center rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#121824] shadow-sm">
@@ -310,16 +271,8 @@ export default function App() {
         )}
       </main>
 
-      {/* Markdown Template Modal */}
-      <TemplateModal
-        isOpen={templateModalOpen}
-        onClose={() => setTemplateModalOpen(false)}
-      />
-
       {/* Blog Footer */}
-      <BlogFooter
-        onOpenTemplateModal={() => setTemplateModalOpen(true)}
-      />
+      <BlogFooter />
     </div>
   );
 }
