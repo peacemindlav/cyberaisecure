@@ -47,10 +47,6 @@ export const BlogNavbar: React.FC<BlogNavbarProps> = ({
             <div className="flex flex-col">
               <span className="font-extrabold text-lg sm:text-xl tracking-tight text-slate-900 dark:text-white leading-none">
                 CyberAi<span className="text-[#d92338] dark:text-rose-400">Secure</span>
-              </span>
-              <span className="text-[11px] tracking-wider uppercase font-mono text-slate-500 dark:text-slate-400 mt-0.5">
-                Official Blog
-              </span>
             </div>
           </div>
 
