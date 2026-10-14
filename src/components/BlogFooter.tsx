@@ -18,9 +18,6 @@ export const BlogFooter: React.FC = () => {
               <span className="font-extrabold text-white text-base tracking-tight leading-none">
                 CyberAi<span className="text-[#d92338] dark:text-rose-400">Secure</span>
               </span>
-              <span className="text-[10px] tracking-wider uppercase font-mono text-slate-400 mt-0.5">
-                Official Blog
-              </span>
             </div>
           </div>
 
