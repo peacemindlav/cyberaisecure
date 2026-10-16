@@ -252,7 +252,7 @@ date: "2026-10-15"
 excerpt: "Generative AI and voice cloning have weaponized social engineering. Learn how to prevent synthetic executive impersonation and deepfake fraud with out-of-band verification."
 category: "Security Insights"
 tags: ["AI Phishing Defense", "Deepfake Social Engineering", "Voice Cloning Vishing", "Business Email Compromise", "Out-of-Band Verification", "FIDO2 WebAuthn"]
-author: "Lavanya Shrivastava"
+author: "CyberAiSecure Team"
 readTime: "9 min read"
 featured: true
 draft: false
@@ -355,14 +355,15 @@ Synthetic identity deception bypasses traditional human instinct because our bra
 
 - **Establish Strict Multi-Person Custody:** Implement dual-authorization controls on all enterprise banking portals. No individual employee should have the authority to process payments over a defined financial threshold alone.
 - **Mandate Independent Callbacks:** Implement a hard rule across your finance and HR departments: Any request to modify banking details or reset credentials requires an immediate outbound callback using internal corporate directory numbers.
-- **Train for Process Compliance, Not Deepfake Spotting:** Shift employee training away from trying to identify subtle audiovisual flaws in deepfakes. Instead, train teams on unyielding adherence to authorization procedures, empowering them to hang up on executives if protocols are bypassed.`,k=`---
+- **Train for Process Compliance, Not Deepfake Spotting:** Shift employee training away from trying to identify subtle audiovisual flaws in deepfakes. Instead, train teams on unyielding adherence to authorization procedures, empowering them to hang up on executives if protocols are bypassed.
+`,k=`---
 title: "Beyond Prompt Injection: Deep Dive into Indirect Prompt Exploits"
 slug: "beyond-prompt-injection-indirect-exploits"
 date: "2026-10-14"
 excerpt: "Direct prompt injection targets chat interfaces, but indirect injection poisons the AI supply chain. Learn how to defend against poisoned PDFs, emails, and RAG pipelines."
 category: "Security Insights"
 tags: ["AI Application Security", "Indirect Prompt Injection", "Dual-LLM Architecture", "OWASP"]
-author: "Lavanya Shrivastava, CyberAiSecure Team"
+author: "CyberAiSecure Team"
 readTime: "7 min read"
 featured: true
 draft: false
@@ -435,7 +436,8 @@ Indirect prompt injection turns the data your AI consumes into a weapon. Relying
 To secure your AI applications, engineering teams must:
 1. **Assume Breach on Retrieval:** Treat all Retrieval-Augmented Generation (RAG) content and third-party files as untrusted, regardless of the source. 
 2. **Implement Dual-LLM Validation:** Separate your reasoning engines. Use a sandboxed model to process user files and a privileged model to orchestrate API calls.
-3. **Enforce Authorization at Execution:** Ensure that authorization remains relevant throughout the entire execution pipeline, not just at the initial retrieval layer. Require strict access controls for external sharing or access to new domains.`,Ne=`---
+3. **Enforce Authorization at Execution:** Ensure that authorization remains relevant throughout the entire execution pipeline, not just at the initial retrieval layer. Require strict access controls for external sharing or access to new domains.
+`,Ne=`---
 title: "Your Blog Post Title Goes Here"
 slug: "your-blog-post-title"
 date: "2026-10-14"
@@ -487,7 +489,7 @@ date: "2026-10-15"
 excerpt: "CVSS scores cause alert fatigue. Learn how the Continuous Threat Exposure Management (CTEM) framework prioritizes real-world exploitability using EPSS and CISA KEV."
 category: "Security Insights"
 tags: ["CTEM Framework", "Vulnerability Management", "EPSS Score", "CISA KEV", "Attack Surface Management", "Risk-Based Prioritization"]
-author: "Lavanya Shrivastava"
+author: "CyberAiSecure Team"
 readTime: "9 min read"
 featured: true
 draft: false
@@ -603,14 +605,15 @@ Traditional vulnerability management measures what is vulnerable on paper; Conti
 
 - **Ditch CVSS-Only SLAs:** Stop mandating 48-hour patches for internal-only vulnerabilities based solely on a high CVSS score. Prioritize assets that are internet-facing and actively weaponized.
 - **Ingest Threat Intelligence Feeds:** Integrate CISA KEV and EPSS API data directly into your vulnerability management dashboards to automate alert filtering and dynamically route high-risk items to Jira.
-- **Validate Attack Paths:** Regularly perform penetration testing or attack surface mapping to prove whether theoretical exposures can be chained into a valid breach vector.`,Fe=`---
+- **Validate Attack Paths:** Regularly perform penetration testing or attack surface mapping to prove whether theoretical exposures can be chained into a valid breach vector.
+`,Fe=`---
 title: "Preparing for Post-Quantum Cryptography: Migration Roadmap & FIPS Standards Guide"
 slug: "post-quantum-cryptography-migration-roadmap-fips"
 date: "2026-10-15"
 excerpt: "Shor's algorithm breaks RSA and ECC encryption. Learn how to defend against Harvest Now, Decrypt Later (HNDL) and migrate to NIST FIPS 203/204/205 standards."
 category: "Security Insights"
 tags: ["Post-Quantum Cryptography", "Quantum-Resistant Encryption", "FIPS 203 ML-KEM", "NIST PQC Standards", "Cryptographic Bill of Materials", "Shor's Algorithm"]
-author: "Lavanya Shrivastava"
+author: "CyberAiSecure Team"
 readTime: "9 min read"
 featured: true
 draft: false
@@ -721,14 +724,15 @@ Post-quantum preparation is not an emergency incident response; it is an archite
 
 - **Conduct a Data Longevity Audit:** Identify all stored data that retains financial, regulatory, or operational sensitivity for 5 to 10+ years, and flag it as high-risk for Harvest Now, Decrypt Later threats.
 - **Enable Hybrid Post-Quantum TLS:** Enable hybrid key exchanges (such as X25519 + ML-KEM) on your reverse proxies, Cloudflare edge configurations, and internal microservice service meshes. 
-- **Build Cryptographic Agility into New Systems:** Abstract your encryption layers. Avoid hardcoding specific cipher suites directly into application code, ensuring your software can adopt finalized FIPS 203, 204, and 205 standards seamlessly as they roll out across frameworks.`,Ie=`---
+- **Build Cryptographic Agility into New Systems:** Abstract your encryption layers. Avoid hardcoding specific cipher suites directly into application code, ensuring your software can adopt finalized FIPS 203, 204, and 205 standards seamlessly as they roll out across frameworks.
+`,Ie=`---
 title: "Securing the AI Supply Chain: Mitigating Third-Party LLM Risks & OWASP Vulnerabilities"
 slug: "securing-ai-supply-chain-llm-risks"
 date: "2026-10-14"
 excerpt: "Downloading an LLM can mean executing untrusted code. Learn to secure your AI supply chain against OWASP Top 10 risks, serialization attacks, and trojaned weights."
 category: "Security Insights"
 tags: ["AI Supply Chain Security", "LLM Security", "OWASP Top 10", "AIBOM", "Hugging Face"]
-author: "Lavanya Shrivastava, CyberAiSecure Team"
+author: "CyberAiSecure Team"
 readTime: "7 min read"
 featured: true
 draft: false
@@ -825,7 +829,7 @@ date: "2026-10-15"
 excerpt: "Secure your CI/CD pipeline against supply chain attacks. Master GitHub Actions hardening: pin commit SHAs, configure OIDC, restrict permissions, and run SAST."
 category: "Security Insights"
 tags: ["GitHub Actions Security", "CI/CD Pipeline Security", "DevSecOps", "Supply Chain Security", "OIDC AWS", "Static Application Security Testing"]
-author: "Lavanya Shrivastava"
+author: "CyberAiSecure Team"
 readTime: "9 min read"
 featured: true
 draft: false
@@ -937,14 +941,15 @@ A secure CI/CD pipeline protects your production environments from supply-side i
 
 - **Audit Action References:** Run an audit script across all workflow files and replace mutable tags with verified commit SHAs.
 - **Decommission Long-Lived Secrets:** Map all static cloud credentials currently stored in GitHub Secrets and replace them with OIDC trust relationships.
-- **Automate Pipeline Security Auditing:** Integrate automated CI/CD posture scanners like StepSecurity Harden-Runner or GitHub Scorecard to continuously verify your repository's workflow security.`,Re=`---
+- **Automate Pipeline Security Auditing:** Integrate automated CI/CD posture scanners like StepSecurity Harden-Runner or GitHub Scorecard to continuously verify your repository's workflow security.
+`,Re=`---
 title: "Zero-Trust Architecture: Implementation Blueprint for Small Teams & Startups"
 slug: "zero-trust-architecture-implementation-blueprint-small-teams"
 date: "2026-10-15"
 excerpt: "Zero Trust isn't just for massive enterprises. Learn how small teams can ditch legacy VPNs for identity-first access control (ZTNA) and micro-segmentation."
 category: "Security Insights"
 tags: ["Zero Trust Architecture", "ZTNA", "Cloud Security", "Identity Access Management", "Tailscale ACL", "Network Microsegmentation"]
-author: "Lavanya Shrivastava"
+author: "CyberAiSecure Team"
 readTime: "9 min read"
 featured: true
 draft: false
@@ -1054,5 +1059,6 @@ Zero Trust is an architectural mindset, not an off-the-shelf software purchase. 
 
 - **Mandate Phishing-Resistant MFA:** Transition all team members to FIDO2 passkeys or YubiKeys on your primary Identity Provider immediately. Disable SMS recovery options.
 - **Decommission Open VPN Ports:** Replace inbound-facing VPN concentrators with identity-aware proxies, closing all public open ports on internal infrastructure. 
-- **Enforce Service-to-Service Isolation:** Separate production databases from development subnets using explicit firewall rules and declarative ACLs. Ensure that internal services require mutually authenticated TLS (mTLS) to communicate with each other, eliminating open lateral movement across internal systems.`;function ze(e,t){let n=e.trim();if(!n.startsWith(`---`))return{id:t,title:t.replace(/-/g,` `).replace(/\b\w/g,e=>e.toUpperCase()),slug:t,date:new Date().toISOString().split(`T`)[0],excerpt:n.slice(0,160)+`...`,category:`General`,tags:[`Blog`],author:`CyberAiSecure`,readTime:`3 min read`,content:n};let r=n.split(/^---$/m);if(r.length<3)return null;let i=r[1],a=r.slice(2).join(`---`).trim(),o={},s=i.split(`
+- **Enforce Service-to-Service Isolation:** Separate production databases from development subnets using explicit firewall rules and declarative ACLs. Ensure that internal services require mutually authenticated TLS (mTLS) to communicate with each other, eliminating open lateral movement across internal systems.
+`;function ze(e,t){let n=e.trim();if(!n.startsWith(`---`))return{id:t,title:t.replace(/-/g,` `).replace(/\b\w/g,e=>e.toUpperCase()),slug:t,date:new Date().toISOString().split(`T`)[0],excerpt:n.slice(0,160)+`...`,category:`General`,tags:[`Blog`],author:`CyberAiSecure`,readTime:`3 min read`,content:n};let r=n.split(/^---$/m);if(r.length<3)return null;let i=r[1],a=r.slice(2).join(`---`).trim(),o={},s=i.split(`
 `);for(let e of s){let t=e.indexOf(`:`);if(t===-1)continue;let n=e.slice(0,t).trim(),r=e.slice(t+1).trim();(r.startsWith(`"`)&&r.endsWith(`"`)||r.startsWith(`'`)&&r.endsWith(`'`))&&(r=r.slice(1,-1)),o[n]=r.startsWith(`[`)&&r.endsWith(`]`)?r.slice(1,-1).split(`,`).map(e=>e.trim().replace(/^['"]|['"]$/g,``)).filter(Boolean):r===`true`||r!==`false`&&r}let c=a.split(/\s+/).filter(Boolean).length,l=`${Math.max(1,Math.ceil(c/200))} min read`,u=t.toLowerCase().replace(/[^a-z0-9]+/g,`-`).replace(/^-|-$/g,``);return{id:t,title:o.title||t.replace(/-/g,` `),slug:o.slug||u,date:o.date||`Recent`,excerpt:o.excerpt||o.description||a.slice(0,150).replace(/[#*`]/g,``)+`...`,category:o.category||`General`,tags:Array.isArray(o.tags)?o.tags:o.tags?[o.tags]:[`CyberAiSecure`],author:o.author||`CyberAiSecure Editorial`,readTime:o.readTime||l,featured:!!o.featured,draft:!!o.draft,content:a}}function Be(){let e=Object.assign({"/content/posts/ai-phishing-deepfake-social-engineering-defense.md":Me,"/content/posts/beyond-prompt-injection-indirect-exploits.md":k,"/content/posts/blog-template.md":Ne,"/content/posts/continuous-exposure-management-vs-vulnerability-scanning.md":Pe,"/content/posts/post-quantum-cryptography-migration-roadmap.md":Fe,"/content/posts/securing-ai-supply-chain-llm-risks.md":Ie,"/content/posts/securing-github-actions-cicd-supply-chains.md":Le,"/content/posts/zero-trust-architecture-blueprint-small-teams.md":Re}),t=[];for(let n in e){let r=n.split(`/`).pop()?.replace(/\.md$/,``)||`post`;if(r===`template`||r===`blog-template`)continue;let i=e[n];if(typeof i==`string`){let e=ze(i,r);e&&!e.draft&&t.push(e)}}return t.sort((e,t)=>t.date>e.date?1:-1)}var A=`/app/applet/src/App.tsx`;function Ve(){let[e,t]=(0,b.useState)(()=>{try{return localStorage.getItem(`cas_theme`)===`dark`}catch{return!1}}),[n,r]=(0,b.useState)([]),[i,a]=(0,b.useState)(null),[o,s]=(0,b.useState)(`All`),[c,l]=(0,b.useState)(``),[u,d]=(0,b.useState)(``),[f,p]=(0,b.useState)(!1),[m,h]=(0,b.useState)(!1);(0,b.useEffect)(()=>{try{e?(document.documentElement.classList.add(`dark`),localStorage.setItem(`cas_theme`,`dark`)):(document.documentElement.classList.remove(`dark`),localStorage.setItem(`cas_theme`,`light`))}catch{}},[e]);let g=()=>{t(e=>!e)},_=e=>{try{let t=window.location.pathname,n=window.location.search,r=window.location.hash,i=``;if(t.includes(`/posts/`)?i=t.split(`/posts/`)[1]?.split(/[?#/]/)[0]||``:n.includes(`/posts/`)?i=n.split(`/posts/`)[1]?.split(/[?&#/]/)[0]||``:r.includes(`/posts/`)&&(i=r.split(`/posts/`)[1]?.split(/[?&#/]/)[0]||``),i){let t=decodeURIComponent(i).trim();return e.find(e=>e.slug===t||e.id===t)||null}}catch{}return null};(0,b.useEffect)(()=>{let e=Be();r(e);let t=_(e);t&&a(t)},[]),(0,b.useEffect)(()=>{let e=()=>{let e=_(n);a(e)};return window.addEventListener(`popstate`,e),()=>window.removeEventListener(`popstate`,e)},[n]),(0,b.useEffect)(()=>{i?document.title=`${i.title} | CyberAiSecure`:document.title=`CyberAiSecure | Architecture, Engineering & Security Insights`},[i]);let v=e=>{a(e);try{window.history.pushState({postSlug:e.slug},``,`/posts/${e.slug}`)}catch{}window.scrollTo({top:0,behavior:`smooth`})},y=()=>{a(null);try{window.history.pushState(null,``,`/`)}catch{}window.scrollTo({top:0,behavior:`smooth`})},ee=()=>{a(null),l(``),s(`All`);try{window.history.pushState(null,``,`/`)}catch{}window.scrollTo({top:0,behavior:`smooth`})},te=async e=>{if(e.preventDefault(),u&&u.includes(`@`)&&!m){h(!0);try{let e=new FormData;e.append(`entry.349413289`,u),await fetch(`https://docs.google.com/forms/d/e/1FAIpQLScirOBi5wCJFF9Qk5G9p6aM5sElrPOAdGiteDt0ng6g6oH9Xw/formResponse`,{method:`POST`,mode:`no-cors`,body:e}),p(!0)}catch{p(!0)}finally{h(!1)}}},ne=(0,b.useMemo)(()=>{let e=new Set;return n.forEach(t=>{t.category&&e.add(t.category)}),[`All`,...Array.from(e)]},[n]),re=(0,b.useMemo)(()=>n.filter(e=>{let t=o===`All`||e.category===o,n=c.toLowerCase().trim(),r=!n||e.title.toLowerCase().includes(n)||e.excerpt.toLowerCase().includes(n)||e.tags.some(e=>e.toLowerCase().includes(n));return t&&r}),[n,o,c]);return(0,T.jsxDEV)(`div`,{className:`min-h-screen flex flex-col bg-slate-50 text-slate-900 dark:bg-[#0c1017] dark:text-slate-100 transition-colors duration-150 font-sans selection:bg-[#d92338]/20 selection:text-[#d92338]`,children:[(0,T.jsxDEV)(Te,{searchQuery:c,onSearchChange:l,isDark:e,onToggleTheme:g,categories:ne,selectedCategory:o,onSelectCategory:s,posts:n,onSelectPost:v,onGoHome:ee,isHome:i===null&&o===`All`&&!c},void 0,!1,{fileName:A,lineNumber:189,columnNumber:7},this),(0,T.jsxDEV)(`main`,{className:`flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12`,children:i?(0,T.jsxDEV)(Oe,{post:i,onBack:y},void 0,!1,{fileName:A,lineNumber:206,columnNumber:11},this):(0,T.jsxDEV)(`div`,{className:`space-y-10`,children:[(0,T.jsxDEV)(`div`,{className:`max-w-3xl space-y-3 pb-8 border-b border-slate-200 dark:border-slate-800`,children:[(0,T.jsxDEV)(`span`,{className:`text-xs font-mono font-bold tracking-widest text-[#d92338] uppercase`,children:`CYBERAISECURE`},void 0,!1,{fileName:A,lineNumber:211,columnNumber:15},this),(0,T.jsxDEV)(`h1`,{className:`text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight`,children:`Architecture, Engineering & Security Insights`},void 0,!1,{fileName:A,lineNumber:214,columnNumber:15},this),(0,T.jsxDEV)(`p`,{className:`text-base sm:text-lg text-slate-600 dark:text-slate-300 font-sans leading-relaxed`,children:`Technical articles, system designs, and security engineering practices written for practitioners.`},void 0,!1,{fileName:A,lineNumber:217,columnNumber:15},this)]},void 0,!0,{fileName:A,lineNumber:210,columnNumber:13},this),ne.length>1&&(0,T.jsxDEV)(`div`,{className:`flex items-center gap-2 overflow-x-auto pb-2 text-xs font-mono`,children:ne.map(e=>(0,T.jsxDEV)(`button`,{onClick:()=>s(e),className:`px-3 py-1.5 rounded-md transition-colors cursor-pointer ${o===e?`bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-950 font-semibold`:`text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800`}`,children:e},e,!1,{fileName:A,lineNumber:226,columnNumber:19},this))},void 0,!1,{fileName:A,lineNumber:224,columnNumber:15},this),n.length===0?(0,T.jsxDEV)(`div`,{className:`rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#121824] p-8 sm:p-12 shadow-sm text-center max-w-2xl mx-auto`,children:[(0,T.jsxDEV)(`h2`,{className:`text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-3`,children:`No Blog Posts Published Yet`},void 0,!1,{fileName:A,lineNumber:244,columnNumber:17},this),(0,T.jsxDEV)(`p`,{className:`text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-sans`,children:[`Upload your `,(0,T.jsxDEV)(`code`,{className:`font-mono text-xs bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded`,children:`.md`},void 0,!1,{fileName:A,lineNumber:248,columnNumber:31},this),` files directly into the `,(0,T.jsxDEV)(`code`,{className:`font-mono text-xs bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded`,children:`content/posts/`},void 0,!1,{fileName:A,lineNumber:248,columnNumber:155},this),` folder in GitHub. When you push, they will automatically appear here and in the navigation bar!`]},void 0,!0,{fileName:A,lineNumber:247,columnNumber:17},this)]},void 0,!0,{fileName:A,lineNumber:243,columnNumber:15},this):re.length===0?(0,T.jsxDEV)(`div`,{className:`p-12 text-center rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#121824] shadow-sm`,children:[(0,T.jsxDEV)(`h3`,{className:`text-sm font-semibold text-slate-800 dark:text-slate-200`,children:[`No blog posts found matching "`,c,`"`]},void 0,!0,{fileName:A,lineNumber:253,columnNumber:17},this),(0,T.jsxDEV)(`button`,{onClick:()=>{l(``),s(`All`)},className:`mt-3 text-xs font-mono text-[#d92338] hover:underline`,children:`Reset Search Filters`},void 0,!1,{fileName:A,lineNumber:256,columnNumber:17},this)]},void 0,!0,{fileName:A,lineNumber:252,columnNumber:15},this):(0,T.jsxDEV)(`div`,{className:`grid grid-cols-1 md:grid-cols-2 gap-6`,children:re.map(e=>(0,T.jsxDEV)(De,{post:e,onSelect:v},e.id,!1,{fileName:A,lineNumber:266,columnNumber:19},this))},void 0,!1,{fileName:A,lineNumber:264,columnNumber:15},this),(0,T.jsxDEV)(`div`,{className:`rounded-2xl bg-slate-900 text-white dark:bg-[#121824] border border-slate-800 p-8 sm:p-10 shadow-sm mt-12`,children:(0,T.jsxDEV)(`div`,{className:`max-w-2xl mx-auto text-center space-y-4`,children:[(0,T.jsxDEV)(`div`,{className:`inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-800 text-xs font-mono text-[#d92338]`,children:[(0,T.jsxDEV)(me,{className:`w-3.5 h-3.5`},void 0,!1,{fileName:A,lineNumber:275,columnNumber:19},this),(0,T.jsxDEV)(`span`,{children:`CYBERAISECURE NEWSLETTER`},void 0,!1,{fileName:A,lineNumber:276,columnNumber:19},this)]},void 0,!0,{fileName:A,lineNumber:274,columnNumber:17},this),(0,T.jsxDEV)(`h3`,{className:`text-xl sm:text-2xl font-bold tracking-tight`,children:`Stay Ahead with Technical Deep-Dives`},void 0,!1,{fileName:A,lineNumber:279,columnNumber:17},this),(0,T.jsxDEV)(`p`,{className:`text-xs sm:text-sm text-slate-300 leading-relaxed font-sans max-w-lg mx-auto`,children:`Subscribe to receive our latest engineering blogs, architecture breakdowns, and security insights directly in your inbox.`},void 0,!1,{fileName:A,lineNumber:283,columnNumber:17},this),f?(0,T.jsxDEV)(`div`,{className:`p-3 bg-emerald-950/80 border border-emerald-500/40 rounded-lg text-emerald-300 text-xs font-mono flex items-center justify-center gap-2 max-w-md mx-auto`,children:[(0,T.jsxDEV)(ue,{className:`w-4 h-4 text-emerald-400`},void 0,!1,{fileName:A,lineNumber:289,columnNumber:21},this),(0,T.jsxDEV)(`span`,{children:`Subscribed! Thank you for following CyberAiSecure.`},void 0,!1,{fileName:A,lineNumber:290,columnNumber:21},this)]},void 0,!0,{fileName:A,lineNumber:288,columnNumber:19},this):(0,T.jsxDEV)(`form`,{onSubmit:te,className:`flex flex-col sm:flex-row gap-2 max-w-md mx-auto pt-2`,children:[(0,T.jsxDEV)(`input`,{type:`email`,required:!0,value:u,onChange:e=>d(e.target.value),placeholder:`engineer@enterprise.corp`,className:`flex-1 bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-[#d92338] font-mono`},void 0,!1,{fileName:A,lineNumber:294,columnNumber:21},this),(0,T.jsxDEV)(`button`,{type:`submit`,disabled:m,className:`bg-[#d92338] hover:bg-[#b81d2e] disabled:opacity-75 text-white font-semibold px-4 py-2 rounded-lg text-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer`,children:[m?`Subscribing...`:`Subscribe`,(0,T.jsxDEV)(ae,{className:`w-3.5 h-3.5`},void 0,!1,{fileName:A,lineNumber:308,columnNumber:23},this)]},void 0,!0,{fileName:A,lineNumber:302,columnNumber:21},this)]},void 0,!0,{fileName:A,lineNumber:293,columnNumber:19},this)]},void 0,!0,{fileName:A,lineNumber:273,columnNumber:15},this)},void 0,!1,{fileName:A,lineNumber:272,columnNumber:13},this)]},void 0,!0,{fileName:A,lineNumber:208,columnNumber:11},this)},void 0,!1,{fileName:A,lineNumber:204,columnNumber:7},this),(0,T.jsxDEV)(je,{},void 0,!1,{fileName:A,lineNumber:319,columnNumber:7},this)]},void 0,!0,{fileName:A,lineNumber:187,columnNumber:5},this)}(0,we.createRoot)(document.getElementById(`root`)).render((0,T.jsxDEV)(Ve,{},void 0,!1,{fileName:`/app/applet/src/main.tsx`,lineNumber:5,columnNumber:53},void 0));
