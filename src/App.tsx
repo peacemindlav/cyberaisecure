@@ -126,6 +126,16 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleGoHome = () => {
+    setSelectedPost(null);
+    setSearchQuery('');
+    setSelectedCategory('All');
+    try {
+      window.history.pushState(null, '', '/');
+    } catch {}
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newsletterEmail || !newsletterEmail.includes('@') || isSubmittingNewsletter) return;
@@ -186,6 +196,8 @@ export default function App() {
         onSelectCategory={setSelectedCategory}
         posts={posts}
         onSelectPost={handleSelectPost}
+        onGoHome={handleGoHome}
+        isHome={selectedPost === null && selectedCategory === 'All' && !searchQuery}
       />
 
       {/* Main Content Area */}

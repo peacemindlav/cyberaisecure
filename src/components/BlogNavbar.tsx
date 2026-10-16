@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShieldCheck, Sun, Moon, Search, ChevronDown, Menu, X, BookOpen } from 'lucide-react';
+import { ShieldCheck, Sun, Moon, Search, ChevronDown, Menu, X, BookOpen, Home } from 'lucide-react';
 import { BlogPost } from '../types';
 
 interface BlogNavbarProps {
@@ -12,6 +12,8 @@ interface BlogNavbarProps {
   onSelectCategory: (cat: string) => void;
   posts: BlogPost[];
   onSelectPost: (post: BlogPost) => void;
+  onGoHome: () => void;
+  isHome: boolean;
 }
 
 export const BlogNavbar: React.FC<BlogNavbarProps> = ({
@@ -24,6 +26,8 @@ export const BlogNavbar: React.FC<BlogNavbarProps> = ({
   onSelectCategory,
   posts,
   onSelectPost,
+  onGoHome,
+  isHome,
 }) => {
   const [showMobileSearch, setShowMobileSearch] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -33,13 +37,11 @@ export const BlogNavbar: React.FC<BlogNavbarProps> = ({
     <header className="sticky top-0 z-50 w-full bg-white/95 dark:bg-[#0c1017]/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors duration-150">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="h-16 flex items-center justify-between gap-4">
-          {/* Brand Identity */}
+          {/* Brand Identity - Clicking Logo or CyberAiSecure redirects to Home */}
           <div 
-            onClick={() => {
-              onSearchChange('');
-              onSelectCategory('All');
-            }}
+            onClick={onGoHome}
             className="flex items-center gap-2.5 cursor-pointer select-none group shrink-0"
+            title="Go to CyberAiSecure Homepage"
           >
             <div className="w-9 h-9 rounded bg-[#d92338] text-white flex items-center justify-center font-black text-sm shadow-sm group-hover:bg-[#b81d2e] transition-colors">
               <ShieldCheck className="w-5 h-5 text-white" />
@@ -51,14 +53,27 @@ export const BlogNavbar: React.FC<BlogNavbarProps> = ({
             </div>
           </div>
 
-          {/* Dynamic Desktop Navigation: Categories & Recent Articles */}
+          {/* Dynamic Desktop Navigation: Home, Categories & Recent Articles */}
           <nav className="hidden md:flex items-center gap-1.5 text-xs font-mono">
-            {categories.slice(0, 4).map(cat => (
+            {/* Home Option */}
+            <button
+              onClick={onGoHome}
+              className={`px-3 py-1.5 rounded-md transition-colors cursor-pointer flex items-center gap-1.5 ${
+                isHome
+                  ? 'bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-950 font-semibold'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
+              }`}
+            >
+              <Home className="w-3.5 h-3.5" />
+              <span>Home</span>
+            </button>
+
+            {categories.filter(c => c !== 'All').slice(0, 4).map(cat => (
               <button
                 key={cat}
                 onClick={() => onSelectCategory(cat)}
                 className={`px-3 py-1.5 rounded-md transition-colors cursor-pointer ${
-                  selectedCategory === cat
+                  !isHome && selectedCategory === cat
                     ? 'bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-950 font-semibold'
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
                 }`}
@@ -187,8 +202,23 @@ export const BlogNavbar: React.FC<BlogNavbarProps> = ({
         {/* Mobile Nav Links */}
         {mobileMenuOpen && (
           <div className="md:hidden py-3 border-t border-slate-100 dark:border-slate-800 space-y-1">
-            <div className="text-[10px] font-mono text-slate-400 uppercase px-3 py-1">Categories</div>
-            {categories.map(cat => (
+            <button
+              onClick={() => {
+                onGoHome();
+                setMobileMenuOpen(false);
+              }}
+              className={`w-full text-left px-3 py-2 text-xs rounded-md font-mono flex items-center gap-2 ${
+                isHome
+                  ? 'bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-950 font-semibold'
+                  : 'text-slate-700 dark:text-slate-300'
+              }`}
+            >
+              <Home className="w-3.5 h-3.5" />
+              <span>Home</span>
+            </button>
+
+            <div className="text-[10px] font-mono text-slate-400 uppercase px-3 pt-2 pb-1">Categories</div>
+            {categories.filter(c => c !== 'All').map(cat => (
               <button
                 key={cat}
                 onClick={() => {
