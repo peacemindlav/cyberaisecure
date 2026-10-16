@@ -5,7 +5,7 @@ date: "2026-10-15"
 excerpt: "Shor's algorithm breaks RSA and ECC encryption. Learn how to defend against Harvest Now, Decrypt Later (HNDL) and migrate to NIST FIPS 203/204/205 standards."
 category: "Security Insights"
 tags: ["Post-Quantum Cryptography", "Quantum-Resistant Encryption", "FIPS 203 ML-KEM", "NIST PQC Standards", "Cryptographic Bill of Materials", "Shor's Algorithm"]
-author: "Lavanya Shrivastava"
+author: "CyberAiSecure Team"
 readTime: "9 min read"
 featured: true
 draft: false
