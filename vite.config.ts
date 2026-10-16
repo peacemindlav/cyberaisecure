@@ -3,10 +3,23 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig} from 'vite';
 
+import { generateSitemap } from './scripts/generate-sitemap.ts';
+
+const sitemapPlugin = () => ({
+  name: 'generate-sitemap',
+  buildStart() {
+    try {
+      generateSitemap();
+    } catch (e) {
+      console.error('[sitemap] Error generating sitemap:', e);
+    }
+  },
+});
+
 export default defineConfig(() => {
   return {
     base: '/',
-    plugins: [react(), tailwindcss()],
+    plugins: [react(), tailwindcss(), sitemapPlugin()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
