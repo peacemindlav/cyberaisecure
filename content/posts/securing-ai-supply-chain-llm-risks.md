@@ -5,7 +5,7 @@ date: "2026-10-14"
 excerpt: "Downloading an LLM can mean executing untrusted code. Learn to secure your AI supply chain against OWASP Top 10 risks, serialization attacks, and trojaned weights."
 category: "Security Insights"
 tags: ["AI Supply Chain Security", "LLM Security", "OWASP Top 10", "AIBOM", "Hugging Face"]
-author: "Lavanya Shrivastava, CyberAiSecure Team"
+author: "CyberAiSecure Team"
 readTime: "7 min read"
 featured: true
 draft: false
