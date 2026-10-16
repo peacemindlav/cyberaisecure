@@ -53,30 +53,62 @@ export default function App() {
     setIsDark((prev) => !prev);
   };
 
-  // Load all markdown files directly from content/posts/*.md
+  // Helper to extract post slug from pathname, query string, or hash
+  const getPostFromLocation = (allPosts: BlogPost[]): BlogPost | null => {
+    try {
+      const pathname = window.location.pathname;
+      const search = window.location.search;
+      const hash = window.location.hash;
+
+      let targetSlug = '';
+
+      if (pathname.includes('/posts/')) {
+        targetSlug = pathname.split('/posts/')[1]?.split(/[?#/]/)[0] || '';
+      } else if (search.includes('/posts/')) {
+        targetSlug = search.split('/posts/')[1]?.split(/[?&#/]/)[0] || '';
+      } else if (hash.includes('/posts/')) {
+        targetSlug = hash.split('/posts/')[1]?.split(/[?&#/]/)[0] || '';
+      }
+
+      if (targetSlug) {
+        const decoded = decodeURIComponent(targetSlug).trim();
+        return allPosts.find(p => p.slug === decoded || p.id === decoded) || null;
+      }
+    } catch {}
+    return null;
+  };
+
+  // Load all markdown files directly from content/posts/*.md and resolve deep link
   useEffect(() => {
     const mdPosts = loadAllMarkdownPosts();
     setPosts(mdPosts);
+
+    // Immediately resolve direct link on initial page visit/refresh
+    const initialPost = getPostFromLocation(mdPosts);
+    if (initialPost) {
+      setSelectedPost(initialPost);
+    }
   }, []);
 
   // Sync with browser URL / history for natural slug navigation
   useEffect(() => {
     const handlePopState = () => {
-      const path = window.location.pathname;
-      if (path.startsWith('/posts/')) {
-        const slug = path.replace('/posts/', '');
-        const found = posts.find(p => p.slug === slug);
-        if (found) {
-          setSelectedPost(found);
-        }
-      } else {
-        setSelectedPost(null);
-      }
+      const matched = getPostFromLocation(posts);
+      setSelectedPost(matched);
     };
 
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
   }, [posts]);
+
+  // Update document title dynamically based on active post
+  useEffect(() => {
+    if (selectedPost) {
+      document.title = `${selectedPost.title} | CyberAiSecure`;
+    } else {
+      document.title = 'CyberAiSecure | Architecture, Engineering & Security Insights';
+    }
+  }, [selectedPost]);
 
   const handleSelectPost = (post: BlogPost) => {
     setSelectedPost(post);
