@@ -88,6 +88,9 @@ export function generateSitemap() {
     ...posts.map(post => {
       return `  <url>\n    <loc>${SITE_URL}/posts/${post.slug}</loc>\n    <lastmod>${post.date}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>`;
     }),
+    `  <url>\n    <loc>${SITE_URL}/about.html</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.5</priority>\n  </url>`,
+    `  <url>\n    <loc>${SITE_URL}/privacy.html</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.5</priority>\n  </url>`,
+    `  <url>\n    <loc>${SITE_URL}/terms.html</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.5</priority>\n  </url>`,
   ];
 
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
