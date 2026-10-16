@@ -5,7 +5,7 @@ date: "2026-10-15"
 excerpt: "Generative AI and voice cloning have weaponized social engineering. Learn how to prevent synthetic executive impersonation and deepfake fraud with out-of-band verification."
 category: "Security Insights"
 tags: ["AI Phishing Defense", "Deepfake Social Engineering", "Voice Cloning Vishing", "Business Email Compromise", "Out-of-Band Verification", "FIDO2 WebAuthn"]
-author: "Lavanya Shrivastava"
+author: "CyberAiSecure Team"
 readTime: "9 min read"
 featured: true
 draft: false
