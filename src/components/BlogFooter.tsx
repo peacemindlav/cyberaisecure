@@ -34,7 +34,6 @@ export const BlogFooter: React.FC = () => {
 
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500 font-mono">
           <p>© {new Date().getFullYear()} CyberAiSecure. All rights reserved. · cyberaisecure.com</p>
-          <p>Markdown-Driven Static Blog on GitHub Pages</p>
         </div>
       </div>
     </footer>
