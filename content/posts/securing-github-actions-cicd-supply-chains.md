@@ -5,7 +5,7 @@ date: "2026-10-15"
 excerpt: "Secure your CI/CD pipeline against supply chain attacks. Master GitHub Actions hardening: pin commit SHAs, configure OIDC, restrict permissions, and run SAST."
 category: "Security Insights"
 tags: ["GitHub Actions Security", "CI/CD Pipeline Security", "DevSecOps", "Supply Chain Security", "OIDC AWS", "Static Application Security Testing"]
-author: "Lavanya Shrivastava"
+author: "CyberAiSecure Team"
 readTime: "9 min read"
 featured: true
 draft: false
