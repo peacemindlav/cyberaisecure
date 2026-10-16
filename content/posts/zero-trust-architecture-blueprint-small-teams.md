@@ -5,7 +5,7 @@ date: "2026-10-15"
 excerpt: "Zero Trust isn't just for massive enterprises. Learn how small teams can ditch legacy VPNs for identity-first access control (ZTNA) and micro-segmentation."
 category: "Security Insights"
 tags: ["Zero Trust Architecture", "ZTNA", "Cloud Security", "Identity Access Management", "Tailscale ACL", "Network Microsegmentation"]
-author: "Lavanya Shrivastava"
+author: "CyberAiSecure Team"
 readTime: "9 min read"
 featured: true
 draft: false
