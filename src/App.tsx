@@ -10,6 +10,7 @@ import { BlogReader } from './components/BlogReader';
 import { BlogFooter } from './components/BlogFooter';
 import { loadAllMarkdownPosts } from './utils/markdownLoader';
 import { BlogPost } from './types';
+import { updatePageSEO } from './utils/seo';
 import { Mail, CheckCircle2, ArrowRight } from 'lucide-react';
 
 export default function App() {
@@ -101,13 +102,9 @@ export default function App() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, [posts]);
 
-  // Update document title dynamically based on active post
+  // Update document title, canonical link, OpenGraph, Twitter, and Schema.org SEO dynamically
   useEffect(() => {
-    if (selectedPost) {
-      document.title = `${selectedPost.title} | CyberAiSecure`;
-    } else {
-      document.title = 'CyberAiSecure | Architecture, Engineering & Security Insights';
-    }
+    updatePageSEO(selectedPost || undefined);
   }, [selectedPost]);
 
   const handleSelectPost = (post: BlogPost) => {
