@@ -20,7 +20,7 @@ export function updatePageSEO(post?: {
 
   const title = post ? `${post.title} | CyberAiSecure` : siteTitle;
   const description = post ? post.excerpt : siteDesc;
-  const url = post ? `${baseUrl}/posts/${post.slug}` : `${baseUrl}/`;
+  const url = post ? `${baseUrl}/posts/${post.slug}/` : `${baseUrl}/`;
 
   // Title
   document.title = title;

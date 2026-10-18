@@ -86,7 +86,7 @@ export function generateSitemap() {
   const urlsXml = [
     `  <url>\n    <loc>${SITE_URL}/</loc>\n    <lastmod>${latestDate}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>1.0</priority>\n  </url>`,
     ...posts.map(post => {
-      return `  <url>\n    <loc>${SITE_URL}/posts/${post.slug}</loc>\n    <lastmod>${post.date}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>`;
+      return `  <url>\n    <loc>${SITE_URL}/posts/${post.slug}/</loc>\n    <lastmod>${post.date}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>`;
     }),
     `  <url>\n    <loc>${SITE_URL}/about.html</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.5</priority>\n  </url>`,
     `  <url>\n    <loc>${SITE_URL}/privacy.html</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.5</priority>\n  </url>`,

@@ -110,7 +110,7 @@ export default function App() {
   const handleSelectPost = (post: BlogPost) => {
     setSelectedPost(post);
     try {
-      window.history.pushState({ postSlug: post.slug }, '', `/posts/${post.slug}`);
+      window.history.pushState({ postSlug: post.slug }, '', `/posts/${post.slug}/`);
     } catch {}
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };

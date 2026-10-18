@@ -290,7 +290,7 @@ export function generateStaticPostPages() {
 
     if (!post) continue;
 
-    const postUrl = `${SITE_URL}/posts/${post.slug}`;
+    const postUrl = `${SITE_URL}/posts/${post.slug}/`;
     const pageTitle = `${post.title} | CyberAiSecure`;
     const pageDesc = post.excerpt || `${post.title} - In-depth engineering breakdown from CyberAiSecure.`;
 
