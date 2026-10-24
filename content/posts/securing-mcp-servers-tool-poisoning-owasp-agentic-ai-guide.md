@@ -3,7 +3,7 @@ title: "Securing Model Context Protocol (MCP) Servers: Defending Against Tool Po
 description: "Learn how to defend Model Context Protocol (MCP) servers against Tool Poisoning Attacks (MCP03), silent rug pulls, and OWASP Agentic AI risks (ASI01–ASI10) with Python manifest verification."
 slug: "securing-mcp-servers-tool-poisoning-owasp-agentic-ai-guide"
 date: "2026-10-21"
-category: "Security Insight"
+category: "Security Insights"
 tags: ["Agentic AI Security", "Model Context Protocol", "MCP Tool Poisoning", "OWASP Agentic Top 10", "Zero Trust AI", "Supply Chain Security", "MCP tool poisoning attack", "OWASP Top 10 for Agentic Applications 2026", "OWASP MCP Top 10"]
 author: "CyberAiSecure Team"
 reading_time: "14 min read"
