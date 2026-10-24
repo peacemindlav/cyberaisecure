@@ -5,7 +5,7 @@ date: "2026-10-18"
 excerpt: "Root access is an enterprise liability. Learn how to harden Linux environments by enforcing least privilege through strict sudoers policies, systemd capabilities, and MAC."
 category: "Security Insights"
 tags: ["Linux Security", "Least Privilege", "Sudo Hardening", "Systemd Sandboxing", "DevSecOps", "Access Control"]
-author: "Lavanya Shrivastav, CyberAiSecure Team"
+author: "CyberAiSecure Team"
 readTime: "10 min read"
 featured: true
 draft: false
