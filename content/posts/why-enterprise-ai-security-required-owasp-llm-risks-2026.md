@@ -5,7 +5,7 @@ date: "2026-10-18"
 excerpt: "Generative AI introduces massive operational risks. Learn why traditional InfoSec fails against prompt injection, excessive agency, and data poisoning in agentic workflows."
 category: "Security Insights"
 tags: ["AI Security", "OWASP Top 10", "LLM Risks", "Agentic AI", "Data Privacy", "Prompt Injection"]
-author: "Lavanya Shrivastav, CyberAiSecure Team"
+author: "CyberAiSecure Team"
 readTime: "10 min read"
 featured: true
 draft: false
