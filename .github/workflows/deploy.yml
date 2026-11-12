@@ -35,7 +35,6 @@ jobs:
       - name: Ensure CNAME & ads.txt Exist in Output
         run: |
           if [ ! -f dist/CNAME ]; then cp public/CNAME dist/CNAME 2>/dev/null || cp CNAME dist/CNAME; fi
-          if [ ! -f dist/ads.txt ]; then cp public/ads.txt dist/ads.txt 2>/dev/null || cp ads.txt dist/ads.txt; fi
           cp dist/index.html dist/404.html
 
       - name: Upload Pages Artifact
