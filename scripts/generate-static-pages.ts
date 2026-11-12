@@ -279,7 +279,7 @@ export function generateStaticPostPages() {
   }
 
   const files = fs.readdirSync(POSTS_DIR);
-  let generatedCount = 0;
+  const allPosts: PostData[] = [];
 
   for (const file of files) {
     if (!file.endsWith('.md')) continue;
@@ -288,8 +288,17 @@ export function generateStaticPostPages() {
     const content = fs.readFileSync(fullPath, 'utf-8');
     const post = parseMarkdownPost(content, file);
 
-    if (!post) continue;
+    if (post) {
+      allPosts.push(post);
+    }
+  }
 
+  // Sort descending by date
+  allPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+  let generatedCount = 0;
+
+  for (const post of allPosts) {
     const postUrl = `${SITE_URL}/posts/${post.slug}/`;
     const pageTitle = `${post.title} | CyberAiSecure`;
     const pageDesc = post.excerpt || `${post.title} - In-depth engineering breakdown from CyberAiSecure.`;
@@ -387,7 +396,7 @@ export function generateStaticPostPages() {
         url: SITE_URL,
         logo: {
           '@type': 'ImageObject',
-          url: `${SITE_URL}/logo.png`,
+          url: `${SITE_URL}/logo.svg`,
         },
       },
       mainEntityOfPage: {
@@ -465,7 +474,203 @@ export function generateStaticPostPages() {
   }
 
   console.log(`[ssg] Generated ${generatedCount} super SEO-optimized prerendered post pages with Schema.org JSON-LD!`);
+
+  // Prerender the Homepage into dist/index.html and docs/index.html
+  generatePrerenderedHomepage(allPosts, baseHtml);
+}
+
+function generatePrerenderedHomepage(posts: PostData[], baseHtml: string) {
+  const categories = ['All', ...Array.from(new Set(posts.map(p => p.category).filter(Boolean)))];
+
+  const homepageSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebSite',
+        '@id': `${SITE_URL}/#website`,
+        url: `${SITE_URL}/`,
+        name: 'CyberAiSecure',
+        description: 'Technical engineering publication on artificial intelligence security, LLM vulnerabilities, cloud defense architectures, and zero-trust systems.',
+        publisher: {
+          '@type': 'Organization',
+          name: 'CyberAiSecure',
+          url: `${SITE_URL}/`,
+          logo: {
+            '@type': 'ImageObject',
+            url: `${SITE_URL}/logo.svg`,
+          },
+        },
+      },
+      {
+        '@type': 'CollectionPage',
+        '@id': `${SITE_URL}/#collection`,
+        url: `${SITE_URL}/`,
+        name: 'CyberAiSecure - Technical Articles & Engineering Blueprints',
+        isPartOf: { '@id': `${SITE_URL}/#website` },
+        description: 'Browse in-depth cybersecurity architectures, AI model vulnerability mitigations, and cloud defense systems.',
+        mainEntity: {
+          '@type': 'ItemList',
+          numberOfItems: posts.length,
+          itemListElement: posts.map((post, idx) => ({
+            '@type': 'ListItem',
+            position: idx + 1,
+            url: `${SITE_URL}/posts/${post.slug}/`,
+            name: post.title,
+            description: post.excerpt,
+          })),
+        },
+      },
+    ],
+  };
+
+  const prerenderedHome = `
+    <div class="min-h-screen flex flex-col bg-slate-50 text-slate-900 dark:bg-[#0c1017] dark:text-slate-100 transition-colors duration-150 font-sans selection:bg-[#d92338]/20 selection:text-[#d92338]">
+      <!-- Blog Navigation Header -->
+      <header class="sticky top-0 z-40 bg-white/95 dark:bg-[#0c1017]/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <a href="/" class="flex items-center gap-2.5 text-slate-900 dark:text-white font-bold group">
+              <div class="w-8 h-8 rounded-lg bg-[#d92338] text-white flex items-center justify-center font-mono font-extrabold text-sm shadow-sm group-hover:bg-[#b81d2e] transition-colors">
+                C
+              </div>
+              <div class="flex flex-col">
+                <span class="text-base sm:text-lg font-extrabold tracking-tight leading-none">
+                  CyberAi<span class="text-[#d92338]">Secure</span>
+                </span>
+                <span class="text-[9px] font-mono text-slate-600 dark:text-slate-400 tracking-wider uppercase mt-0.5">
+                  Security &amp; Architecture
+                </span>
+              </div>
+            </a>
+          </div>
+          <div class="flex items-center gap-2 sm:gap-3">
+            <a href="/about.html" class="px-2.5 py-1.5 rounded-md text-xs font-mono text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">About</a>
+            <a href="/privacy.html" class="px-2.5 py-1.5 rounded-md text-xs font-mono text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">Privacy</a>
+            <a href="/terms.html" class="px-2.5 py-1.5 rounded-md text-xs font-mono text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">Terms</a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content Area -->
+      <main class="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div class="space-y-10">
+          <!-- Simple Editorial Header -->
+          <div class="max-w-3xl space-y-3 pb-8 border-b border-slate-200 dark:border-slate-800">
+            <span class="text-xs font-mono font-bold tracking-widest text-[#d92338] uppercase">CYBERAISECURE</span>
+            <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
+              Architecture, Engineering &amp; Security Insights
+            </h1>
+            <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 font-sans leading-relaxed">
+              Technical articles, system designs, and security engineering practices written for practitioners.
+            </p>
+          </div>
+
+          <!-- Category Filter Tabs -->
+          <div class="flex items-center gap-2 overflow-x-auto pb-2 text-xs font-mono">
+            ${categories
+              .map(
+                (cat, idx) => `
+              <span class="px-3 py-1.5 rounded-md transition-colors ${
+                idx === 0
+                  ? 'bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-950 font-semibold'
+                  : 'text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800/60'
+              }">${escapeHtml(cat)}</span>`
+              )
+              .join('')}
+          </div>
+
+          <!-- Post Feed with full links and publisher content for Google SEO & AdSense -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            ${posts
+              .map(
+                post => `
+              <article class="group rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-[#121824] p-6 hover:shadow-lg hover:border-slate-300 dark:hover:border-slate-700 transition-all flex flex-col justify-between">
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between text-xs font-mono">
+                    <span class="text-[#d92338] font-bold uppercase tracking-wider">${escapeHtml(post.category)}</span>
+                    <span class="text-slate-400 dark:text-slate-500">${escapeHtml(post.date)} · ${escapeHtml(post.readTime)}</span>
+                  </div>
+                  <h2 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-[#d92338] dark:group-hover:text-rose-400 transition-colors leading-snug">
+                    <a href="/posts/${escapeHtml(post.slug)}/" class="focus:outline-none">
+                      ${escapeHtml(post.title)}
+                    </a>
+                  </h2>
+                  <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 line-clamp-3 leading-relaxed font-sans">
+                    ${escapeHtml(post.excerpt)}
+                  </p>
+                </div>
+                <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
+                  <span class="text-xs text-slate-500 dark:text-slate-400 font-sans">
+                    By <strong class="text-slate-700 dark:text-slate-200 font-medium">${escapeHtml(post.author)}</strong>
+                  </span>
+                  <a href="/posts/${escapeHtml(post.slug)}/" class="text-xs font-mono font-semibold text-[#d92338] hover:underline flex items-center gap-1">
+                    Read Article →
+                  </a>
+                </div>
+              </article>`
+              )
+              .join('')}
+          </div>
+
+          <!-- Newsletter Section -->
+          <div class="rounded-2xl bg-slate-900 text-white dark:bg-[#121824] border border-slate-800 p-8 sm:p-10 shadow-sm mt-12">
+            <div class="max-w-2xl mx-auto text-center space-y-4">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-800 text-xs font-mono text-[#d92338]">
+                <span>CYBERAISECURE NEWSLETTER</span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-bold tracking-tight">Stay Ahead with Technical Deep-Dives</h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans max-w-lg mx-auto">
+                Subscribe to receive our latest engineering blogs, architecture breakdowns, and security insights directly in your inbox.
+              </p>
+              <div class="pt-2">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdP7eDi1hHAyZDQXSceGxa9C0AiA8vPx_cNRjWgFTfQU-q3lQ/viewform" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-[#d92338] hover:bg-[#b81d2e] text-white font-semibold px-5 py-2.5 rounded-lg text-xs transition-colors">
+                  <span>Subscribe via Online Form</span>
+                  <span>→</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Blog Footer -->
+      <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-[#0c1017]/50 py-8 text-xs font-mono text-slate-500">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p>© 2026 CyberAiSecure. All rights reserved. · cyberaisecure.com</p>
+          <div class="flex items-center gap-4">
+            <a href="/about.html" class="hover:text-slate-900 dark:hover:text-white transition-colors">About</a>
+            <a href="/privacy.html" class="hover:text-slate-900 dark:hover:text-white transition-colors">Privacy</a>
+            <a href="/terms.html" class="hover:text-slate-900 dark:hover:text-white transition-colors">Terms</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  `;
+
+  let homeHtml = baseHtml;
+
+  const jsonLdScript = `<!-- Schema.org Structured Data -->\n    <script type="application/ld+json">\n${JSON.stringify(
+    homepageSchema,
+    null,
+    2
+  )}\n    </script>`;
+
+  if (homeHtml.includes('<!-- Schema.org Structured Data -->')) {
+    homeHtml = homeHtml.replace(
+      /<!-- Schema\.org Structured Data -->[\s\S]*?<\/script>/i,
+      jsonLdScript
+    );
+  } else {
+    homeHtml = homeHtml.replace('</head>', `\n    ${jsonLdScript}\n  </head>`);
+  }
+
+  homeHtml = homeHtml.replace('<div id="root"></div>', `<div id="root">${prerenderedHome}</div>`);
+
+  fs.writeFileSync(path.join(DIST_DIR, 'index.html'), homeHtml, 'utf-8');
+  fs.writeFileSync(path.join(DOCS_DIR, 'index.html'), homeHtml, 'utf-8');
+  console.log('[ssg] Generated rich SEO-optimized prerendered homepage in dist/index.html & docs/index.html!');
 }
 
 // Execute when invoked directly via tsx
 generateStaticPostPages();
+

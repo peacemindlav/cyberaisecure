@@ -26,18 +26,120 @@
 
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
       "@type": "WebSite",
-      "name": "CyberAiSecure",
+      "@id": "https://cyberaisecure.com/#website",
       "url": "https://cyberaisecure.com/",
+      "name": "CyberAiSecure",
       "description": "Technical engineering publication on artificial intelligence security, LLM vulnerabilities, cloud defense architectures, and zero-trust systems.",
       "publisher": {
         "@type": "Organization",
         "name": "CyberAiSecure",
-        "url": "https://cyberaisecure.com/"
+        "url": "https://cyberaisecure.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://cyberaisecure.com/logo.svg"
+        }
+      }
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://cyberaisecure.com/#collection",
+      "url": "https://cyberaisecure.com/",
+      "name": "CyberAiSecure - Technical Articles & Engineering Blueprints",
+      "isPartOf": {
+        "@id": "https://cyberaisecure.com/#website"
+      },
+      "description": "Browse in-depth cybersecurity architectures, AI model vulnerability mitigations, and cloud defense systems.",
+      "mainEntity": {
+        "@type": "ItemList",
+        "numberOfItems": 11,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "url": "https://cyberaisecure.com/posts/php2shell-mitigation-guide-critical-rce-vulnerabilities/",
+            "name": "PHP2Shell Mitigation Guide: Defending Against CVE-2026-109618 & CVE-2026-109619",
+            "description": "PHP2Shell (CVE-2026-109618 & CVE-2026-109619) exposes millions of web servers to unauthenticated RCE. Learn immediate patching, php.ini workarounds, and FPM hardening."
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "url": "https://cyberaisecure.com/posts/securing-mcp-servers-tool-poisoning-owasp-agentic-ai-guide/",
+            "name": "Securing Model Context Protocol (MCP) Servers: Defending Against Tool Poisoning, Rug Pulls, and OWASP Agentic AI Risks",
+            "description": ""
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "url": "https://cyberaisecure.com/posts/linux-least-privilege-sudo-hardening-security/",
+            "name": "Implementing Least Privilege in Linux: Sudo Hardening & Access Control",
+            "description": "Root access is an enterprise liability. Learn how to harden Linux environments by enforcing least privilege through strict sudoers policies, systemd capabilities, and MAC."
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "url": "https://cyberaisecure.com/posts/why-enterprise-ai-security-required-owasp-llm-risks-2026/",
+            "name": "Why Enterprise AI Security is Mandatory: Navigating 2026 OWASP LLM Risks",
+            "description": "Generative AI introduces massive operational risks. Learn why traditional InfoSec fails against prompt injection, excessive agency, and data poisoning in agentic workflows."
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "url": "https://cyberaisecure.com/posts/defending-against-ai-phishing-deepfakes-vishing/",
+            "name": "Defending Against AI Phishing, Deepfake Social Engineering & Vishing Attacks",
+            "description": "Generative AI and voice cloning have weaponized social engineering. Learn how to prevent synthetic executive impersonation and deepfake fraud with out-of-band verification."
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "url": "https://cyberaisecure.com/posts/ctem-framework-vs-traditional-vulnerability-management/",
+            "name": "Continuous Threat Exposure Management (CTEM) vs. Traditional Vulnerability Management",
+            "description": "CVSS scores cause alert fatigue. Learn how the Continuous Threat Exposure Management (CTEM) framework prioritizes real-world exploitability using EPSS and CISA KEV."
+          },
+          {
+            "@type": "ListItem",
+            "position": 7,
+            "url": "https://cyberaisecure.com/posts/post-quantum-cryptography-migration-roadmap-fips/",
+            "name": "Preparing for Post-Quantum Cryptography: Migration Roadmap & FIPS Standards Guide",
+            "description": "Shor's algorithm breaks RSA and ECC encryption. Learn how to defend against Harvest Now, Decrypt Later (HNDL) and migrate to NIST FIPS 203/204/205 standards."
+          },
+          {
+            "@type": "ListItem",
+            "position": 8,
+            "url": "https://cyberaisecure.com/posts/securing-github-actions-cicd-pipeline-security-guide/",
+            "name": "Securing GitHub Actions: Complete CI/CD Pipeline Security & Hardening Guide",
+            "description": "Secure your CI/CD pipeline against supply chain attacks. Master GitHub Actions hardening: pin commit SHAs, configure OIDC, restrict permissions, and run SAST."
+          },
+          {
+            "@type": "ListItem",
+            "position": 9,
+            "url": "https://cyberaisecure.com/posts/zero-trust-architecture-implementation-blueprint-small-teams/",
+            "name": "Zero-Trust Architecture: Implementation Blueprint for Small Teams & Startups",
+            "description": "Zero Trust isn't just for massive enterprises. Learn how small teams can ditch legacy VPNs for identity-first access control (ZTNA) and micro-segmentation."
+          },
+          {
+            "@type": "ListItem",
+            "position": 10,
+            "url": "https://cyberaisecure.com/posts/beyond-prompt-injection-indirect-exploits/",
+            "name": "Beyond Prompt Injection: Deep Dive into Indirect Prompt Exploits",
+            "description": "Direct prompt injection targets chat interfaces, but indirect injection poisons the AI supply chain. Learn how to defend against poisoned PDFs, emails, and RAG pipelines."
+          },
+          {
+            "@type": "ListItem",
+            "position": 11,
+            "url": "https://cyberaisecure.com/posts/securing-ai-supply-chain-llm-risks/",
+            "name": "Securing the AI Supply Chain: Mitigating Third-Party LLM Risks & OWASP Vulnerabilities",
+            "description": "Downloading an LLM can mean executing untrusted code. Learn to secure your AI supply chain against OWASP Top 10 risks, serialization attacks, and trojaned weights."
+          }
+        ]
       }
     }
+  ]
+}
     </script>
 
     <!-- Google Fonts: Inter & JetBrains Mono -->
@@ -72,10 +174,362 @@
         }
       }(window.location))
     </script>
-    <script type="module" crossorigin src="/assets/index-Bfrny0S0.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CchKYE_V.css">
+    <script type="module" crossorigin src="/assets/index-CXuAdtrv.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Dn42UuO6.css">
   </head>
   <body class="bg-slate-50 text-slate-900 dark:bg-[#0c1017] dark:text-slate-100 antialiased font-sans transition-colors duration-150">
-    <div id="root"></div>
+    <div id="root">
+    <div class="min-h-screen flex flex-col bg-slate-50 text-slate-900 dark:bg-[#0c1017] dark:text-slate-100 transition-colors duration-150 font-sans selection:bg-[#d92338]/20 selection:text-[#d92338]">
+      <!-- Blog Navigation Header -->
+      <header class="sticky top-0 z-40 bg-white/95 dark:bg-[#0c1017]/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <a href="/" class="flex items-center gap-2.5 text-slate-900 dark:text-white font-bold group">
+              <div class="w-8 h-8 rounded-lg bg-[#d92338] text-white flex items-center justify-center font-mono font-extrabold text-sm shadow-sm group-hover:bg-[#b81d2e] transition-colors">
+                C
+              </div>
+              <div class="flex flex-col">
+                <span class="text-base sm:text-lg font-extrabold tracking-tight leading-none">
+                  CyberAi<span class="text-[#d92338]">Secure</span>
+                </span>
+                <span class="text-[9px] font-mono text-slate-600 dark:text-slate-400 tracking-wider uppercase mt-0.5">
+                  Security &amp; Architecture
+                </span>
+              </div>
+            </a>
+          </div>
+          <div class="flex items-center gap-2 sm:gap-3">
+            <a href="/about.html" class="px-2.5 py-1.5 rounded-md text-xs font-mono text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">About</a>
+            <a href="/privacy.html" class="px-2.5 py-1.5 rounded-md text-xs font-mono text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">Privacy</a>
+            <a href="/terms.html" class="px-2.5 py-1.5 rounded-md text-xs font-mono text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">Terms</a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content Area -->
+      <main class="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div class="space-y-10">
+          <!-- Simple Editorial Header -->
+          <div class="max-w-3xl space-y-3 pb-8 border-b border-slate-200 dark:border-slate-800">
+            <span class="text-xs font-mono font-bold tracking-widest text-[#d92338] uppercase">CYBERAISECURE</span>
+            <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
+              Architecture, Engineering &amp; Security Insights
+            </h1>
+            <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 font-sans leading-relaxed">
+              Technical articles, system designs, and security engineering practices written for practitioners.
+            </p>
+          </div>
+
+          <!-- Category Filter Tabs -->
+          <div class="flex items-center gap-2 overflow-x-auto pb-2 text-xs font-mono">
+            
+              <span class="px-3 py-1.5 rounded-md transition-colors bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-950 font-semibold">All</span>
+              <span class="px-3 py-1.5 rounded-md transition-colors text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800/60">CVE Info</span>
+              <span class="px-3 py-1.5 rounded-md transition-colors text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800/60">Security Insights</span>
+          </div>
+
+          <!-- Post Feed with full links and publisher content for Google SEO & AdSense -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+              <article class="group rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-[#121824] p-6 hover:shadow-lg hover:border-slate-300 dark:hover:border-slate-700 transition-all flex flex-col justify-between">
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between text-xs font-mono">
+                    <span class="text-[#d92338] font-bold uppercase tracking-wider">CVE Info</span>
+                    <span class="text-slate-400 dark:text-slate-500">2026-10-27 · 10 min read</span>
+                  </div>
+                  <h2 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-[#d92338] dark:group-hover:text-rose-400 transition-colors leading-snug">
+                    <a href="/posts/php2shell-mitigation-guide-critical-rce-vulnerabilities/" class="focus:outline-none">
+                      PHP2Shell Mitigation Guide: Defending Against CVE-2026-109618 &amp; CVE-2026-109619
+                    </a>
+                  </h2>
+                  <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 line-clamp-3 leading-relaxed font-sans">
+                    PHP2Shell (CVE-2026-109618 &amp; CVE-2026-109619) exposes millions of web servers to unauthenticated RCE. Learn immediate patching, php.ini workarounds, and FPM hardening.
+                  </p>
+                </div>
+                <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
+                  <span class="text-xs text-slate-500 dark:text-slate-400 font-sans">
+                    By <strong class="text-slate-700 dark:text-slate-200 font-medium">CyberAiSecure Team</strong>
+                  </span>
+                  <a href="/posts/php2shell-mitigation-guide-critical-rce-vulnerabilities/" class="text-xs font-mono font-semibold text-[#d92338] hover:underline flex items-center gap-1">
+                    Read Article →
+                  </a>
+                </div>
+              </article>
+              <article class="group rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-[#121824] p-6 hover:shadow-lg hover:border-slate-300 dark:hover:border-slate-700 transition-all flex flex-col justify-between">
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between text-xs font-mono">
+                    <span class="text-[#d92338] font-bold uppercase tracking-wider">Security Insights</span>
+                    <span class="text-slate-400 dark:text-slate-500">2026-10-21 · 6 min read</span>
+                  </div>
+                  <h2 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-[#d92338] dark:group-hover:text-rose-400 transition-colors leading-snug">
+                    <a href="/posts/securing-mcp-servers-tool-poisoning-owasp-agentic-ai-guide/" class="focus:outline-none">
+                      Securing Model Context Protocol (MCP) Servers: Defending Against Tool Poisoning, Rug Pulls, and OWASP Agentic AI Risks
+                    </a>
+                  </h2>
+                  <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 line-clamp-3 leading-relaxed font-sans">
+                    
+                  </p>
+                </div>
+                <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
+                  <span class="text-xs text-slate-500 dark:text-slate-400 font-sans">
+                    By <strong class="text-slate-700 dark:text-slate-200 font-medium">CyberAiSecure Team</strong>
+                  </span>
+                  <a href="/posts/securing-mcp-servers-tool-poisoning-owasp-agentic-ai-guide/" class="text-xs font-mono font-semibold text-[#d92338] hover:underline flex items-center gap-1">
+                    Read Article →
+                  </a>
+                </div>
+              </article>
+              <article class="group rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-[#121824] p-6 hover:shadow-lg hover:border-slate-300 dark:hover:border-slate-700 transition-all flex flex-col justify-between">
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between text-xs font-mono">
+                    <span class="text-[#d92338] font-bold uppercase tracking-wider">Security Insights</span>
+                    <span class="text-slate-400 dark:text-slate-500">2026-10-18 · 10 min read</span>
+                  </div>
+                  <h2 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-[#d92338] dark:group-hover:text-rose-400 transition-colors leading-snug">
+                    <a href="/posts/linux-least-privilege-sudo-hardening-security/" class="focus:outline-none">
+                      Implementing Least Privilege in Linux: Sudo Hardening &amp; Access Control
+                    </a>
+                  </h2>
+                  <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 line-clamp-3 leading-relaxed font-sans">
+                    Root access is an enterprise liability. Learn how to harden Linux environments by enforcing least privilege through strict sudoers policies, systemd capabilities, and MAC.
+                  </p>
+                </div>
+                <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
+                  <span class="text-xs text-slate-500 dark:text-slate-400 font-sans">
+                    By <strong class="text-slate-700 dark:text-slate-200 font-medium">CyberAiSecure Team</strong>
+                  </span>
+                  <a href="/posts/linux-least-privilege-sudo-hardening-security/" class="text-xs font-mono font-semibold text-[#d92338] hover:underline flex items-center gap-1">
+                    Read Article →
+                  </a>
+                </div>
+              </article>
+              <article class="group rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-[#121824] p-6 hover:shadow-lg hover:border-slate-300 dark:hover:border-slate-700 transition-all flex flex-col justify-between">
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between text-xs font-mono">
+                    <span class="text-[#d92338] font-bold uppercase tracking-wider">Security Insights</span>
+                    <span class="text-slate-400 dark:text-slate-500">2026-10-18 · 10 min read</span>
+                  </div>
+                  <h2 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-[#d92338] dark:group-hover:text-rose-400 transition-colors leading-snug">
+                    <a href="/posts/why-enterprise-ai-security-required-owasp-llm-risks-2026/" class="focus:outline-none">
+                      Why Enterprise AI Security is Mandatory: Navigating 2026 OWASP LLM Risks
+                    </a>
+                  </h2>
+                  <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 line-clamp-3 leading-relaxed font-sans">
+                    Generative AI introduces massive operational risks. Learn why traditional InfoSec fails against prompt injection, excessive agency, and data poisoning in agentic workflows.
+                  </p>
+                </div>
+                <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
+                  <span class="text-xs text-slate-500 dark:text-slate-400 font-sans">
+                    By <strong class="text-slate-700 dark:text-slate-200 font-medium">CyberAiSecure Team</strong>
+                  </span>
+                  <a href="/posts/why-enterprise-ai-security-required-owasp-llm-risks-2026/" class="text-xs font-mono font-semibold text-[#d92338] hover:underline flex items-center gap-1">
+                    Read Article →
+                  </a>
+                </div>
+              </article>
+              <article class="group rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-[#121824] p-6 hover:shadow-lg hover:border-slate-300 dark:hover:border-slate-700 transition-all flex flex-col justify-between">
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between text-xs font-mono">
+                    <span class="text-[#d92338] font-bold uppercase tracking-wider">Security Insights</span>
+                    <span class="text-slate-400 dark:text-slate-500">2026-10-15 · 9 min read</span>
+                  </div>
+                  <h2 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-[#d92338] dark:group-hover:text-rose-400 transition-colors leading-snug">
+                    <a href="/posts/defending-against-ai-phishing-deepfakes-vishing/" class="focus:outline-none">
+                      Defending Against AI Phishing, Deepfake Social Engineering &amp; Vishing Attacks
+                    </a>
+                  </h2>
+                  <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 line-clamp-3 leading-relaxed font-sans">
+                    Generative AI and voice cloning have weaponized social engineering. Learn how to prevent synthetic executive impersonation and deepfake fraud with out-of-band verification.
+                  </p>
+                </div>
+                <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
+                  <span class="text-xs text-slate-500 dark:text-slate-400 font-sans">
+                    By <strong class="text-slate-700 dark:text-slate-200 font-medium">CyberAiSecure Team</strong>
+                  </span>
+                  <a href="/posts/defending-against-ai-phishing-deepfakes-vishing/" class="text-xs font-mono font-semibold text-[#d92338] hover:underline flex items-center gap-1">
+                    Read Article →
+                  </a>
+                </div>
+              </article>
+              <article class="group rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-[#121824] p-6 hover:shadow-lg hover:border-slate-300 dark:hover:border-slate-700 transition-all flex flex-col justify-between">
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between text-xs font-mono">
+                    <span class="text-[#d92338] font-bold uppercase tracking-wider">Security Insights</span>
+                    <span class="text-slate-400 dark:text-slate-500">2026-10-15 · 9 min read</span>
+                  </div>
+                  <h2 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-[#d92338] dark:group-hover:text-rose-400 transition-colors leading-snug">
+                    <a href="/posts/ctem-framework-vs-traditional-vulnerability-management/" class="focus:outline-none">
+                      Continuous Threat Exposure Management (CTEM) vs. Traditional Vulnerability Management
+                    </a>
+                  </h2>
+                  <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 line-clamp-3 leading-relaxed font-sans">
+                    CVSS scores cause alert fatigue. Learn how the Continuous Threat Exposure Management (CTEM) framework prioritizes real-world exploitability using EPSS and CISA KEV.
+                  </p>
+                </div>
+                <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
+                  <span class="text-xs text-slate-500 dark:text-slate-400 font-sans">
+                    By <strong class="text-slate-700 dark:text-slate-200 font-medium">CyberAiSecure Team</strong>
+                  </span>
+                  <a href="/posts/ctem-framework-vs-traditional-vulnerability-management/" class="text-xs font-mono font-semibold text-[#d92338] hover:underline flex items-center gap-1">
+                    Read Article →
+                  </a>
+                </div>
+              </article>
+              <article class="group rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-[#121824] p-6 hover:shadow-lg hover:border-slate-300 dark:hover:border-slate-700 transition-all flex flex-col justify-between">
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between text-xs font-mono">
+                    <span class="text-[#d92338] font-bold uppercase tracking-wider">Security Insights</span>
+                    <span class="text-slate-400 dark:text-slate-500">2026-10-15 · 9 min read</span>
+                  </div>
+                  <h2 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-[#d92338] dark:group-hover:text-rose-400 transition-colors leading-snug">
+                    <a href="/posts/post-quantum-cryptography-migration-roadmap-fips/" class="focus:outline-none">
+                      Preparing for Post-Quantum Cryptography: Migration Roadmap &amp; FIPS Standards Guide
+                    </a>
+                  </h2>
+                  <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 line-clamp-3 leading-relaxed font-sans">
+                    Shor&#39;s algorithm breaks RSA and ECC encryption. Learn how to defend against Harvest Now, Decrypt Later (HNDL) and migrate to NIST FIPS 203/204/205 standards.
+                  </p>
+                </div>
+                <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
+                  <span class="text-xs text-slate-500 dark:text-slate-400 font-sans">
+                    By <strong class="text-slate-700 dark:text-slate-200 font-medium">CyberAiSecure Team</strong>
+                  </span>
+                  <a href="/posts/post-quantum-cryptography-migration-roadmap-fips/" class="text-xs font-mono font-semibold text-[#d92338] hover:underline flex items-center gap-1">
+                    Read Article →
+                  </a>
+                </div>
+              </article>
+              <article class="group rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-[#121824] p-6 hover:shadow-lg hover:border-slate-300 dark:hover:border-slate-700 transition-all flex flex-col justify-between">
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between text-xs font-mono">
+                    <span class="text-[#d92338] font-bold uppercase tracking-wider">Security Insights</span>
+                    <span class="text-slate-400 dark:text-slate-500">2026-10-15 · 9 min read</span>
+                  </div>
+                  <h2 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-[#d92338] dark:group-hover:text-rose-400 transition-colors leading-snug">
+                    <a href="/posts/securing-github-actions-cicd-pipeline-security-guide/" class="focus:outline-none">
+                      Securing GitHub Actions: Complete CI/CD Pipeline Security &amp; Hardening Guide
+                    </a>
+                  </h2>
+                  <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 line-clamp-3 leading-relaxed font-sans">
+                    Secure your CI/CD pipeline against supply chain attacks. Master GitHub Actions hardening: pin commit SHAs, configure OIDC, restrict permissions, and run SAST.
+                  </p>
+                </div>
+                <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
+                  <span class="text-xs text-slate-500 dark:text-slate-400 font-sans">
+                    By <strong class="text-slate-700 dark:text-slate-200 font-medium">CyberAiSecure Team</strong>
+                  </span>
+                  <a href="/posts/securing-github-actions-cicd-pipeline-security-guide/" class="text-xs font-mono font-semibold text-[#d92338] hover:underline flex items-center gap-1">
+                    Read Article →
+                  </a>
+                </div>
+              </article>
+              <article class="group rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-[#121824] p-6 hover:shadow-lg hover:border-slate-300 dark:hover:border-slate-700 transition-all flex flex-col justify-between">
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between text-xs font-mono">
+                    <span class="text-[#d92338] font-bold uppercase tracking-wider">Security Insights</span>
+                    <span class="text-slate-400 dark:text-slate-500">2026-10-15 · 9 min read</span>
+                  </div>
+                  <h2 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-[#d92338] dark:group-hover:text-rose-400 transition-colors leading-snug">
+                    <a href="/posts/zero-trust-architecture-implementation-blueprint-small-teams/" class="focus:outline-none">
+                      Zero-Trust Architecture: Implementation Blueprint for Small Teams &amp; Startups
+                    </a>
+                  </h2>
+                  <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 line-clamp-3 leading-relaxed font-sans">
+                    Zero Trust isn&#39;t just for massive enterprises. Learn how small teams can ditch legacy VPNs for identity-first access control (ZTNA) and micro-segmentation.
+                  </p>
+                </div>
+                <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
+                  <span class="text-xs text-slate-500 dark:text-slate-400 font-sans">
+                    By <strong class="text-slate-700 dark:text-slate-200 font-medium">CyberAiSecure Team</strong>
+                  </span>
+                  <a href="/posts/zero-trust-architecture-implementation-blueprint-small-teams/" class="text-xs font-mono font-semibold text-[#d92338] hover:underline flex items-center gap-1">
+                    Read Article →
+                  </a>
+                </div>
+              </article>
+              <article class="group rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-[#121824] p-6 hover:shadow-lg hover:border-slate-300 dark:hover:border-slate-700 transition-all flex flex-col justify-between">
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between text-xs font-mono">
+                    <span class="text-[#d92338] font-bold uppercase tracking-wider">Security Insights</span>
+                    <span class="text-slate-400 dark:text-slate-500">2026-10-14 · 7 min read</span>
+                  </div>
+                  <h2 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-[#d92338] dark:group-hover:text-rose-400 transition-colors leading-snug">
+                    <a href="/posts/beyond-prompt-injection-indirect-exploits/" class="focus:outline-none">
+                      Beyond Prompt Injection: Deep Dive into Indirect Prompt Exploits
+                    </a>
+                  </h2>
+                  <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 line-clamp-3 leading-relaxed font-sans">
+                    Direct prompt injection targets chat interfaces, but indirect injection poisons the AI supply chain. Learn how to defend against poisoned PDFs, emails, and RAG pipelines.
+                  </p>
+                </div>
+                <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
+                  <span class="text-xs text-slate-500 dark:text-slate-400 font-sans">
+                    By <strong class="text-slate-700 dark:text-slate-200 font-medium">CyberAiSecure Team</strong>
+                  </span>
+                  <a href="/posts/beyond-prompt-injection-indirect-exploits/" class="text-xs font-mono font-semibold text-[#d92338] hover:underline flex items-center gap-1">
+                    Read Article →
+                  </a>
+                </div>
+              </article>
+              <article class="group rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-[#121824] p-6 hover:shadow-lg hover:border-slate-300 dark:hover:border-slate-700 transition-all flex flex-col justify-between">
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between text-xs font-mono">
+                    <span class="text-[#d92338] font-bold uppercase tracking-wider">Security Insights</span>
+                    <span class="text-slate-400 dark:text-slate-500">2026-10-14 · 7 min read</span>
+                  </div>
+                  <h2 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-[#d92338] dark:group-hover:text-rose-400 transition-colors leading-snug">
+                    <a href="/posts/securing-ai-supply-chain-llm-risks/" class="focus:outline-none">
+                      Securing the AI Supply Chain: Mitigating Third-Party LLM Risks &amp; OWASP Vulnerabilities
+                    </a>
+                  </h2>
+                  <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 line-clamp-3 leading-relaxed font-sans">
+                    Downloading an LLM can mean executing untrusted code. Learn to secure your AI supply chain against OWASP Top 10 risks, serialization attacks, and trojaned weights.
+                  </p>
+                </div>
+                <div class="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between">
+                  <span class="text-xs text-slate-500 dark:text-slate-400 font-sans">
+                    By <strong class="text-slate-700 dark:text-slate-200 font-medium">CyberAiSecure Team</strong>
+                  </span>
+                  <a href="/posts/securing-ai-supply-chain-llm-risks/" class="text-xs font-mono font-semibold text-[#d92338] hover:underline flex items-center gap-1">
+                    Read Article →
+                  </a>
+                </div>
+              </article>
+          </div>
+
+          <!-- Newsletter Section -->
+          <div class="rounded-2xl bg-slate-900 text-white dark:bg-[#121824] border border-slate-800 p-8 sm:p-10 shadow-sm mt-12">
+            <div class="max-w-2xl mx-auto text-center space-y-4">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-800 text-xs font-mono text-[#d92338]">
+                <span>CYBERAISECURE NEWSLETTER</span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-bold tracking-tight">Stay Ahead with Technical Deep-Dives</h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans max-w-lg mx-auto">
+                Subscribe to receive our latest engineering blogs, architecture breakdowns, and security insights directly in your inbox.
+              </p>
+              <div class="pt-2">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdP7eDi1hHAyZDQXSceGxa9C0AiA8vPx_cNRjWgFTfQU-q3lQ/viewform" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-[#d92338] hover:bg-[#b81d2e] text-white font-semibold px-5 py-2.5 rounded-lg text-xs transition-colors">
+                  <span>Subscribe via Online Form</span>
+                  <span>→</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Blog Footer -->
+      <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-[#0c1017]/50 py-8 text-xs font-mono text-slate-500">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p>© 2026 CyberAiSecure. All rights reserved. · cyberaisecure.com</p>
+          <div class="flex items-center gap-4">
+            <a href="/about.html" class="hover:text-slate-900 dark:hover:text-white transition-colors">About</a>
+            <a href="/privacy.html" class="hover:text-slate-900 dark:hover:text-white transition-colors">Privacy</a>
+            <a href="/terms.html" class="hover:text-slate-900 dark:hover:text-white transition-colors">Terms</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
   </body>
 </html>
