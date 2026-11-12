@@ -32,10 +32,9 @@ jobs:
       - name: Build Production Site
         run: npm run build
 
-      - name: Ensure CNAME & ads.txt Exist in Output
+      - name: Ensure CNAME Exists in Output
         run: |
           if [ ! -f dist/CNAME ]; then cp public/CNAME dist/CNAME 2>/dev/null || cp CNAME dist/CNAME; fi
-          if [ ! -f dist/ads.txt ]; then cp public/ads.txt dist/ads.txt 2>/dev/null || cp ads.txt dist/ads.txt; fi
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
