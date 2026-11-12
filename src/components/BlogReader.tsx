@@ -80,6 +80,9 @@ export const BlogReader: React.FC<BlogReaderProps> = ({ post, onBack }) => {
         )}
       </header>
 
+      {/* Adsterra 320x50 Banner (Beginning of Article) */}
+      <AdsterraBanner />
+
       {/* Markdown Content Body */}
       <div className="prose dark:prose-invert max-w-none text-slate-800 dark:text-slate-200 text-sm sm:text-base leading-relaxed space-y-4 font-sans">
         {renderMarkdownContent(post.content, handleCopyCode, copiedCodeId)}
@@ -98,9 +101,6 @@ export const BlogReader: React.FC<BlogReaderProps> = ({ post, onBack }) => {
           ))}
         </div>
       )}
-
-      {/* Adsterra 320x50 Banner (Option B: Bottom of Article) */}
-      <AdsterraBanner />
 
       {/* Bottom Back Button */}
       <div className="mt-8 text-center">

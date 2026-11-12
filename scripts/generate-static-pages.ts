@@ -69,11 +69,11 @@ function parseMarkdownPost(rawFileContent: string, filename: string): PostData |
     slug: meta.slug || fallbackSlug,
     title: meta.title || fallbackSlug.replace(/-/g, ' '),
     date: meta.date || new Date().toISOString().split('T')[0],
-    excerpt: meta.excerpt || '',
+    excerpt: meta.excerpt || meta.description || '',
     author: meta.author || 'CyberAiSecure Research Team',
     category: meta.category || 'Security Architecture',
     tags,
-    readTime: meta.readTime || '6 min read',
+    readTime: meta.readTime || meta.reading_time || '6 min read',
     content: markdownBody,
     draft: meta.draft === 'true',
   };
@@ -341,21 +341,8 @@ export function generateStaticPostPages() {
           }
         </header>
 
-        <div class="prose dark:prose-invert max-w-none text-slate-800 dark:text-slate-200 text-sm sm:text-base leading-relaxed space-y-4 font-sans">
-          ${renderedBody}
-        </div>
-
-        ${
-          post.tags && post.tags.length > 0
-            ? `<div class="mt-10 pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center gap-2">
-                <span class="text-xs font-mono text-slate-400 mr-1">Topics:</span>
-                ${post.tags.map(t => `<span class="text-xs font-mono text-slate-600 dark:text-slate-400">#${escapeHtml(t)}</span>`).join(' ')}
-              </div>`
-            : ''
-        }
-
-        <!-- Adsterra 320x50 Sponsor Banner (Option B: Bottom of Article) -->
-        <div class="my-8 pt-4 flex flex-col items-center justify-center">
+        <!-- Adsterra 320x50 Sponsor Banner (Beginning of Article) -->
+        <div class="my-8 pt-2 flex flex-col items-center justify-center">
           <span class="text-[10px] font-mono tracking-wider uppercase text-slate-400 dark:text-slate-500 mb-1.5 select-none">Advertisement</span>
           <div class="w-[320px] h-[50px] overflow-hidden flex items-center justify-center bg-slate-100/50 dark:bg-slate-900/50 rounded border border-slate-200/60 dark:border-slate-800/60">
             <iframe
@@ -369,6 +356,19 @@ export function generateStaticPostPages() {
             ></iframe>
           </div>
         </div>
+
+        <div class="prose dark:prose-invert max-w-none text-slate-800 dark:text-slate-200 text-sm sm:text-base leading-relaxed space-y-4 font-sans">
+          ${renderedBody}
+        </div>
+
+        ${
+          post.tags && post.tags.length > 0
+            ? `<div class="mt-10 pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center gap-2">
+                <span class="text-xs font-mono text-slate-400 mr-1">Topics:</span>
+                ${post.tags.map(t => `<span class="text-xs font-mono text-slate-600 dark:text-slate-400">#${escapeHtml(t)}</span>`).join(' ')}
+              </div>`
+            : ''
+        }
 
         <div class="mt-8 text-center">
           <a href="/" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-mono transition-colors">
