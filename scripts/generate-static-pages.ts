@@ -345,6 +345,22 @@ export function generateStaticPostPages() {
             : ''
         }
 
+        <!-- Adsterra 320x50 Sponsor Banner (Option B: Bottom of Article) -->
+        <div class="my-8 pt-4 flex flex-col items-center justify-center">
+          <span class="text-[10px] font-mono tracking-wider uppercase text-slate-400 dark:text-slate-500 mb-1.5 select-none">Advertisement</span>
+          <div class="w-[320px] h-[50px] overflow-hidden flex items-center justify-center bg-slate-100/50 dark:bg-slate-900/50 rounded border border-slate-200/60 dark:border-slate-800/60">
+            <iframe
+              title="Adsterra Sponsor Banner"
+              srcdoc="<!DOCTYPE html><html><head><base target=&quot;_blank&quot;><style>body{margin:0;padding:0;overflow:hidden;display:flex;justify-content:center;align-items:center;background:transparent;}</style></head><body><script>atOptions={'key':'82aa05d42b853e9f85ecae372d433731','format':'iframe','height':50,'width':320,'params':{}};</script><script src=&quot;https://bauval.org/22/82aa05d42b853e9f85ecae372d433731&quot;></script></body></html>"
+              width="320"
+              height="50"
+              scrolling="no"
+              frameborder="0"
+              style="border:0;width:320px;height:50px;overflow:hidden;"
+            ></iframe>
+          </div>
+        </div>
+
         <div class="mt-8 text-center">
           <a href="/" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-mono transition-colors">
             <span>← Back to All Blog Posts</span>

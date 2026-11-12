@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Clock, Calendar, Share2, Check, Copy, Tag, User } from 'lucide-react';
 import { BlogPost } from '../types';
+import { AdsterraBanner } from './AdsterraBanner';
 
 interface BlogReaderProps {
   post: BlogPost;
@@ -97,6 +98,9 @@ export const BlogReader: React.FC<BlogReaderProps> = ({ post, onBack }) => {
           ))}
         </div>
       )}
+
+      {/* Adsterra 320x50 Banner (Option B: Bottom of Article) */}
+      <AdsterraBanner />
 
       {/* Bottom Back Button */}
       <div className="mt-8 text-center">
