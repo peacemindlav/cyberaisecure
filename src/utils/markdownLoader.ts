@@ -1,6 +1,7 @@
 export interface BlogPost {
   id: string;
   title: string;
+  seoTitle?: string;
   slug: string;
   date: string;
   excerpt: string;
@@ -77,13 +78,14 @@ export function parseMarkdown(rawContent: string, fallbackId: string): BlogPost 
   return {
     id: fallbackId,
     title: metadata.title || fallbackId.replace(/-/g, ' '),
+    seoTitle: metadata.seoTitle || metadata.seo_title || undefined,
     slug: metadata.slug || fallbackSlug,
     date: metadata.date || 'Recent',
     excerpt: metadata.excerpt || metadata.description || bodyContent.slice(0, 150).replace(/[#*`]/g, '') + '...',
     category: metadata.category || 'General',
     tags: Array.isArray(metadata.tags) ? metadata.tags : (metadata.tags ? [metadata.tags] : ['CyberAiSecure']),
     author: metadata.author || 'CyberAiSecure Editorial',
-    readTime: metadata.readTime || readTime,
+    readTime: metadata.readTime || metadata.reading_time || readTime,
     featured: Boolean(metadata.featured),
     draft: Boolean(metadata.draft),
     content: bodyContent,

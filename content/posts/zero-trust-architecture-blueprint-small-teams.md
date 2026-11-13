@@ -1,5 +1,6 @@
 ---
 title: "Zero-Trust Architecture: Implementation Blueprint for Small Teams & Startups"
+seoTitle: "Zero-Trust Architecture for Small Teams"
 slug: "zero-trust-architecture-implementation-blueprint-small-teams"
 date: "2026-10-15"
 excerpt: "Zero Trust isn't just for massive enterprises. Learn how small teams can ditch legacy VPNs for identity-first access control (ZTNA) and micro-segmentation."
@@ -26,6 +27,8 @@ Small engineering teams often deploy a standard OpenVPN or IPsec gateway to prov
 - **Absence of Device Posture Checks:** Perimeter VPNs inspect user credentials, but they do not evaluate device health. If an employee logs in from an infected, unpatched personal laptop, malware can tunnel directly into internal resources unimpeded.
 
 ## The Small-Team Zero-Trust Framework
+
+![Identity-first ZTNA WireGuard overlay replacing legacy flat VPNs with FIDO2 authentication, device posture checks, and micro-segmented ACL targets](/diagrams/ztna-overlay-microsegmentation.svg)
 
 A practical zero-trust implementation for small teams focuses on three foundational pillars: Identity-First Authentication, Software-Defined Perimeters (SDP), and Micro-Segmentation.
 

@@ -1,5 +1,6 @@
 ---
 title: "Implementing Least Privilege in Linux: Sudo Hardening & Access Control"
+seoTitle: "Linux Least Privilege & Sudo Hardening"
 slug: "linux-least-privilege-sudo-hardening-security"
 date: "2026-10-18"
 excerpt: "Root access is an enterprise liability. Learn how to harden Linux environments by enforcing least privilege through strict sudoers policies, systemd capabilities, and MAC."
@@ -50,6 +51,8 @@ Defaults!DB_LOGS noexec
 The addition of the `noexec` tag is a critical defense mechanism. Many standard Linux utilities, such as text editors (`vi`, `nano`) or pagers (`less`, `more`), have built-in commands that allow users to spawn an interactive sub-shell. If a user runs `sudo less /var/log/syslog`, they can simply type `!/bin/sh` inside the pager to drop into a root shell, completely bypassing your intended restrictions. The `noexec` directive intercepts these system calls, preventing attackers from breaking out of script wrappers or pagers.
 
 ## Dropping Capabilities with Systemd Sandboxing
+
+![Linux defense-in-depth privilege isolation layers across SSH perimeter, scoped visudo noexec, systemd capability sandboxing, and SELinux/AppArmor MAC](/diagrams/linux-least-privilege-layers.svg)
 
 Beyond human users, the principle of least privilege must apply aggressively to automated services and background daemons. Historically, if a Linux application needed to perform a privileged action—such as binding to a protected lower network port (like port 80 or 443)—it had to run entirely as the root user.
 

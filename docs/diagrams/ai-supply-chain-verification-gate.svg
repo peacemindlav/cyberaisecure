@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420" role="img" aria-label="AI Model Supply Chain Verification &amp; AIBOM Gate">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#1e293b" stroke-width="0.6" stroke-opacity="0.45" />
+    </pattern>
+    
+    <marker id="arrow-64748b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b" />
+    </marker>
+    <marker id="arrow-38bdf8" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrow-d92338" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#d92338" />
+    </marker>
+    <marker id="arrow-34d399" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399" />
+    </marker>
+    <marker id="arrow-fbbf24" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24" />
+    </marker>
+  </defs>
+  <rect width="800" height="420" rx="14" fill="#090d16" />
+  <rect width="800" height="420" rx="14" fill="url(#grid)" />
+  <rect x="0.75" y="0.75" width="798.5" height="418.5" rx="14" fill="none" stroke="#1e293b" stroke-width="1.5" />
+
+  <!-- Header -->
+  <rect x="24" y="18" width="6" height="34" rx="3" fill="#d92338" />
+  <text x="40" y="34" fill="#f8fafc" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="16" font-weight="800">AI Model Supply Chain Verification &amp; AIBOM Gate</text>
+  <text x="40" y="51" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Blocking Pickle RCE, verifying provenance, and testing alignment before inference</text>
+  <text x="774" y="36" text-anchor="end" fill="#64748b" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700">CYBERAISECURE.COM</text>
+
+  
+  <g>
+    <rect x="24" y="120" width="138" height="185" rx="10" fill="#111827" stroke="#fbbf24" stroke-width="1.5" />
+    <rect x="24" y="120" width="138" height="4" rx="2" fill="#fbbf24" />
+    <rect x="36" y="130" width="104.39999999999999" height="16" rx="4" fill="#fbbf24" fill-opacity="0.16" />
+           <text x="44" y="141" fill="#fbbf24" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="0.6">UNTRUSTED HUB</text>
+    <text x="93" y="156" text-anchor="middle" fill="#f8fafc" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">Model Artifact</text>
+    <text x="93" y="176" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Hugging Face repo</text>
+    <text x="93" y="192" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Open-weights LLM</text>
+    <text x="93" y="208" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Fine-tuned LoRA</text>
+    <text x="93" y="224" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Dataset / weights</text>
+  </g>
+  <g>
+    <line x1="162" y1="212" x2="182" y2="212" stroke="#fbbf24" stroke-width="2"  marker-end="url(#arrow-fbbf24)" />
+    
+  </g>
+  <g>
+    <rect x="182" y="120" width="140" height="185" rx="10" fill="#111827" stroke="#d92338" stroke-width="1.5" />
+    <rect x="182" y="120" width="140" height="4" rx="2" fill="#d92338" />
+    <rect x="194" y="130" width="111.2" height="16" rx="4" fill="#d92338" fill-opacity="0.16" />
+           <text x="202" y="141" fill="#d92338" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="0.6">1. FORMAT GATE</text>
+    <text x="252" y="156" text-anchor="middle" fill="#f8fafc" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">Block .pkl Files</text>
+    <text x="252" y="176" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Deny __reduce__ RCE</text>
+    <text x="252" y="192" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Mandate .safetensors</text>
+    <text x="252" y="208" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">PyTorch weights_only</text>
+    <text x="252" y="224" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Zero-copy tensors</text>
+  </g>
+  <g>
+    <line x1="322" y1="212" x2="342" y2="212" stroke="#38bdf8" stroke-width="2"  marker-end="url(#arrow-38bdf8)" />
+    
+  </g>
+  <g>
+    <rect x="342" y="120" width="140" height="185" rx="10" fill="#111827" stroke="#38bdf8" stroke-width="1.5" />
+    <rect x="342" y="120" width="140" height="4" rx="2" fill="#38bdf8" />
+    <rect x="354" y="130" width="84" height="16" rx="4" fill="#38bdf8" fill-opacity="0.16" />
+           <text x="362" y="141" fill="#38bdf8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="0.6">2. SCANNER</text>
+    <text x="412" y="156" text-anchor="middle" fill="#f8fafc" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">ModelScan Audit</text>
+    <text x="412" y="176" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Inspect bytecode</text>
+    <text x="412" y="192" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Detect OS/net calls</text>
+    <text x="412" y="208" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Block HIGH severity</text>
+    <text x="412" y="224" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">SIEM audit logging</text>
+  </g>
+  <g>
+    <line x1="482" y1="212" x2="502" y2="212" stroke="#34d399" stroke-width="2"  marker-end="url(#arrow-34d399)" />
+    
+  </g>
+  <g>
+    <rect x="502" y="120" width="138" height="185" rx="10" fill="#111827" stroke="#34d399" stroke-width="1.5" />
+    <rect x="502" y="120" width="138" height="4" rx="2" fill="#34d399" />
+    <rect x="514" y="130" width="104.39999999999999" height="16" rx="4" fill="#34d399" fill-opacity="0.16" />
+           <text x="522" y="141" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="0.6">3. PROVENANCE</text>
+    <text x="571" y="156" text-anchor="middle" fill="#f8fafc" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">CycloneDX AIBOM</text>
+    <text x="571" y="176" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">SHA-256 weight hash</text>
+    <text x="571" y="192" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Dataset lineage</text>
+    <text x="571" y="208" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Dependency-Track</text>
+    <text x="571" y="224" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Signed attestation</text>
+  </g>
+  <g>
+    <line x1="640" y1="212" x2="660" y2="212" stroke="#34d399" stroke-width="2"  marker-end="url(#arrow-34d399)" />
+    
+  </g>
+  <g>
+    <rect x="660" y="120" width="116" height="185" rx="10" fill="#0f1f1c" stroke="#34d399" stroke-width="1.5" />
+    <rect x="660" y="120" width="116" height="4" rx="2" fill="#34d399" />
+    <rect x="672" y="130" width="84" height="16" rx="4" fill="#34d399" fill-opacity="0.16" />
+           <text x="680" y="141" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="0.6">4. SANDBOX</text>
+    <text x="718" y="156" text-anchor="middle" fill="#f8fafc" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">Red-Team Gate</text>
+    <text x="718" y="176" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Probe backdoors</text>
+    <text x="718" y="192" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Trojan triggers</text>
+    <text x="718" y="208" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Alignment checks</text>
+    <text x="718" y="224" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Approve deploy</text>
+  </g><text x="400" y="364" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Treat ML weights as executable software artifacts governed by OWASP LLM &amp; NIST AI RMF</text>
+</svg>

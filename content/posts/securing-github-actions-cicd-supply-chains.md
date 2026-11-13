@@ -1,5 +1,6 @@
 ---
 title: "Securing GitHub Actions: Complete CI/CD Pipeline Security & Hardening Guide"
+seoTitle: "Securing GitHub Actions CI/CD Pipelines"
 slug: "securing-github-actions-cicd-pipeline-security-guide"
 date: "2026-10-15"
 excerpt: "Secure your CI/CD pipeline against supply chain attacks. Master GitHub Actions hardening: pin commit SHAs, configure OIDC, restrict permissions, and run SAST."
@@ -39,6 +40,8 @@ Hardcoding long-lived cloud credentials (such as AWS access keys or GCP service 
 Explicitly define the `permissions:` block at both the top workflow level and individual job levels. Default to `permissions: {}` (zero permissions) and grant only the narrow, specific permissions required for the job to complete successfully.
 
 ## Technical Implementation & Hardened Workflow
+
+![Hardened GitHub Actions CI/CD pipeline showing protected branches, default-deny permissions, 40-character SHA pinning, Semgrep SAST, and ephemeral OIDC AWS STS deployment](/diagrams/github-actions-hardened-pipeline.svg)
 
 Below is a production-ready, hardened GitHub Actions configuration demonstrating zero default permissions, SHA pinning, automated security scanning via Semgrep, and safe OIDC authentication to AWS:
 

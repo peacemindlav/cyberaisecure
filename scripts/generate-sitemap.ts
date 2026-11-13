@@ -82,15 +82,21 @@ export function generateSitemap() {
   const today = new Date().toISOString().split('T')[0];
   const latestDate = posts.length > 0 && posts[0].date ? posts[0].date : today;
 
+  const categoryPaths = ['/category/cve-info/', '/category/security-insights/'];
+  const trustPaths = ['/about/', '/contact/', '/disclaimer/', '/privacy/', '/terms/'];
+
   // Build clean, valid XML
   const urlsXml = [
     `  <url>\n    <loc>${SITE_URL}/</loc>\n    <lastmod>${latestDate}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>1.0</priority>\n  </url>`,
     ...posts.map(post => {
       return `  <url>\n    <loc>${SITE_URL}/posts/${post.slug}/</loc>\n    <lastmod>${post.date}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>`;
     }),
-    `  <url>\n    <loc>${SITE_URL}/about.html</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.5</priority>\n  </url>`,
-    `  <url>\n    <loc>${SITE_URL}/privacy.html</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.5</priority>\n  </url>`,
-    `  <url>\n    <loc>${SITE_URL}/terms.html</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.5</priority>\n  </url>`,
+    ...categoryPaths.map(catPath => {
+      return `  <url>\n    <loc>${SITE_URL}${catPath}</loc>\n    <lastmod>${latestDate}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.7</priority>\n  </url>`;
+    }),
+    ...trustPaths.map(trustPath => {
+      return `  <url>\n    <loc>${SITE_URL}${trustPath}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.5</priority>\n  </url>`;
+    }),
   ];
 
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -116,7 +122,7 @@ ${urlsXml.join('\n')}
     fs.writeFileSync(DIST_SITEMAP, sitemapXml, 'utf-8');
   }
 
-  console.log(`[sitemap] Successfully updated sitemap.xml with ${posts.length} blog posts (Total ${posts.length + 1} URLs).`);
+  console.log(`[sitemap] Successfully updated sitemap.xml with ${posts.length} blog posts (Total ${urlsXml.length} URLs).`);
 }
 
 // Execute when run directly via tsx

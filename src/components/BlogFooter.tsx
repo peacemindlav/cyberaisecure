@@ -34,12 +34,16 @@ export const BlogFooter: React.FC = () => {
 
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500 font-mono">
           <p>© {new Date().getFullYear()} CyberAiSecure. All rights reserved. · cyberaisecure.com</p>
-          <div className="flex items-center gap-3">
-            <a href="/privacy.html" className="text-slate-400 hover:text-white transition-colors">Privacy</a>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <a href="/about/" className="text-slate-400 hover:text-white transition-colors">About</a>
             <span className="text-slate-700">·</span>
-            <a href="/terms.html" className="text-slate-400 hover:text-white transition-colors">Terms</a>
+            <a href="/contact/" className="text-slate-400 hover:text-white transition-colors">Contact</a>
             <span className="text-slate-700">·</span>
-            <a href="/about.html" className="text-slate-400 hover:text-white transition-colors">About</a>
+            <a href="/disclaimer/" className="text-slate-400 hover:text-white transition-colors">Disclaimer</a>
+            <span className="text-slate-700">·</span>
+            <a href="/privacy/" className="text-slate-400 hover:text-white transition-colors">Privacy</a>
+            <span className="text-slate-700">·</span>
+            <a href="/terms/" className="text-slate-400 hover:text-white transition-colors">Terms</a>
           </div>
         </div>
       </div>

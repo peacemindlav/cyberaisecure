@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Preparing for Post-Quantum Cryptography: Migration Roadmap &amp; FIPS Standards Guide | CyberAiSecure</title>
+    <title>Post-Quantum Cryptography &amp; FIPS Roadmap | CyberAiSecure</title>
     <meta name="description" content="Shor&#39;s algorithm breaks RSA and ECC encryption. Learn how to defend against Harvest Now, Decrypt Later (HNDL) and migrate to NIST FIPS 203/204/205 standards." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
@@ -15,22 +15,28 @@
     <!-- Open Graph / Social -->
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://cyberaisecure.com/posts/post-quantum-cryptography-migration-roadmap-fips/" />
-    <meta property="og:title" content="Preparing for Post-Quantum Cryptography: Migration Roadmap &amp; FIPS Standards Guide | CyberAiSecure" />
+    <meta property="og:title" content="Post-Quantum Cryptography &amp; FIPS Roadmap | CyberAiSecure" />
     <meta property="og:description" content="Shor&#39;s algorithm breaks RSA and ECC encryption. Learn how to defend against Harvest Now, Decrypt Later (HNDL) and migrate to NIST FIPS 203/204/205 standards." />
+    <meta property="og:image" content="https://cyberaisecure.com/og-default.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="CyberAiSecure" />
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Preparing for Post-Quantum Cryptography: Migration Roadmap &amp; FIPS Standards Guide | CyberAiSecure" />
+    <meta name="twitter:title" content="Post-Quantum Cryptography &amp; FIPS Roadmap | CyberAiSecure" />
     <meta name="twitter:description" content="Shor&#39;s algorithm breaks RSA and ECC encryption. Learn how to defend against Harvest Now, Decrypt Later (HNDL) and migrate to NIST FIPS 203/204/205 standards." />
+    <meta name="twitter:image" content="https://cyberaisecure.com/og-default.png" />
 
     <!-- Schema.org Article Structured Data -->
-    <script type="application/ld+json">
+    <script id="schema-json-ld" type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "Preparing for Post-Quantum Cryptography: Migration Roadmap & FIPS Standards Guide",
   "description": "Shor's algorithm breaks RSA and ECC encryption. Learn how to defend against Harvest Now, Decrypt Later (HNDL) and migrate to NIST FIPS 203/204/205 standards.",
+  "url": "https://cyberaisecure.com/posts/post-quantum-cryptography-migration-roadmap-fips/",
+  "image": "https://cyberaisecure.com/og-default.png",
   "datePublished": "2026-10-15",
   "dateModified": "2026-10-15",
   "author": {
@@ -40,7 +46,7 @@
   "publisher": {
     "@type": "Organization",
     "name": "CyberAiSecure",
-    "url": "https://cyberaisecure.com",
+    "url": "https://cyberaisecure.com/",
     "logo": {
       "@type": "ImageObject",
       "url": "https://cyberaisecure.com/logo.svg"
@@ -86,59 +92,78 @@
         }
       }(window.location))
     </script>
-    <script type="module" crossorigin src="/assets/index-C8WmckoT.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-Dn42UuO6.css">
+    <script type="module" crossorigin src="/assets/index-B3n7vBNM.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BAdrrZ6w.css">
   </head>
   <body class="bg-slate-50 text-slate-900 dark:bg-[#0c1017] dark:text-slate-100 antialiased font-sans transition-colors duration-150">
     <div id="root">
-      <article class="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-10 font-sans">
-        <div class="flex items-center justify-between pb-6 mb-8 border-b border-slate-200 dark:border-slate-800">
-          <a href="/" class="inline-flex items-center gap-2 text-xs font-mono text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
-            <span>← Back to All Posts</span>
-          </a>
-          <span class="text-xs font-mono text-slate-400">Security Insights</span>
-        </div>
-
-        <header class="space-y-4 mb-8">
-          <div class="flex flex-wrap items-center gap-2 text-xs font-mono">
-            <span class="font-bold text-[#d92338] tracking-wider uppercase">Security Insights</span>
-            <span class="text-slate-300 dark:text-slate-700">·</span>
-            <span class="text-slate-500 dark:text-slate-400">2026-10-15</span>
-            <span class="text-slate-300 dark:text-slate-700">·</span>
-            <span class="text-slate-500 dark:text-slate-400">9 min read</span>
+      <div class="min-h-screen flex flex-col bg-slate-50 text-slate-900 dark:bg-[#0c1017] dark:text-slate-100 font-sans">
+        <header class="sticky top-0 z-40 bg-white/95 dark:bg-[#0c1017]/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+            <a href="/" class="flex items-center gap-2.5 text-slate-900 dark:text-white font-bold">
+              <div class="w-8 h-8 rounded-lg bg-[#d92338] text-white flex items-center justify-center font-mono font-extrabold text-sm">C</div>
+              <div class="flex flex-col">
+                <span class="text-base sm:text-lg font-extrabold tracking-tight leading-none">CyberAi<span class="text-[#d92338]">Secure</span></span>
+                <span class="text-[9px] font-mono text-slate-600 dark:text-slate-400 tracking-wider uppercase mt-0.5">Security &amp; Architecture</span>
+              </div>
+            </a>
+            <nav aria-label="Primary Navigation" class="flex items-center gap-2 sm:gap-3 text-xs font-mono text-slate-600 dark:text-slate-400">
+              <a href="/category/cve-info/" class="px-2 py-1 hover:text-slate-900 dark:hover:text-white transition-colors">CVE Info</a>
+              <a href="/category/security-insights/" class="px-2 py-1 hover:text-slate-900 dark:hover:text-white transition-colors">Insights</a>
+              <a href="/about/" class="px-2 py-1 hover:text-slate-900 dark:hover:text-white transition-colors">About</a>
+            </nav>
           </div>
-
-          <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
-            Preparing for Post-Quantum Cryptography: Migration Roadmap &amp; FIPS Standards Guide
-          </h1>
-
-          <div class="py-3 border-y border-slate-100 dark:border-slate-800 flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
-            <span>Published by <strong class="text-slate-800 dark:text-slate-200">CyberAiSecure Team</strong></span>
-          </div>
-
-          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/60 border-l-4 border-[#d92338] text-sm text-slate-700 dark:text-slate-300 font-sans leading-relaxed">
-                  Shor&#39;s algorithm breaks RSA and ECC encryption. Learn how to defend against Harvest Now, Decrypt Later (HNDL) and migrate to NIST FIPS 203/204/205 standards.
-                </div>
         </header>
 
-        <!-- Adsterra 320x50 Sponsor Banner (Beginning of Article) -->
-        <div class="my-8 pt-2 flex flex-col items-center justify-center">
-          <span class="text-[10px] font-mono tracking-wider uppercase text-slate-400 dark:text-slate-500 mb-1.5 select-none">Advertisement</span>
-          <div class="w-[320px] h-[50px] overflow-hidden flex items-center justify-center bg-slate-100/50 dark:bg-slate-900/50 rounded border border-slate-200/60 dark:border-slate-800/60">
-            <iframe
-              title="Adsterra Sponsor Banner"
-              srcdoc="<!DOCTYPE html><html><head><base target=&quot;_blank&quot;><style>body{margin:0;padding:0;overflow:hidden;display:flex;justify-content:center;align-items:center;background:transparent;}</style></head><body><script>atOptions={'key':'82aa05d42b853e9f85ecae372d433731','format':'iframe','height':50,'width':320,'params':{}};</script><script src=&quot;https://bauval.org/22/82aa05d42b853e9f85ecae372d433731&quot;></script></body></html>"
-              width="320"
-              height="50"
-              scrolling="no"
-              frameborder="0"
-              style="border:0;width:320px;height:50px;overflow:hidden;"
-            ></iframe>
-          </div>
-        </div>
+        <main class="flex-1 w-full">
+          <article class="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-10 font-sans">
+            <div class="flex items-center justify-between pb-6 mb-8 border-b border-slate-200 dark:border-slate-800">
+              <a href="/" class="inline-flex items-center gap-2 text-xs font-mono text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
+                <span>← Back to All Posts</span>
+              </a>
+              <a href="/category/security-insights/" class="text-xs font-mono text-[#d92338] hover:underline">Security Insights</a>
+            </div>
 
-        <div class="prose dark:prose-invert max-w-none text-slate-800 dark:text-slate-200 text-sm sm:text-base leading-relaxed space-y-4 font-sans">
-          <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-8 mb-3 tracking-tight">Preparing for Post-Quantum Cryptography: Migration Roadmap &amp; FIPS Standards Guide</h1>
+            <header class="space-y-4 mb-8">
+              <div class="flex flex-wrap items-center gap-2 text-xs font-mono">
+                <span class="font-bold text-[#d92338] tracking-wider uppercase">Security Insights</span>
+                <span class="text-slate-300 dark:text-slate-700">·</span>
+                <span class="text-slate-500 dark:text-slate-400">2026-10-15</span>
+                <span class="text-slate-300 dark:text-slate-700">·</span>
+                <span class="text-slate-500 dark:text-slate-400">9 min read</span>
+              </div>
+
+              <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
+                Preparing for Post-Quantum Cryptography: Migration Roadmap &amp; FIPS Standards Guide
+              </h1>
+
+              <div class="py-3 border-y border-slate-100 dark:border-slate-800 flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+                <span>Published by <strong class="text-slate-800 dark:text-slate-200">CyberAiSecure Team</strong></span>
+              </div>
+
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/60 border-l-4 border-[#d92338] text-sm text-slate-700 dark:text-slate-300 font-sans leading-relaxed">
+                      Shor&#39;s algorithm breaks RSA and ECC encryption. Learn how to defend against Harvest Now, Decrypt Later (HNDL) and migrate to NIST FIPS 203/204/205 standards.
+                    </div>
+            </header>
+
+            <!-- Adsterra 320x50 Sponsor Banner (Beginning of Article) -->
+            <div class="my-8 pt-2 flex flex-col items-center justify-center">
+              <span class="text-[10px] font-mono tracking-wider uppercase text-slate-400 dark:text-slate-500 mb-1.5 select-none">Advertisement</span>
+              <div class="w-[320px] h-[50px] overflow-hidden flex items-center justify-center bg-slate-100/50 dark:bg-slate-900/50 rounded border border-slate-200/60 dark:border-slate-800/60">
+                <iframe
+                  title="Adsterra Sponsor Banner"
+                  srcdoc="<!DOCTYPE html><html><head><base target=&quot;_blank&quot;><style>body{margin:0;padding:0;overflow:hidden;display:flex;justify-content:center;align-items:center;background:transparent;}</style></head><body><script>atOptions={'key':'82aa05d42b853e9f85ecae372d433731','format':'iframe','height':50,'width':320,'params':{}};</script><script src=&quot;https://bauval.org/22/82aa05d42b853e9f85ecae372d433731&quot;></script></body></html>"
+                  width="320"
+                  height="50"
+                  scrolling="no"
+                  frameborder="0"
+                  style="border:0;width:320px;height:50px;overflow:hidden;"
+                ></iframe>
+              </div>
+            </div>
+
+            <div class="prose dark:prose-invert max-w-none text-slate-800 dark:text-slate-200 text-sm sm:text-base leading-relaxed space-y-4 font-sans">
+              <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-8 mb-3 tracking-tight">Preparing for Post-Quantum Cryptography: Migration Roadmap &amp; FIPS Standards Guide</h1>
 <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-sm sm:text-base my-3.5">Virtually every secure transaction across the internet—from HTTPS browsing and SSH connections to digital signatures, financial transfers, and software updates—relies on asymmetric public-key cryptography. Algorithms like RSA, Diffie-Hellman, and Elliptic Curve Cryptography (ECC) protect our communications because factoring large integers and computing discrete logarithms are mathematically intractable problems for classical computers.</p>
 <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-sm sm:text-base my-3.5">Quantum computing threatens to completely dismantle this foundation. A sufficiently powerful cryptanalytically relevant quantum computer (CRQC) running <strong class="font-bold text-slate-950 dark:text-white">Shor’s algorithm</strong> will be capable of breaking standard asymmetric encryption in polynomial time. Once this threshold is reached, all current public-key cryptography will be trivial to crack. To protect long-term data confidentiality and integrity, organizations must prepare for the transition to <strong class="font-bold text-slate-950 dark:text-white">Post-Quantum Cryptography (PQC)</strong> immediately.</p>
 <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mt-8 mb-3 pb-1 border-b border-slate-200 dark:border-slate-800 tracking-tight">The Immediate Threat: &quot;Harvest Now, Decrypt Later&quot; (HNDL)</h2>
@@ -152,6 +177,11 @@
         <li><strong class="font-bold text-slate-950 dark:text-white">FIPS 203 (ML-KEM / CRYSTALS-Kyber):</strong> Standard for public-key encryption and Key Encapsulation Mechanisms (KEM). Designed for general key exchange in protocols like TLS, VPN tunnels, and encrypted messaging.</li><li><strong class="font-bold text-slate-950 dark:text-white">FIPS 204 (ML-DSA / CRYSTALS-Dilithium):</strong> Primary standard for general-purpose digital signatures. Used for verifying software binaries, code signing, and digital identity certificates.</li><li><strong class="font-bold text-slate-950 dark:text-white">FIPS 205 (SLH-DSA / SPHINCS+):</strong> A stateless hash-based digital signature standard. Acts as a robust mathematical backup to lattice-based schemes, ideal for environments requiring high security without reliance on structured lattice assumptions.</li>
       </ul>
 <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mt-8 mb-3 pb-1 border-b border-slate-200 dark:border-slate-800 tracking-tight">Building a Four-Phase Migration Roadmap</h2>
+
+      <figure class="my-6 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-950 shadow-sm">
+        <img src="/diagrams/pqc-hybrid-migration-roadmap.svg" alt="Post-Quantum Cryptography four-phase migration roadmap addressing Harvest Now Decrypt Later threats using CBOM inventory, hybrid X25519 plus ML-KEM-768 TLS, and FIPS 203-205 standards" width="800" height="420" loading="lazy" decoding="async" class="w-full h-auto block" />
+        <figcaption class="px-4 py-2 text-[11px] font-mono text-slate-400 bg-slate-900/90 border-t border-slate-800">Post-Quantum Cryptography four-phase migration roadmap addressing Harvest Now Decrypt Later threats using CBOM inventory, hybrid X25519 plus ML-KEM-768 TLS, and FIPS 203-205 standards</figcaption>
+      </figure>
 <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-sm sm:text-base my-3.5">Transitioning enterprise infrastructure to post-quantum standards requires a phased, cryptographic inventory approach. You cannot simply flip a switch; it is an architectural overhaul.</p>
 <ol class="list-decimal list-outside ml-5 space-y-2 my-4 text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
         <li><strong class="font-bold text-slate-950 dark:text-white">Inventory and Discovery (The CBOM):</strong> You cannot secure what you do not know exists. Catalog all cryptographic assets across your organization and generate a <strong class="font-bold text-slate-950 dark:text-white">Cryptographic Bill of Materials (CBOM)</strong> using CycloneDX extensions. Identify where asymmetric keys are hardcoded in source code, stored in hardware security modules (HSMs), or negotiated in public TLS endpoints.</li><li><strong class="font-bold text-slate-950 dark:text-white">Implement Hybrid Key Exchange:</strong> To maintain backward compatibility and protect against unproven zero-day vulnerabilities in newly standardized PQC algorithms, deploy hybrid mechanisms. A hybrid key exchange combines a classical algorithm (like X25519) with a post-quantum algorithm (like ML-KEM-768). An attacker must break <em class="italic text-slate-800 dark:text-slate-200">both</em> algorithms to decipher the underlying traffic.</li><li><strong class="font-bold text-slate-950 dark:text-white">Upgrade Public Key Infrastructure (PKI):</strong> Modernize Certificate Authorities (CAs) and certificate management pipelines to handle the larger public key and signature sizes inherent to post-quantum algorithms. Post-quantum keys are significantly larger than RSA keys, which will impact network payloads and memory constraints.</li><li><strong class="font-bold text-slate-950 dark:text-white">Enforce Crypto-Agility:</strong> Design applications so that cryptographic primitives and cipher suites can be swapped via configuration files or environment variables rather than requiring massive codebase refactors when new standards emerge.</li>
@@ -229,19 +259,34 @@ if __name__ == &quot;__main__&quot;:
 <ul class="list-disc list-outside ml-5 space-y-2 my-4 text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
         <li><strong class="font-bold text-slate-950 dark:text-white">Conduct a Data Longevity Audit:</strong> Identify all stored data that retains financial, regulatory, or operational sensitivity for 5 to 10+ years, and flag it as high-risk for Harvest Now, Decrypt Later threats.</li><li><strong class="font-bold text-slate-950 dark:text-white">Enable Hybrid Post-Quantum TLS:</strong> Enable hybrid key exchanges (such as X25519 + ML-KEM) on your reverse proxies, Cloudflare edge configurations, and internal microservice service meshes.</li><li><strong class="font-bold text-slate-950 dark:text-white">Build Cryptographic Agility into New Systems:</strong> Abstract your encryption layers. Avoid hardcoding specific cipher suites directly into application code, ensuring your software can adopt finalized FIPS 203, 204, and 205 standards seamlessly as they roll out across frameworks.</li>
       </ul>
-        </div>
+            </div>
 
-        <div class="mt-10 pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center gap-2">
-                <span class="text-xs font-mono text-slate-400 mr-1">Topics:</span>
-                <span class="text-xs font-mono text-slate-600 dark:text-slate-400">#Post-Quantum Cryptography</span> <span class="text-xs font-mono text-slate-600 dark:text-slate-400">#Quantum-Resistant Encryption</span> <span class="text-xs font-mono text-slate-600 dark:text-slate-400">#FIPS 203 ML-KEM</span> <span class="text-xs font-mono text-slate-600 dark:text-slate-400">#NIST PQC Standards</span> <span class="text-xs font-mono text-slate-600 dark:text-slate-400">#Cryptographic Bill of Materials</span> <span class="text-xs font-mono text-slate-600 dark:text-slate-400">#Shor&#39;s Algorithm</span>
-              </div>
+            <div class="mt-10 pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center gap-2">
+                    <span class="text-xs font-mono text-slate-400 mr-1">Topics:</span>
+                    <span class="text-xs font-mono text-slate-600 dark:text-slate-400">#Post-Quantum Cryptography</span> <span class="text-xs font-mono text-slate-600 dark:text-slate-400">#Quantum-Resistant Encryption</span> <span class="text-xs font-mono text-slate-600 dark:text-slate-400">#FIPS 203 ML-KEM</span> <span class="text-xs font-mono text-slate-600 dark:text-slate-400">#NIST PQC Standards</span> <span class="text-xs font-mono text-slate-600 dark:text-slate-400">#Cryptographic Bill of Materials</span> <span class="text-xs font-mono text-slate-600 dark:text-slate-400">#Shor&#39;s Algorithm</span>
+                  </div>
 
-        <div class="mt-8 text-center">
-          <a href="/" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-mono transition-colors">
-            <span>← Back to All Blog Posts</span>
-          </a>
-        </div>
-      </article>
+            <div class="mt-8 text-center">
+              <a href="/" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-mono transition-colors">
+                <span>← Back to All Blog Posts</span>
+              </a>
+            </div>
+          </article>
+        </main>
+
+        <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-[#0c1017]/50 py-8 text-xs font-mono text-slate-500">
+          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>© 2026 CyberAiSecure. All rights reserved. · cyberaisecure.com</p>
+            <div class="flex flex-wrap items-center justify-center gap-4">
+              <a href="/about/" class="hover:text-slate-900 dark:hover:text-white transition-colors">About</a>
+              <a href="/contact/" class="hover:text-slate-900 dark:hover:text-white transition-colors">Contact</a>
+              <a href="/disclaimer/" class="hover:text-slate-900 dark:hover:text-white transition-colors">Disclaimer</a>
+              <a href="/privacy/" class="hover:text-slate-900 dark:hover:text-white transition-colors">Privacy Policy</a>
+              <a href="/terms/" class="hover:text-slate-900 dark:hover:text-white transition-colors">Terms of Service</a>
+            </div>
+          </div>
+        </footer>
+      </div>
     </div>
   </body>
 </html>

@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420" role="img" aria-label="Out-of-Band (OOB) Verification Against AI Phishing &amp; Vishing">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#1e293b" stroke-width="0.6" stroke-opacity="0.45" />
+    </pattern>
+    
+    <marker id="arrow-64748b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b" />
+    </marker>
+    <marker id="arrow-38bdf8" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrow-d92338" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#d92338" />
+    </marker>
+    <marker id="arrow-34d399" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399" />
+    </marker>
+    <marker id="arrow-fbbf24" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24" />
+    </marker>
+  </defs>
+  <rect width="800" height="420" rx="14" fill="#090d16" />
+  <rect width="800" height="420" rx="14" fill="url(#grid)" />
+  <rect x="0.75" y="0.75" width="798.5" height="418.5" rx="14" fill="none" stroke="#1e293b" stroke-width="1.5" />
+
+  <!-- Header -->
+  <rect x="24" y="18" width="6" height="34" rx="3" fill="#d92338" />
+  <text x="40" y="34" fill="#f8fafc" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="16" font-weight="800">Out-of-Band (OOB) Verification Against AI Phishing &amp; Vishing</text>
+  <text x="40" y="51" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Shifting high-risk authorization from spoofable voice/video to FIDO2 cryptography</text>
+  <text x="774" y="36" text-anchor="end" fill="#64748b" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700">CYBERAISECURE.COM</text>
+
+  
+  <g>
+    <rect x="28" y="96" width="170" height="110" rx="10" fill="#111827" stroke="#d92338" stroke-width="1.5" />
+    <rect x="28" y="96" width="170" height="4" rx="2" fill="#d92338" />
+    <rect x="40" y="106" width="131.6" height="16" rx="4" fill="#d92338" fill-opacity="0.16" />
+           <text x="48" y="117" fill="#d92338" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="0.6">UNTRUSTED CHANNEL</text>
+    <text x="113" y="132" text-anchor="middle" fill="#f8fafc" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">Incoming Request</text>
+    <text x="113" y="152" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Voice clone call /</text>
+    <text x="113" y="168" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Polymorphic email /</text>
+    <text x="113" y="184" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Deepfake video</text>
+  </g>
+  <g>
+    <line x1="198" y1="151" x2="232" y2="151" stroke="#fbbf24" stroke-width="2"  marker-end="url(#arrow-fbbf24)" />
+    <rect x="165" y="134" width="100" height="15" rx="4" fill="#090d16" stroke="#fbbf24" stroke-opacity="0.4" stroke-width="1" />
+           <text x="215" y="145" text-anchor="middle" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.5" font-weight="600">Check Action</text>
+  </g>
+  <g>
+    <rect x="232" y="96" width="175" height="110" rx="10" fill="#111827" stroke="#fbbf24" stroke-width="1.5" />
+    <rect x="232" y="96" width="175" height="4" rx="2" fill="#fbbf24" />
+    <rect x="244" y="106" width="90.8" height="16" rx="4" fill="#fbbf24" fill-opacity="0.16" />
+           <text x="252" y="117" fill="#fbbf24" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="0.6">POLICY GATE</text>
+    <text x="319.5" y="132" text-anchor="middle" fill="#f8fafc" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">Critical Operation?</text>
+    <text x="319.5" y="152" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Wire / Vendor bank</text>
+    <text x="319.5" y="168" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Admin MFA reset</text>
+    <text x="319.5" y="184" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Halt primary channel</text>
+  </g>
+  <g>
+    <line x1="407" y1="151" x2="444" y2="151" stroke="#38bdf8" stroke-width="2"  marker-end="url(#arrow-38bdf8)" />
+    <rect x="382.5" y="134" width="86" height="15" rx="4" fill="#090d16" stroke="#38bdf8" stroke-opacity="0.4" stroke-width="1" />
+           <text x="425.5" y="145" text-anchor="middle" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.5" font-weight="600">YES -&gt; OOB</text>
+  </g>
+  <g>
+    <rect x="444" y="96" width="170" height="110" rx="10" fill="#111827" stroke="#38bdf8" stroke-width="1.5" />
+    <rect x="444" y="96" width="170" height="4" rx="2" fill="#38bdf8" />
+    <rect x="456" y="106" width="131.6" height="16" rx="4" fill="#38bdf8" fill-opacity="0.16" />
+           <text x="464" y="117" fill="#38bdf8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="0.6">STEP 1: DIRECTORY</text>
+    <text x="529" y="132" text-anchor="middle" fill="#f8fafc" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">Independent Callback</text>
+    <text x="529" y="152" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Use internal directory</text>
+    <text x="529" y="168" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">NEVER caller number</text>
+    <text x="529" y="184" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Secondary channel</text>
+  </g>
+  <g>
+    <line x1="614" y1="151" x2="646" y2="151" stroke="#38bdf8" stroke-width="2"  marker-end="url(#arrow-38bdf8)" />
+    
+  </g>
+  <g>
+    <rect x="646" y="96" width="128" height="110" rx="10" fill="#111827" stroke="#34d399" stroke-width="1.5" />
+    <rect x="646" y="96" width="128" height="4" rx="2" fill="#34d399" />
+    <rect x="658" y="106" width="104" height="16" rx="4" fill="#34d399" fill-opacity="0.16" />
+           <text x="666" y="117" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="0.6">STEP 2: CRYPTO</text>
+    <text x="710" y="132" text-anchor="middle" fill="#f8fafc" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">FIDO2 Token</text>
+    <text x="710" y="152" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Hardware key</text>
+    <text x="710" y="168" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">IdP assertion</text>
+    <text x="710" y="184" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">No SMS / Voice</text>
+  </g>
+  <g>
+    <line x1="710" y1="206" x2="710" y2="250" stroke="#34d399" stroke-width="2"  marker-end="url(#arrow-34d399)" />
+    <rect x="674" y="211" width="72" height="15" rx="4" fill="#090d16" stroke="#34d399" stroke-opacity="0.4" stroke-width="1" />
+           <text x="710" y="222" text-anchor="middle" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.5" font-weight="600">Verified</text>
+  </g>
+  <g>
+    <line x1="529" y1="206" x2="529" y2="250" stroke="#d92338" stroke-width="2"  marker-end="url(#arrow-d92338)" />
+    <rect x="500" y="211" width="58" height="15" rx="4" fill="#090d16" stroke="#d92338" stroke-opacity="0.4" stroke-width="1" />
+           <text x="529" y="222" text-anchor="middle" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.5" font-weight="600">Failed</text>
+  </g>
+  <g>
+    <rect x="432" y="250" width="165" height="98" rx="10" fill="#1f1018" stroke="#d92338" stroke-width="1.5" />
+    <rect x="432" y="250" width="165" height="4" rx="2" fill="#d92338" />
+    <rect x="444" y="260" width="70.4" height="16" rx="4" fill="#d92338" fill-opacity="0.16" />
+           <text x="452" y="271" fill="#d92338" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="0.6">INCIDENT</text>
+    <text x="514.5" y="286" text-anchor="middle" fill="#f8fafc" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">Quarantine &amp; Alert</text>
+    <text x="514.5" y="306" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Notify SOC immediately</text>
+    <text x="514.5" y="322" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Freeze target account</text>
+  </g>
+  <g>
+    <rect x="616" y="250" width="158" height="98" rx="10" fill="#0f1f1c" stroke="#34d399" stroke-width="1.5" />
+    <rect x="616" y="250" width="158" height="4" rx="2" fill="#34d399" />
+    <rect x="628" y="260" width="97.6" height="16" rx="4" fill="#34d399" fill-opacity="0.16" />
+           <text x="636" y="271" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="0.6">DUAL CUSTODY</text>
+    <text x="695" y="286" text-anchor="middle" fill="#f8fafc" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">2-Person Sign-Off</text>
+    <text x="695" y="306" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Separate devices</text>
+    <text x="695" y="322" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Execute transaction</text>
+  </g>
+  <g>
+    <rect x="28" y="250" width="375" height="98" rx="10" fill="#111827" stroke="#38bdf8" stroke-width="1.5" />
+    <rect x="28" y="250" width="375" height="4" rx="2" fill="#38bdf8" />
+    <rect x="40" y="260" width="213.2" height="16" rx="4" fill="#38bdf8" fill-opacity="0.16" />
+           <text x="48" y="271" fill="#38bdf8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="0.6">EMAIL AUTHENTICATION BASELINE</text>
+    <text x="215.5" y="286" text-anchor="middle" fill="#f8fafc" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">Cryptographic Channel Hygiene</text>
+    <text x="215.5" y="306" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Enforce DMARC p=reject + SPF + DKIM on all domains</text>
+    <text x="215.5" y="322" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Hardware FIDO2 WebAuthn mandatory for finance &amp; IT</text>
+  </g>
+</svg>

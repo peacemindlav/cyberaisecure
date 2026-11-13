@@ -1,5 +1,6 @@
 ---
 title: "Why Enterprise AI Security is Mandatory: Navigating 2026 OWASP LLM Risks"
+seoTitle: "2026 OWASP LLM Risks & Enterprise AI"
 slug: "why-enterprise-ai-security-required-owasp-llm-risks-2026"
 date: "2026-10-18"
 excerpt: "Generative AI introduces massive operational risks. Learn why traditional InfoSec fails against prompt injection, excessive agency, and data poisoning in agentic workflows."
@@ -51,6 +52,8 @@ While engineered attacks are dangerous, ungoverned employee usage is responsible
 To defend against this, enterprises must establish an approved AI tool list and aggressively enforce it. Security teams should deploy Data Loss Prevention (DLP) controls at the browser, endpoint, and network layers to explicitly block regulated data from reaching unapproved AI endpoints. Furthermore, organizations must require Single Sign-On (SSO) for all approved enterprise AI tools, ensuring that access can be instantly revoked and activity can be logged to a central SIEM.
 
 ### Technical Implementation: The AI Firewall Gateway
+
+![Enterprise AI security gateway architecture combining PII scanning, prompt injection inspection, workload IAM tokens, and permission-aware RAG vector ACLs](/diagrams/enterprise-ai-firewall-gateway.svg)
 
 To defend against injection and data leakage, enterprises must deploy specialized AI gateways that sit between the user, the model, and the external API tools. 
 

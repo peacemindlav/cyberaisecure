@@ -1,5 +1,6 @@
 ---
 title: "Preparing for Post-Quantum Cryptography: Migration Roadmap & FIPS Standards Guide"
+seoTitle: "Post-Quantum Cryptography & FIPS Roadmap"
 slug: "post-quantum-cryptography-migration-roadmap-fips"
 date: "2026-10-15"
 excerpt: "Shor's algorithm breaks RSA and ECC encryption. Learn how to defend against Harvest Now, Decrypt Later (HNDL) and migrate to NIST FIPS 203/204/205 standards."
@@ -36,6 +37,8 @@ The finalized FIPS standards include:
 - **FIPS 205 (SLH-DSA / SPHINCS+):** A stateless hash-based digital signature standard. Acts as a robust mathematical backup to lattice-based schemes, ideal for environments requiring high security without reliance on structured lattice assumptions.
 
 ## Building a Four-Phase Migration Roadmap
+
+![Post-Quantum Cryptography four-phase migration roadmap addressing Harvest Now Decrypt Later threats using CBOM inventory, hybrid X25519 plus ML-KEM-768 TLS, and FIPS 203-205 standards](/diagrams/pqc-hybrid-migration-roadmap.svg)
 
 Transitioning enterprise infrastructure to post-quantum standards requires a phased, cryptographic inventory approach. You cannot simply flip a switch; it is an architectural overhaul.
 

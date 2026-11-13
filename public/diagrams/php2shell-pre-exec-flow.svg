@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420" role="img" aria-label="PHP2Shell Pre-Execution Memory Corruption Flow">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#1e293b" stroke-width="0.6" stroke-opacity="0.45" />
+    </pattern>
+    
+    <marker id="arrow-64748b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b" />
+    </marker>
+    <marker id="arrow-38bdf8" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrow-d92338" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#d92338" />
+    </marker>
+    <marker id="arrow-34d399" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399" />
+    </marker>
+    <marker id="arrow-fbbf24" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24" />
+    </marker>
+  </defs>
+  <rect width="800" height="420" rx="14" fill="#090d16" />
+  <rect width="800" height="420" rx="14" fill="url(#grid)" />
+  <rect x="0.75" y="0.75" width="798.5" height="418.5" rx="14" fill="none" stroke="#1e293b" stroke-width="1.5" />
+
+  <!-- Header -->
+  <rect x="24" y="18" width="6" height="34" rx="3" fill="#d92338" />
+  <text x="40" y="34" fill="#f8fafc" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="16" font-weight="800">PHP2Shell Pre-Execution Memory Corruption Flow</text>
+  <text x="40" y="51" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">CVE-2026-109618 (OOM Bailout) &amp; CVE-2026-109619 (RFC 1867 UAF) before app code runs</text>
+  <text x="774" y="36" text-anchor="end" fill="#64748b" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700">CYBERAISECURE.COM</text>
+
+  
+  <g>
+    <rect x="32" y="165" width="165" height="98" rx="10" fill="#111827" stroke="#fbbf24" stroke-width="1.5" />
+    <rect x="32" y="165" width="165" height="4" rx="2" fill="#fbbf24" />
+    <rect x="44" y="175" width="63.6" height="16" rx="4" fill="#fbbf24" fill-opacity="0.16" />
+           <text x="52" y="186" fill="#fbbf24" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="0.6">INGRESS</text>
+    <text x="114.5" y="201" text-anchor="middle" fill="#f8fafc" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">HTTP Multipart Request</text>
+    <text x="114.5" y="221" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Unauthenticated POST</text>
+    <text x="114.5" y="237" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Crafted MIME headers</text>
+    <text x="114.5" y="253" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">stream timing payload</text>
+  </g>
+  <g>
+    <line x1="197" y1="214" x2="240" y2="214" stroke="#fbbf24" stroke-width="2"  marker-end="url(#arrow-fbbf24)" />
+    <rect x="196.5" y="197" width="44" height="15" rx="4" fill="#090d16" stroke="#fbbf24" stroke-opacity="0.4" stroke-width="1" />
+           <text x="218.5" y="208" text-anchor="middle" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.5" font-weight="600">SAPI</text>
+  </g>
+  <g>
+    <rect x="240" y="155" width="165" height="118" rx="10" fill="#111827" stroke="#38bdf8" stroke-width="1.5" />
+    <rect x="240" y="155" width="165" height="4" rx="2" fill="#38bdf8" />
+    <rect x="252" y="165" width="104.39999999999999" height="16" rx="4" fill="#38bdf8" fill-opacity="0.16" />
+           <text x="260" y="176" fill="#38bdf8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="0.6">PRE-EXECUTION</text>
+    <text x="322.5" y="191" text-anchor="middle" fill="#f8fafc" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">PHP Engine Lifecycle</text>
+    <text x="322.5" y="211" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Runs BEFORE index.php</text>
+    <text x="322.5" y="227" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">ini_set() bypassed</text>
+    <text x="322.5" y="243" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">mod_php / PHP-FPM</text>
+  </g>
+  <g>
+    <line x1="405" y1="190" x2="455" y2="130" stroke="#d92338" stroke-width="2"  marker-end="url(#arrow-d92338)" />
+    <rect x="411.5" y="143" width="37" height="15" rx="4" fill="#090d16" stroke="#d92338" stroke-opacity="0.4" stroke-width="1" />
+           <text x="430" y="154" text-anchor="middle" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.5" font-weight="600">OOM</text>
+  </g>
+  <g>
+    <line x1="405" y1="238" x2="455" y2="295" stroke="#d92338" stroke-width="2"  marker-end="url(#arrow-d92338)" />
+    <rect x="394" y="249.5" width="72" height="15" rx="4" fill="#090d16" stroke="#d92338" stroke-opacity="0.4" stroke-width="1" />
+           <text x="430" y="260.5" text-anchor="middle" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.5" font-weight="600">RFC 1867</text>
+  </g>
+  <g>
+    <rect x="455" y="82" width="170" height="98" rx="10" fill="#111827" stroke="#d92338" stroke-width="1.5" />
+    <rect x="455" y="82" width="170" height="4" rx="2" fill="#d92338" />
+    <rect x="467" y="92" width="118" height="16" rx="4" fill="#d92338" fill-opacity="0.16" />
+           <text x="475" y="103" fill="#d92338" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="0.6">CVE-2026-109618</text>
+    <text x="540" y="118" text-anchor="middle" fill="#f8fafc" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">OOM longjmp() Bailout</text>
+    <text x="540" y="138" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Partial struct init</text>
+    <text x="540" y="154" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Shutdown reads stale</text>
+    <text x="540" y="170" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Control-flow hijack</text>
+  </g>
+  <g>
+    <rect x="455" y="245" width="170" height="98" rx="10" fill="#111827" stroke="#d92338" stroke-width="1.5" />
+    <rect x="455" y="245" width="170" height="4" rx="2" fill="#d92338" />
+    <rect x="467" y="255" width="118" height="16" rx="4" fill="#d92338" fill-opacity="0.16" />
+           <text x="475" y="266" fill="#d92338" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="0.6">CVE-2026-109619</text>
+    <text x="540" y="281" text-anchor="middle" fill="#f8fafc" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">Upload Progress UAF</text>
+    <text x="540" y="301" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">zval -&gt; $_SESSION</text>
+    <text x="540" y="317" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Premature free race</text>
+    <text x="540" y="333" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Cross-request poison</text>
+  </g>
+  <g>
+    <line x1="625" y1="130" x2="665" y2="190" stroke="#d92338" stroke-width="2"  marker-end="url(#arrow-d92338)" />
+    
+  </g>
+  <g>
+    <line x1="625" y1="295" x2="665" y2="238" stroke="#d92338" stroke-width="2"  marker-end="url(#arrow-d92338)" />
+    
+  </g>
+  <g>
+    <rect x="665" y="165" width="108" height="98" rx="10" fill="#1f1018" stroke="#d92338" stroke-width="1.5" />
+    <rect x="665" y="165" width="108" height="4" rx="2" fill="#d92338" />
+    <rect x="677" y="175" width="56.8" height="16" rx="4" fill="#d92338" fill-opacity="0.16" />
+           <text x="685" y="186" fill="#d92338" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="0.6">IMPACT</text>
+    <text x="719" y="201" text-anchor="middle" fill="#f8fafc" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">Pre-Exec RCE</text>
+    <text x="719" y="221" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">www-data shell</text>
+    <text x="719" y="237" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">No auth needed</text>
+    <text x="719" y="253" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">CVSS 9.2 (KEV)</text>
+  </g>
+</svg>

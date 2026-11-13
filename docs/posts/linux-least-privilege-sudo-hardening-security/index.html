@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Implementing Least Privilege in Linux: Sudo Hardening &amp; Access Control | CyberAiSecure</title>
+    <title>Linux Least Privilege &amp; Sudo Hardening | CyberAiSecure</title>
     <meta name="description" content="Root access is an enterprise liability. Learn how to harden Linux environments by enforcing least privilege through strict sudoers policies, systemd capabilities, and MAC." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
@@ -15,22 +15,28 @@
     <!-- Open Graph / Social -->
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://cyberaisecure.com/posts/linux-least-privilege-sudo-hardening-security/" />
-    <meta property="og:title" content="Implementing Least Privilege in Linux: Sudo Hardening &amp; Access Control | CyberAiSecure" />
+    <meta property="og:title" content="Linux Least Privilege &amp; Sudo Hardening | CyberAiSecure" />
     <meta property="og:description" content="Root access is an enterprise liability. Learn how to harden Linux environments by enforcing least privilege through strict sudoers policies, systemd capabilities, and MAC." />
+    <meta property="og:image" content="https://cyberaisecure.com/og-default.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="CyberAiSecure" />
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Implementing Least Privilege in Linux: Sudo Hardening &amp; Access Control | CyberAiSecure" />
+    <meta name="twitter:title" content="Linux Least Privilege &amp; Sudo Hardening | CyberAiSecure" />
     <meta name="twitter:description" content="Root access is an enterprise liability. Learn how to harden Linux environments by enforcing least privilege through strict sudoers policies, systemd capabilities, and MAC." />
+    <meta name="twitter:image" content="https://cyberaisecure.com/og-default.png" />
 
     <!-- Schema.org Article Structured Data -->
-    <script type="application/ld+json">
+    <script id="schema-json-ld" type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "Implementing Least Privilege in Linux: Sudo Hardening & Access Control",
   "description": "Root access is an enterprise liability. Learn how to harden Linux environments by enforcing least privilege through strict sudoers policies, systemd capabilities, and MAC.",
+  "url": "https://cyberaisecure.com/posts/linux-least-privilege-sudo-hardening-security/",
+  "image": "https://cyberaisecure.com/og-default.png",
   "datePublished": "2026-10-18",
   "dateModified": "2026-10-18",
   "author": {
@@ -40,7 +46,7 @@
   "publisher": {
     "@type": "Organization",
     "name": "CyberAiSecure",
-    "url": "https://cyberaisecure.com",
+    "url": "https://cyberaisecure.com/",
     "logo": {
       "@type": "ImageObject",
       "url": "https://cyberaisecure.com/logo.svg"
@@ -86,59 +92,78 @@
         }
       }(window.location))
     </script>
-    <script type="module" crossorigin src="/assets/index-C8WmckoT.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-Dn42UuO6.css">
+    <script type="module" crossorigin src="/assets/index-B3n7vBNM.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BAdrrZ6w.css">
   </head>
   <body class="bg-slate-50 text-slate-900 dark:bg-[#0c1017] dark:text-slate-100 antialiased font-sans transition-colors duration-150">
     <div id="root">
-      <article class="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-10 font-sans">
-        <div class="flex items-center justify-between pb-6 mb-8 border-b border-slate-200 dark:border-slate-800">
-          <a href="/" class="inline-flex items-center gap-2 text-xs font-mono text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
-            <span>← Back to All Posts</span>
-          </a>
-          <span class="text-xs font-mono text-slate-400">Security Insights</span>
-        </div>
-
-        <header class="space-y-4 mb-8">
-          <div class="flex flex-wrap items-center gap-2 text-xs font-mono">
-            <span class="font-bold text-[#d92338] tracking-wider uppercase">Security Insights</span>
-            <span class="text-slate-300 dark:text-slate-700">·</span>
-            <span class="text-slate-500 dark:text-slate-400">2026-10-18</span>
-            <span class="text-slate-300 dark:text-slate-700">·</span>
-            <span class="text-slate-500 dark:text-slate-400">10 min read</span>
+      <div class="min-h-screen flex flex-col bg-slate-50 text-slate-900 dark:bg-[#0c1017] dark:text-slate-100 font-sans">
+        <header class="sticky top-0 z-40 bg-white/95 dark:bg-[#0c1017]/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+            <a href="/" class="flex items-center gap-2.5 text-slate-900 dark:text-white font-bold">
+              <div class="w-8 h-8 rounded-lg bg-[#d92338] text-white flex items-center justify-center font-mono font-extrabold text-sm">C</div>
+              <div class="flex flex-col">
+                <span class="text-base sm:text-lg font-extrabold tracking-tight leading-none">CyberAi<span class="text-[#d92338]">Secure</span></span>
+                <span class="text-[9px] font-mono text-slate-600 dark:text-slate-400 tracking-wider uppercase mt-0.5">Security &amp; Architecture</span>
+              </div>
+            </a>
+            <nav aria-label="Primary Navigation" class="flex items-center gap-2 sm:gap-3 text-xs font-mono text-slate-600 dark:text-slate-400">
+              <a href="/category/cve-info/" class="px-2 py-1 hover:text-slate-900 dark:hover:text-white transition-colors">CVE Info</a>
+              <a href="/category/security-insights/" class="px-2 py-1 hover:text-slate-900 dark:hover:text-white transition-colors">Insights</a>
+              <a href="/about/" class="px-2 py-1 hover:text-slate-900 dark:hover:text-white transition-colors">About</a>
+            </nav>
           </div>
-
-          <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
-            Implementing Least Privilege in Linux: Sudo Hardening &amp; Access Control
-          </h1>
-
-          <div class="py-3 border-y border-slate-100 dark:border-slate-800 flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
-            <span>Published by <strong class="text-slate-800 dark:text-slate-200">CyberAiSecure Team</strong></span>
-          </div>
-
-          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/60 border-l-4 border-[#d92338] text-sm text-slate-700 dark:text-slate-300 font-sans leading-relaxed">
-                  Root access is an enterprise liability. Learn how to harden Linux environments by enforcing least privilege through strict sudoers policies, systemd capabilities, and MAC.
-                </div>
         </header>
 
-        <!-- Adsterra 320x50 Sponsor Banner (Beginning of Article) -->
-        <div class="my-8 pt-2 flex flex-col items-center justify-center">
-          <span class="text-[10px] font-mono tracking-wider uppercase text-slate-400 dark:text-slate-500 mb-1.5 select-none">Advertisement</span>
-          <div class="w-[320px] h-[50px] overflow-hidden flex items-center justify-center bg-slate-100/50 dark:bg-slate-900/50 rounded border border-slate-200/60 dark:border-slate-800/60">
-            <iframe
-              title="Adsterra Sponsor Banner"
-              srcdoc="<!DOCTYPE html><html><head><base target=&quot;_blank&quot;><style>body{margin:0;padding:0;overflow:hidden;display:flex;justify-content:center;align-items:center;background:transparent;}</style></head><body><script>atOptions={'key':'82aa05d42b853e9f85ecae372d433731','format':'iframe','height':50,'width':320,'params':{}};</script><script src=&quot;https://bauval.org/22/82aa05d42b853e9f85ecae372d433731&quot;></script></body></html>"
-              width="320"
-              height="50"
-              scrolling="no"
-              frameborder="0"
-              style="border:0;width:320px;height:50px;overflow:hidden;"
-            ></iframe>
-          </div>
-        </div>
+        <main class="flex-1 w-full">
+          <article class="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-10 font-sans">
+            <div class="flex items-center justify-between pb-6 mb-8 border-b border-slate-200 dark:border-slate-800">
+              <a href="/" class="inline-flex items-center gap-2 text-xs font-mono text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
+                <span>← Back to All Posts</span>
+              </a>
+              <a href="/category/security-insights/" class="text-xs font-mono text-[#d92338] hover:underline">Security Insights</a>
+            </div>
 
-        <div class="prose dark:prose-invert max-w-none text-slate-800 dark:text-slate-200 text-sm sm:text-base leading-relaxed space-y-4 font-sans">
-          <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-8 mb-3 tracking-tight">Implementing Least Privilege in Linux: Sudo Hardening &amp; Access Control</h1>
+            <header class="space-y-4 mb-8">
+              <div class="flex flex-wrap items-center gap-2 text-xs font-mono">
+                <span class="font-bold text-[#d92338] tracking-wider uppercase">Security Insights</span>
+                <span class="text-slate-300 dark:text-slate-700">·</span>
+                <span class="text-slate-500 dark:text-slate-400">2026-10-18</span>
+                <span class="text-slate-300 dark:text-slate-700">·</span>
+                <span class="text-slate-500 dark:text-slate-400">10 min read</span>
+              </div>
+
+              <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
+                Implementing Least Privilege in Linux: Sudo Hardening &amp; Access Control
+              </h1>
+
+              <div class="py-3 border-y border-slate-100 dark:border-slate-800 flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+                <span>Published by <strong class="text-slate-800 dark:text-slate-200">CyberAiSecure Team</strong></span>
+              </div>
+
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/60 border-l-4 border-[#d92338] text-sm text-slate-700 dark:text-slate-300 font-sans leading-relaxed">
+                      Root access is an enterprise liability. Learn how to harden Linux environments by enforcing least privilege through strict sudoers policies, systemd capabilities, and MAC.
+                    </div>
+            </header>
+
+            <!-- Adsterra 320x50 Sponsor Banner (Beginning of Article) -->
+            <div class="my-8 pt-2 flex flex-col items-center justify-center">
+              <span class="text-[10px] font-mono tracking-wider uppercase text-slate-400 dark:text-slate-500 mb-1.5 select-none">Advertisement</span>
+              <div class="w-[320px] h-[50px] overflow-hidden flex items-center justify-center bg-slate-100/50 dark:bg-slate-900/50 rounded border border-slate-200/60 dark:border-slate-800/60">
+                <iframe
+                  title="Adsterra Sponsor Banner"
+                  srcdoc="<!DOCTYPE html><html><head><base target=&quot;_blank&quot;><style>body{margin:0;padding:0;overflow:hidden;display:flex;justify-content:center;align-items:center;background:transparent;}</style></head><body><script>atOptions={'key':'82aa05d42b853e9f85ecae372d433731','format':'iframe','height':50,'width':320,'params':{}};</script><script src=&quot;https://bauval.org/22/82aa05d42b853e9f85ecae372d433731&quot;></script></body></html>"
+                  width="320"
+                  height="50"
+                  scrolling="no"
+                  frameborder="0"
+                  style="border:0;width:320px;height:50px;overflow:hidden;"
+                ></iframe>
+              </div>
+            </div>
+
+            <div class="prose dark:prose-invert max-w-none text-slate-800 dark:text-slate-200 text-sm sm:text-base leading-relaxed space-y-4 font-sans">
+              <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-8 mb-3 tracking-tight">Implementing Least Privilege in Linux: Sudo Hardening &amp; Access Control</h1>
 <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-sm sm:text-base my-3.5">The principle of least privilege is arguably the single most critical concept in systems security: giving every user and every program exactly the privilege it needs to function, and absolutely nothing more. In legacy server environments, administrators historically relied on a sledgehammer approach to access control. If a script failed or a developer encountered a permissions error, the default solution was often to escalate to the <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[#d92338] dark:text-rose-400 font-mono text-xs border border-slate-200 dark:border-slate-700/80">root</code> user or grant blanket <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[#d92338] dark:text-rose-400 font-mono text-xs border border-slate-200 dark:border-slate-700/80">sudo</code> access.</p>
 <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-sm sm:text-base my-3.5">This monolithic approach is no longer viable for modern infrastructure. Modern attackers rarely break into servers using brute-force alone; they compromise unprivileged service accounts, exploit application-layer vulnerabilities, and then attempt to pivot. Running a public-facing web server as root is a catastrophic violation of least privilege; if attackers exploit a bug in that web server, they instantly gain total control of the host operating system. By enforcing strict access boundaries across human operators and automated services, every step up the privilege ladder becomes a separate, highly monitored hurdle the attacker must overcome.</p>
 <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mt-8 mb-3 pb-1 border-b border-slate-200 dark:border-slate-800 tracking-tight">Securing the Perimeter: Auditing and SSH Hardening</h2>
@@ -168,6 +193,11 @@ Defaults!DB_LOGS noexec</code></pre>
       </div>
 <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-sm sm:text-base my-3.5">The addition of the <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[#d92338] dark:text-rose-400 font-mono text-xs border border-slate-200 dark:border-slate-700/80">noexec</code> tag is a critical defense mechanism. Many standard Linux utilities, such as text editors (<code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[#d92338] dark:text-rose-400 font-mono text-xs border border-slate-200 dark:border-slate-700/80">vi</code>, <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[#d92338] dark:text-rose-400 font-mono text-xs border border-slate-200 dark:border-slate-700/80">nano</code>) or pagers (<code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[#d92338] dark:text-rose-400 font-mono text-xs border border-slate-200 dark:border-slate-700/80">less</code>, <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[#d92338] dark:text-rose-400 font-mono text-xs border border-slate-200 dark:border-slate-700/80">more</code>), have built-in commands that allow users to spawn an interactive sub-shell. If a user runs <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[#d92338] dark:text-rose-400 font-mono text-xs border border-slate-200 dark:border-slate-700/80">sudo less /var/log/syslog</code>, they can simply type <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[#d92338] dark:text-rose-400 font-mono text-xs border border-slate-200 dark:border-slate-700/80">!/bin/sh</code> inside the pager to drop into a root shell, completely bypassing your intended restrictions. The <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[#d92338] dark:text-rose-400 font-mono text-xs border border-slate-200 dark:border-slate-700/80">noexec</code> directive intercepts these system calls, preventing attackers from breaking out of script wrappers or pagers.</p>
 <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mt-8 mb-3 pb-1 border-b border-slate-200 dark:border-slate-800 tracking-tight">Dropping Capabilities with Systemd Sandboxing</h2>
+
+      <figure class="my-6 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-950 shadow-sm">
+        <img src="/diagrams/linux-least-privilege-layers.svg" alt="Linux defense-in-depth privilege isolation layers across SSH perimeter, scoped visudo noexec, systemd capability sandboxing, and SELinux/AppArmor MAC" width="800" height="420" loading="lazy" decoding="async" class="w-full h-auto block" />
+        <figcaption class="px-4 py-2 text-[11px] font-mono text-slate-400 bg-slate-900/90 border-t border-slate-800">Linux defense-in-depth privilege isolation layers across SSH perimeter, scoped visudo noexec, systemd capability sandboxing, and SELinux/AppArmor MAC</figcaption>
+      </figure>
 <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-sm sm:text-base my-3.5">Beyond human users, the principle of least privilege must apply aggressively to automated services and background daemons. Historically, if a Linux application needed to perform a privileged action—such as binding to a protected lower network port (like port 80 or 443)—it had to run entirely as the root user.</p>
 <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-sm sm:text-base my-3.5">Linux kernel capabilities break the monolithic root privilege into dozens of distinct, granular permissions (e.g., <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[#d92338] dark:text-rose-400 font-mono text-xs border border-slate-200 dark:border-slate-700/80">CAP_NET_BIND_SERVICE</code>, <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[#d92338] dark:text-rose-400 font-mono text-xs border border-slate-200 dark:border-slate-700/80">CAP_CHOWN</code>, <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[#d92338] dark:text-rose-400 font-mono text-xs border border-slate-200 dark:border-slate-700/80">CAP_SYS_ADMIN</code>). Today, modern system administrators use <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[#d92338] dark:text-rose-400 font-mono text-xs border border-slate-200 dark:border-slate-700/80">systemd</code> drop-in files to explicitly strip unnecessary capabilities from service accounts, ensuring the service runs in a restricted sandbox.</p>
 
@@ -206,19 +236,34 @@ CapabilityBoundingSet=CAP_NET_BIND_SERVICE</code></pre>
 <ul class="list-disc list-outside ml-5 space-y-2 my-4 text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
         <li><strong class="font-bold text-slate-950 dark:text-white">Audit Active Sudo Rules:</strong> Review your <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[#d92338] dark:text-rose-400 font-mono text-xs border border-slate-200 dark:border-slate-700/80">/etc/sudoers</code> file and the <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[#d92338] dark:text-rose-400 font-mono text-xs border border-slate-200 dark:border-slate-700/80">/etc/sudoers.d/</code> directory immediately. Remove any developers clinging to root access for legacy debugging tasks and replace them with scoped command aliases. Apply the <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[#d92338] dark:text-rose-400 font-mono text-xs border border-slate-200 dark:border-slate-700/80">noexec</code> flag wherever pagers or editors are permitted.</li><li><strong class="font-bold text-slate-950 dark:text-white">Implement Systemd Sandboxing:</strong> Review all custom internal applications running on your servers. Ensure they are configured with <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[#d92338] dark:text-rose-400 font-mono text-xs border border-slate-200 dark:border-slate-700/80">NoNewPrivileges=yes</code>, <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[#d92338] dark:text-rose-400 font-mono text-xs border border-slate-200 dark:border-slate-700/80">ProtectSystem=strict</code>, and are explicitly bound to unprivileged service accounts.</li><li><strong class="font-bold text-slate-950 dark:text-white">Centralize Your Auditing:</strong> An unexpected configuration edit or repeated authorization failure may point to active tampering. Forward all system logs, auth logs, and kernel audit trails to a centralized Security Information and Event Management (SIEM) system to ensure that if a server is compromised, the attacker cannot simply delete their local tracks.</li>
       </ul>
-        </div>
+            </div>
 
-        <div class="mt-10 pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center gap-2">
-                <span class="text-xs font-mono text-slate-400 mr-1">Topics:</span>
-                <span class="text-xs font-mono text-slate-600 dark:text-slate-400">#Linux Security</span> <span class="text-xs font-mono text-slate-600 dark:text-slate-400">#Least Privilege</span> <span class="text-xs font-mono text-slate-600 dark:text-slate-400">#Sudo Hardening</span> <span class="text-xs font-mono text-slate-600 dark:text-slate-400">#Systemd Sandboxing</span> <span class="text-xs font-mono text-slate-600 dark:text-slate-400">#DevSecOps</span> <span class="text-xs font-mono text-slate-600 dark:text-slate-400">#Access Control</span>
-              </div>
+            <div class="mt-10 pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center gap-2">
+                    <span class="text-xs font-mono text-slate-400 mr-1">Topics:</span>
+                    <span class="text-xs font-mono text-slate-600 dark:text-slate-400">#Linux Security</span> <span class="text-xs font-mono text-slate-600 dark:text-slate-400">#Least Privilege</span> <span class="text-xs font-mono text-slate-600 dark:text-slate-400">#Sudo Hardening</span> <span class="text-xs font-mono text-slate-600 dark:text-slate-400">#Systemd Sandboxing</span> <span class="text-xs font-mono text-slate-600 dark:text-slate-400">#DevSecOps</span> <span class="text-xs font-mono text-slate-600 dark:text-slate-400">#Access Control</span>
+                  </div>
 
-        <div class="mt-8 text-center">
-          <a href="/" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-mono transition-colors">
-            <span>← Back to All Blog Posts</span>
-          </a>
-        </div>
-      </article>
+            <div class="mt-8 text-center">
+              <a href="/" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-mono transition-colors">
+                <span>← Back to All Blog Posts</span>
+              </a>
+            </div>
+          </article>
+        </main>
+
+        <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-[#0c1017]/50 py-8 text-xs font-mono text-slate-500">
+          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>© 2026 CyberAiSecure. All rights reserved. · cyberaisecure.com</p>
+            <div class="flex flex-wrap items-center justify-center gap-4">
+              <a href="/about/" class="hover:text-slate-900 dark:hover:text-white transition-colors">About</a>
+              <a href="/contact/" class="hover:text-slate-900 dark:hover:text-white transition-colors">Contact</a>
+              <a href="/disclaimer/" class="hover:text-slate-900 dark:hover:text-white transition-colors">Disclaimer</a>
+              <a href="/privacy/" class="hover:text-slate-900 dark:hover:text-white transition-colors">Privacy Policy</a>
+              <a href="/terms/" class="hover:text-slate-900 dark:hover:text-white transition-colors">Terms of Service</a>
+            </div>
+          </div>
+        </footer>
+      </div>
     </div>
   </body>
 </html>

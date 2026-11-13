@@ -1,5 +1,6 @@
 ---
 title: "PHP2Shell Mitigation Guide: Defending Against CVE-2026-109618 & CVE-2026-109619"
+seoTitle: "PHP2Shell CVE-2026-109618 Mitigation Guide"
 slug: "php2shell-mitigation-guide-critical-rce-vulnerabilities"
 date: "2026-10-27"
 excerpt: "PHP2Shell (CVE-2026-109618 & CVE-2026-109619) exposes millions of web servers to unauthenticated RCE. Learn immediate patching, php.ini workarounds, and FPM hardening."
@@ -25,6 +26,8 @@ To implement effective compensating controls, security engineers must understand
 - **CVE-2026-109619 (Upload Progress Use-After-Free & Stale State):** By default, PHP includes an `upload_progress` tracking feature governed by RFC 1867. When a multipart upload contains the `PHP_SESSION_UPLOAD_PROGRESS` parameter, the PHP engine intercepts it prior to script execution and maps a C-level `zval` pointer directly to the `$_SESSION` array. By manipulating the TCP stream timing and triggering a premature free condition, an attacker creates a Use-After-Free (UAF) state. Worse, request-owned global state can survive across requests on the same persistent worker process—meaning an attacker can poison a worker in Request A and detonate the payload in Request B.
 
 **Why Apache `mod_php` is Highest Risk:** The PHP security team classifies `mod_php` deployments as the highest priority risk because workers share state directly within the Apache process space, allowing reliable, single-request unauthenticated exploitation before any application routing takes place.
+
+![PHP2Shell pre-execution memory corruption flow showing CVE-2026-109618 OOM bailout and CVE-2026-109619 upload progress use-after-free before application code runs](/diagrams/php2shell-pre-exec-flow.svg)
 
 ## Phase 1: Definitive Remediation (Patching & Worker Restarts)
 
@@ -88,6 +91,8 @@ MemorySwapMax=0
 ```
 
 ## Phase 3: Edge WAF & Reverse Proxy Filtering
+
+![PHP2Shell defense-in-depth hardening topology across edge WAF, global php.ini, FPM worker recycling, and systemd memory limits](/diagrams/php2shell-defense-topology.svg)
 
 Do not rely solely on blocking the literal string `PHP_SESSION_UPLOAD_PROGRESS` at your Web Application Firewall (WAF), as CVE-2026-109618 can be triggered via multipart memory exhaustion without invoking session upload progress.
 

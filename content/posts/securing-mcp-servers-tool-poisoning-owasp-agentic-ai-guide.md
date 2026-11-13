@@ -1,5 +1,6 @@
 ---
 title: "Securing Model Context Protocol (MCP) Servers: Defending Against Tool Poisoning, Rug Pulls, and OWASP Agentic AI Risks"
+seoTitle: "Securing MCP Servers & Tool Poisoning"
 description: "Learn how to defend Model Context Protocol (MCP) servers against Tool Poisoning Attacks (MCP03), silent rug pulls, and OWASP Agentic AI risks (ASI01–ASI10) with Python manifest verification."
 slug: "securing-mcp-servers-tool-poisoning-owasp-agentic-ai-guide"
 date: "2026-10-21"
@@ -30,7 +31,7 @@ In a traditional web application, security boundaries are enforced through deter
 
 To understand where the vulnerability lies, examine the standard Model Context Protocol topology below. The **LLM (Host)** communicates through an **MCP Client** using **JSON-RPC 2.0** messages to interact with an **MCP Server**, which in turn holds direct read/write access to your **Database**, **File System**, and **External APIs**:
 
-![Model Context Protocol (MCP) trust boundary architecture](/assets/images/mcp-trust-boundary-architecture.png)
+![Model Context Protocol (MCP) trust boundary architecture showing JSON-RPC 2.0 communication between the LLM Host, MCP Client, and downstream resources](/diagrams/mcp-trust-boundary.svg)
 *Figure 1: Model Context Protocol (MCP) trust boundary architecture showing JSON-RPC 2.0 communication between the LLM Host, MCP Client, and downstream resources.*
 
 ```text
@@ -101,7 +102,7 @@ Even if an MCP server's initial tool description is completely clean during secu
 
 The visual below illustrates this three-stage kill chain—moving from initial **Prompt Injection** in the context window to automated **Tool Abuse** across connected services, culminating in silent **Data Exfiltration**:
 
-![From Prompt Injection to Tool Abuse and Data Exfiltration](/assets/images/mcp-tool-poisoning-kill-chain.png)
+![Three-stage MCP tool poisoning kill chain escalating from prompt injection in tools/list to cross-tool abuse and credential exfiltration](/diagrams/mcp-tool-poisoning-kill-chain.svg)
 *Figure 2: Three-stage kill chain showing how poisoned MCP metadata or runtime responses escalate from context injection to cross-tool abuse and credential exfiltration.*
 
 ```text
@@ -307,7 +308,7 @@ if __name__ == "__main__":
 
 To secure autonomous agents across your engineering organization, static perimeter rules must be combined with runtime enforcement. The diagram below highlights the five core pillars of a **Zero Trust Security Architecture**—**1. Identity**, **2. Verification**, **3. Access**, **4. Monitoring**, and **5. Response**—which must be applied directly to every AI agent and MCP server connection:
 
-![Zero Trust 5-pillar lifecycle applied to autonomous AI agents](/assets/images/zero-trust-agentic-ai-lifecycle.png)
+![Zero Trust 5-pillar lifecycle applied to autonomous AI agents across identity, manifest verification, sandboxing, telemetry, and human-in-the-loop response](/diagrams/mcp-zero-trust-lifecycle.svg)
 *Figure 3: Zero Trust 5-pillar security lifecycle applied to autonomous AI agents and MCP server connections.*
 
 ```text

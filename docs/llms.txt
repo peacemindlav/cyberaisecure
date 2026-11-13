@@ -1,0 +1,28 @@
+# CyberAiSecure
+
+> Technical engineering publication on artificial intelligence security, LLM and agentic vulnerabilities, zero-trust architecture, cloud defense systems, and critical CVE mitigations.
+
+## Core Pages
+
+- [Home](https://cyberaisecure.com/): Browse all technical security engineering blueprints, CVE mitigation guides, and AI defense analyses.
+- [CVE Info](https://cyberaisecure.com/category/cve-info/): Critical vulnerability advisories, pre-execution exploit analyses, and emergency remediation guides.
+- [Security Insights](https://cyberaisecure.com/category/security-insights/): Deep-dive architectures for AI security, zero-trust access control, CI/CD hardening, and post-quantum readiness.
+- [About](https://cyberaisecure.com/about/): Editorial mission, scope of coverage, and technical review standards at CyberAiSecure.
+- [Contact](https://cyberaisecure.com/contact/): Reach the CyberAiSecure editorial desk via our online submission form.
+- [Disclaimer](https://cyberaisecure.com/disclaimer/): Responsible disclosure, defensive educational intent, and security engineering liability notice.
+- [Privacy Policy](https://cyberaisecure.com/privacy/): Data handling, cookie disclosures, GDPR/CCPA rights, and newsletter privacy practices.
+- [Terms of Service](https://cyberaisecure.com/terms/): Acceptable use, educational scope, and intellectual property terms.
+
+## Articles
+
+- [PHP2Shell Mitigation Guide: Defending Against CVE-2026-109618 & CVE-2026-109619](https://cyberaisecure.com/posts/php2shell-mitigation-guide-critical-rce-vulnerabilities/): Immediate patching, php.ini workarounds, edge WAF rules, and PHP-FPM hardening to block unauthenticated pre-execution RCE.
+- [Securing Model Context Protocol (MCP) Servers: Defending Against Tool Poisoning, Rug Pulls, and OWASP Agentic AI Risks](https://cyberaisecure.com/posts/securing-mcp-servers-tool-poisoning-owasp-agentic-ai-guide/): Architectural blueprint mapping OWASP Agentic (ASI01-ASI10) and MCP Top 10 risks with Python cryptographic manifest pinning.
+- [Why Enterprise AI Security is Mandatory: Navigating 2026 OWASP LLM Risks](https://cyberaisecure.com/posts/why-enterprise-ai-security-required-owasp-llm-risks-2026/): Defending agentic workflows and RAG pipelines against prompt injection, excessive agency, shadow AI, and data exfiltration.
+- [Implementing Least Privilege in Linux: Sudo Hardening & Access Control](https://cyberaisecure.com/posts/linux-least-privilege-sudo-hardening-security/): Enforcing Linux least privilege via strict sudoers policies, systemd capability bounding, SSH hardening, and AppArmor/SELinux MAC.
+- [Defending Against AI Phishing, Deepfake Social Engineering & Vishing Attacks](https://cyberaisecure.com/posts/defending-against-ai-phishing-deepfakes-vishing/): Stopping synthetic executive impersonation and voice-cloning vishing using FIDO2 WebAuthn and out-of-band verification workflows.
+- [Continuous Threat Exposure Management (CTEM) vs. Traditional Vulnerability Management](https://cyberaisecure.com/posts/ctem-framework-vs-traditional-vulnerability-management/): Replacing static CVSS alert fatigue with the five-stage CTEM lifecycle prioritized by EPSS probability and CISA KEV telemetry.
+- [Preparing for Post-Quantum Cryptography: Migration Roadmap & FIPS Standards Guide](https://cyberaisecure.com/posts/post-quantum-cryptography-migration-roadmap-fips/): Defending against Harvest Now, Decrypt Later (HNDL) threats by building a CBOM and migrating to NIST FIPS 203, 204, and 205 standards.
+- [Securing GitHub Actions: Complete CI/CD Pipeline Security & Hardening Guide](https://cyberaisecure.com/posts/securing-github-actions-cicd-pipeline-security-guide/): Hardening CI/CD supply chains with commit SHA pinning, OIDC short-lived cloud credentials, minimal GITHUB_TOKEN permissions, and SAST.
+- [Zero-Trust Architecture: Implementation Blueprint for Small Teams & Startups](https://cyberaisecure.com/posts/zero-trust-architecture-implementation-blueprint-small-teams/): Replacing legacy perimeter VPNs with identity-first Zero-Trust Network Access (ZTNA), Tailscale ACLs, and micro-segmentation.
+- [Beyond Prompt Injection: Deep Dive into Indirect Prompt Exploits](https://cyberaisecure.com/posts/beyond-prompt-injection-indirect-exploits/): Securing AI agents against poisoned documents, emails, and RAG retrieval streams using Dual-LLM isolation and capability checks.
+- [Securing the AI Supply Chain: Mitigating Third-Party LLM Risks & OWASP Vulnerabilities](https://cyberaisecure.com/posts/securing-ai-supply-chain-llm-risks/): Mitigating unsafe pickle deserialization, trojaned model weights, and third-party LLM supply chain threats using Safetensors and AIBOMs.

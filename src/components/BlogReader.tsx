@@ -240,6 +240,31 @@ function renderMarkdownContent(
           const trimmed = p.trim();
           if (!trimmed) return null;
 
+          // Markdown Image: ![alt](src) optionally followed by *Figure caption*
+          const imgMatch = trimmed.match(/^!\[([^\]]*)\]\(([^)]+)\)(?:\r?\n\*([^*]+)\*)?$/);
+          if (imgMatch) {
+            const [, altText, srcUrl, caption] = imgMatch;
+            const displayCaption = caption || altText;
+            return (
+              <figure key={pIdx} className="my-6 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-950 shadow-sm">
+                <img
+                  src={srcUrl}
+                  alt={altText || 'CyberAiSecure Architecture Diagram'}
+                  width={800}
+                  height={420}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-auto block"
+                />
+                {displayCaption && (
+                  <figcaption className="px-4 py-2 text-[11px] font-mono text-slate-400 bg-slate-900/90 border-t border-slate-800">
+                    {displayCaption}
+                  </figcaption>
+                )}
+              </figure>
+            );
+          }
+
           // Headings
           if (trimmed.startsWith('# ')) {
             return (

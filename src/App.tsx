@@ -79,6 +79,22 @@ export default function App() {
     return null;
   };
 
+  const getCategoryFromLocation = (allPosts: BlogPost[]): string | null => {
+    try {
+      const pathname = window.location.pathname;
+      if (pathname.includes('/category/')) {
+        const catSlug = pathname.split('/category/')[1]?.split(/[?#/]/)[0] || '';
+        const matched = allPosts.find(
+          p => p.category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') === catSlug
+        );
+        if (matched) return matched.category;
+        if (catSlug === 'cve-info') return 'CVE Info';
+        if (catSlug === 'security-insights') return 'Security Insights';
+      }
+    } catch {}
+    return null;
+  };
+
   // Load all markdown files directly from content/posts/*.md and resolve deep link
   useEffect(() => {
     const mdPosts = loadAllMarkdownPosts();
@@ -88,7 +104,18 @@ export default function App() {
     const initialPost = getPostFromLocation(mdPosts);
     if (initialPost) {
       setSelectedPost(initialPost);
+    } else {
+      const initialCat = getCategoryFromLocation(mdPosts);
+      if (initialCat) {
+        setSelectedCategory(initialCat);
+      }
     }
+
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const q = params.get('q');
+      if (q) setSearchQuery(q);
+    } catch {}
   }, []);
 
   // Sync with browser URL / history for natural slug navigation
@@ -96,6 +123,10 @@ export default function App() {
     const handlePopState = () => {
       const matched = getPostFromLocation(posts);
       setSelectedPost(matched);
+      if (!matched) {
+        const matchedCat = getCategoryFromLocation(posts);
+        setSelectedCategory(matchedCat || 'All');
+      }
     };
 
     window.addEventListener('popstate', handlePopState);
@@ -104,8 +135,8 @@ export default function App() {
 
   // Update document title, canonical link, OpenGraph, Twitter, and Schema.org SEO dynamically
   useEffect(() => {
-    updatePageSEO(selectedPost || undefined);
-  }, [selectedPost]);
+    updatePageSEO(selectedPost || undefined, selectedCategory);
+  }, [selectedPost, selectedCategory]);
 
   const handleSelectPost = (post: BlogPost) => {
     setSelectedPost(post);

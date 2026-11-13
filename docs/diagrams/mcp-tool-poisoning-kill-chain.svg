@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420" role="img" aria-label="MCP Tool Poisoning &amp; Silent Rug Pull Kill Chain">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#1e293b" stroke-width="0.6" stroke-opacity="0.45" />
+    </pattern>
+    
+    <marker id="arrow-64748b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b" />
+    </marker>
+    <marker id="arrow-38bdf8" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrow-d92338" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#d92338" />
+    </marker>
+    <marker id="arrow-34d399" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399" />
+    </marker>
+    <marker id="arrow-fbbf24" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24" />
+    </marker>
+  </defs>
+  <rect width="800" height="420" rx="14" fill="#090d16" />
+  <rect width="800" height="420" rx="14" fill="url(#grid)" />
+  <rect x="0.75" y="0.75" width="798.5" height="418.5" rx="14" fill="none" stroke="#1e293b" stroke-width="1.5" />
+
+  <!-- Header -->
+  <rect x="24" y="18" width="6" height="34" rx="3" fill="#d92338" />
+  <text x="40" y="34" fill="#f8fafc" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="16" font-weight="800">MCP Tool Poisoning &amp; Silent Rug Pull Kill Chain</text>
+  <text x="40" y="51" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Escalation from MCP03 metadata injection to cross-tool pivoting (ASI02) and exfiltration</text>
+  <text x="774" y="36" text-anchor="end" fill="#64748b" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700">CYBERAISECURE.COM</text>
+
+  
+  <g>
+    <rect x="32" y="115" width="215" height="195" rx="10" fill="#111827" stroke="#fbbf24" stroke-width="1.5" />
+    <rect x="32" y="115" width="215" height="4" rx="2" fill="#fbbf24" />
+    <rect x="44" y="125" width="165.6" height="16" rx="4" fill="#fbbf24" fill-opacity="0.16" />
+           <text x="52" y="136" fill="#fbbf24" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="0.6">STAGE 1: MCP03 / MCP04</text>
+    <text x="139.5" y="151" text-anchor="middle" fill="#f8fafc" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">Context &amp; Manifest Poison</text>
+    <text x="139.5" y="171" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Hidden prompt inside</text>
+    <text x="139.5" y="187" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">tools/list description</text>
+    <text x="139.5" y="203" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">OR npx/uvx silent update</text>
+    <text x="139.5" y="219" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">altering prose after review</text>
+    <text x="139.5" y="235" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">(Bypasses SAST / SCA)</text>
+  </g>
+  <g>
+    <line x1="247" y1="212" x2="292" y2="212" stroke="#d92338" stroke-width="2"  marker-end="url(#arrow-d92338)" />
+    <rect x="223" y="195" width="93" height="15" rx="4" fill="#090d16" stroke="#d92338" stroke-opacity="0.4" stroke-width="1" />
+           <text x="269.5" y="206" text-anchor="middle" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.5" font-weight="600">Hijacks LLM</text>
+  </g>
+  <g>
+    <rect x="292" y="115" width="215" height="195" rx="10" fill="#111827" stroke="#d92338" stroke-width="1.5" />
+    <rect x="292" y="115" width="215" height="4" rx="2" fill="#d92338" />
+    <rect x="304" y="125" width="158.79999999999998" height="16" rx="4" fill="#d92338" fill-opacity="0.16" />
+           <text x="312" y="136" fill="#d92338" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="0.6">STAGE 2: ASI02 MISUSE</text>
+    <text x="399.5" y="151" text-anchor="middle" fill="#f8fafc" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">Cross-Tool Pivoting</text>
+    <text x="399.5" y="171" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Poisoned tool need not run</text>
+    <text x="399.5" y="187" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">LLM invokes trusted</text>
+    <text x="399.5" y="203" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">internal read_file / SQL</text>
+    <text x="399.5" y="219" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Reads ~/.ssh/id_rsa &amp; .env</text>
+    <text x="399.5" y="235" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">78.3% multi-server ASR</text>
+  </g>
+  <g>
+    <line x1="507" y1="212" x2="552" y2="212" stroke="#d92338" stroke-width="2"  marker-end="url(#arrow-d92338)" />
+    <rect x="497" y="195" width="65" height="15" rx="4" fill="#090d16" stroke="#d92338" stroke-opacity="0.4" stroke-width="1" />
+           <text x="529.5" y="206" text-anchor="middle" fill="#cbd5e1" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="9.5" font-weight="600">Encodes</text>
+  </g>
+  <g>
+    <rect x="552" y="115" width="215" height="195" rx="10" fill="#1f1018" stroke="#d92338" stroke-width="1.5" />
+    <rect x="552" y="115" width="215" height="4" rx="2" fill="#d92338" />
+    <rect x="564" y="125" width="152" height="16" rx="4" fill="#d92338" fill-opacity="0.16" />
+           <text x="572" y="136" fill="#d92338" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="700" letter-spacing="0.6">STAGE 3: ASI01 EXFIL</text>
+    <text x="659.5" y="151" text-anchor="middle" fill="#f8fafc" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="13" font-weight="700">Silent Data Exfiltration</text>
+    <text x="659.5" y="171" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Base64-encodes credentials</text>
+    <text x="659.5" y="187" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Passes secrets into</text>
+    <text x="659.5" y="203" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">optional &#39;audit_context&#39;</text>
+    <text x="659.5" y="219" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Suppresses user notice</text>
+    <text x="659.5" y="235" text-anchor="middle" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Attacker captures secrets</text>
+  </g><text x="400" y="362" text-anchor="middle" fill="#34d399" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11">Defense: Pin canonical tools/list SHA-256 hashes + scan prose signatures in MCP Gateway</text>
+</svg>

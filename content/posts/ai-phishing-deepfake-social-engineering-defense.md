@@ -1,5 +1,6 @@
 ---
 title: "Defending Against AI Phishing, Deepfake Social Engineering & Vishing Attacks"
+seoTitle: "Defending Against AI Phishing & Deepfakes"
 slug: "defending-against-ai-phishing-deepfakes-vishing"
 date: "2026-10-15"
 excerpt: "Generative AI and voice cloning have weaponized social engineering. Learn how to prevent synthetic executive impersonation and deepfake fraud with out-of-band verification."
@@ -46,6 +47,8 @@ Biometrics can be spoofed; cryptography cannot. Mandate FIDO2-compliant hardware
 Never permit high-risk corporate actions—such as updating vendor banking details, authorizing international wire transfers, or resetting administrative MFA—to proceed on a single communication channel. Mandate independent, out-of-band verification using a pre-established, tamper-resistant secondary channel.
 
 ## Technical Implementation: Out-of-Band Verification Policy
+
+![Out-of-band verification state machine replacing spoofable voice or video requests with verified directory callbacks, FIDO2 hardware tokens, and dual-custody sign-off](/diagrams/ai-vishing-oob-verification.svg)
 
 Organizations must convert verbal security policies into strict operational state machines. Below is a structural blueprint outlining the mandatory verification sequence required before executing sensitive financial or credential updates:
 

@@ -1,5 +1,6 @@
 ---
 title: "Securing the AI Supply Chain: Mitigating Third-Party LLM Risks & OWASP Vulnerabilities"
+seoTitle: "Securing the AI & LLM Supply Chain"
 slug: "securing-ai-supply-chain-llm-risks"
 date: "2026-10-14"
 excerpt: "Downloading an LLM can mean executing untrusted code. Learn to secure your AI supply chain against OWASP Top 10 risks, serialization attacks, and trojaned weights."
@@ -37,6 +38,8 @@ Traditional software supply chain security relies on deterministic checks, such 
 - **The `.safetensors` Shift:** To combat these serialization attacks, the AI community introduced `.safetensors`. This format is purely data-driven, zero-copy, and strictly non-executable. While it neutralizes arbitrary code execution, it cannot prevent behavioral risks like trojaned weights, making supplementary defense layers necessary.
 
 ### Technical Implementation & Programmatic Scanning
+
+![AI model supply chain verification gate enforcing safetensors format policy, ModelScan bytecode audit, CycloneDX AIBOM provenance, and sandboxed red-teaming](/diagrams/ai-supply-chain-verification-gate.svg)
 
 You cannot afford to blindly trust model weights pulled from the internet. Before any third-party artifact touches your production environment, it must be thoroughly scanned. Tools like **ModelScan** and **Picklescan** inspect the byte-code of serialized files looking for dangerous global calls or suspicious network requests before the file is executed. 
 
